@@ -2,13 +2,23 @@
 <html>
 <head>
   <title>Skillup</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Hind:600,300,400' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<%= render partial: "layouts/header" %>
+<section>
+  <div class="flash-message">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: key.to_s) %>
+    <% end %>
+  </div>
+  <%= yield %>
+</section>
+<%= render partial: "layouts/footer" %>
 
 </body>
 </html>

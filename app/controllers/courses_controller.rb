@@ -25,6 +25,10 @@ class CoursesController < ApplicationController
   def destroy
   end
 
+  def search
+    Course.search(params[:query])
+  end
+
   private
 
   def course_params

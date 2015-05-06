@@ -1,0 +1,26 @@
+<header>
+
+  <div class="header-left">
+    <%= link_to "skillup", root_path %>
+  </div>
+
+  <div class="header-right">
+    <div class="search-bar">
+      <%= form_tag root_path, method: :get, class: "search-form" do %>
+        <%= label_tag :query, "", class: "search-bar-label" %>
+        <%= search_field_tag :query, nil, placeholder: "Search Courses", class: "search-bar-input", required: true %>
+        <%= button_tag type: "submit", class: "search-submit" do %>
+          <%= fa_icon("search", class: "search-icon") %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if user_signed_in? %>
+      <p class="header-links"><%= link_to current_user.name, user_path(current_user) %> - <%= link_to "Signout", destroy_user_session_path, method: :delete %></p>
+    <% else %>
+      <p class="header-links"><%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Login", new_user_session_path %></p>
+    <% end %>
+
+  </div>
+
+</header>

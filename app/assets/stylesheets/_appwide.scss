@@ -1,0 +1,136 @@
+// VIEWPORT MIXINS
+
+@mixin mobile-viewport {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin medium-viewport {
+  @media (min-width: 501px) and (max-width: 900px) {
+    @content;
+  }
+}
+
+//  MIXINS
+
+@mixin position-center($position, $top, $left) {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: $position;
+  top: $top;
+  left: $left;
+}
+
+@mixin position-x($position, $left) {
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position: $position;
+  left: $left;
+}
+
+@mixin position-y($position, $top) {
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: $position;
+  top: $top;
+}
+
+@mixin scale-up {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+@mixin transition($time) {
+  -webkit-transition: all $time ease;
+  -moz-transition: all $time ease;
+  -o-transition: all $time ease;
+  transition: all $time ease;
+}
+
+@mixin linear-gradient-top-bottom($color1, $color2) {
+  background: -webkit-linear-gradient($color1, $color2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($color1, $color2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($color1, $color2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($color1, $color2); /* Standard syntax (must be last) */
+}
+
+@mixin input-focus-highlight($color) {
+  &:focus {
+    outline: none;
+    border: 1px solid $color;
+    box-shadow: 0 0 5px $color;
+  }
+}
+
+@mixin submit-button-colors {
+  background-color: $secondary-green;
+  border-bottom: 5px solid $dark-green;
+  &:hover {
+    background-color: $primary-orange;
+    border-bottom: 5px solid $tertiary-orange;
+  }
+}
+//  VARIABLES
+
+$primary-orange: #D35400;
+$secondary-orange: #F9690E;
+$tertiary-orange: #E67E22;
+$primary-yellow: #FDE3A7;
+$primary-red: #c0392b;
+$secondary-red: #e74c3c;
+$primary-green: #3FC380;
+$secondary-green: #27ae60;
+$dark-green: #1E824C;
+$light-gray: #DBDBDB;
+$white : #FFF;
+$gray: #BFBFBF;
+$medium-gray: #666;
+$dark-gray: #222;
+$text-gray: #464646;
+$smoke-white: #ECECEC;
+
+// APP WIDE
+
+body, html {
+  box-sizing: border-box;
+  font-family: "Hind", sans-serif;
+  color: $text-gray;
+  margin: 0;
+  @include medium-viewport {
+    font-size: 0.95em;
+  }
+  @include mobile-viewport {
+    font-size: 0.87em;
+  }
+  i {
+    color: $secondary-orange;
+    &:hover {
+      color: $text-gray;
+      cursor: pointer;
+    }
+  }
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  font-family: inherit;
+  a {
+    text-decoration: none;
+    &:hover, &:focus, &:active, &:visited {
+      text-decoration: none;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
