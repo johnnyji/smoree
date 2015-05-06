@@ -9,15 +9,18 @@
 </head>
 <body>
 
-<%= render partial: "layouts/header" %>
-<section>
-  <div class="flash-message">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: key.to_s) %>
-    <% end %>
-  </div>
-  <%= yield %>
-</section>
+<div class="non-footer">
+  <%= render partial: "layouts/header" %>
+  <section>
+    <div class="flash-message">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: key.to_s) %>
+      <% end %>
+    </div>
+    <%= yield %>
+  </section>
+</div>
+
 <%= render partial: "layouts/footer" %>
 
 </body>

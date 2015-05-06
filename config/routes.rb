@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root "courses#index"
   
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users
  
   resources :users do
     resources :courses, only: [:new, :create, :edit, :update, :delete, :destroy]

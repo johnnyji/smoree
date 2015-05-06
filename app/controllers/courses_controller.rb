@@ -2,6 +2,9 @@ class CoursesController < ApplicationController
   before_action :find_course, only: [:show, :new, :create, :edit, :udpate, :delete, :destroy]
   
   def index
+    if request.xhr?
+      render partial: "devise/form"
+    end
   end
 
   def show

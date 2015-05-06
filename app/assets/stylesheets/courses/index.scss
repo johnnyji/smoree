@@ -2,6 +2,7 @@
 
 .index-intro-container {
   @include position-center(absolute, 40%, 50%);
+  color: $white;
   text-align: center;
   width: 700px;
   font-size: 1.5em;
@@ -13,17 +14,30 @@
     margin-bottom: 3em;
   }
   a {
+    border-style: none;
     margin-top: 1em;
     font-size: 1.2em;
     background-color: $secondary-green;
     color: $white;
     padding: 0.6em 1em;
+    border-radius: 20px; 
     &:hover {
       background-color: $primary-green;
+      cursor: pointer;
     }
     &:active, &:focus, &:visited {
       color: $white;
       text-decoration: none;
+      outline: none;
     }
   }
+}
+
+.display-form {
+  @include position-center(absolute, 50%, 50%);
+  width: 600px;
+  height: 400px;
+  overflow: scroll;
+  z-index: 10;
+  background-color: $white;
 }

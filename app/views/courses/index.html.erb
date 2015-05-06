@@ -1,9 +1,12 @@
 <div class="index-intro-container">
+  <img src=<%= image_path("cover.jpg") %> class="full-background-image">
   <h1>skillup</h1>
   <p>A place where you can create courses, take courses and share your knowledge with the world.</p>
   <% if user_signed_in? %>
     <%= link_to "Create Course", new_user_course_path %>
   <% else %>
-    <%= link_to "Create Course", new_user_registration_path, class: "index-create-course-link" %>
+    <%= link_to "Create Course", root_path, class: "index-create-course-link" %>
   <% end %>
+  <div class="overlay hidden"></div>
+  <div class="form-section hidden"><%= fa_icon "remove", class: "exit-form" %></div>
 </div>
