@@ -1,5 +1,5 @@
 $(function() {
-  var createCourse = $('.index-create-course-link');
+  var createCourse = $('.non-user-create-course-link');
   var signUpForm = $('.user-form');
 
   function exitFormModal() {
@@ -22,35 +22,15 @@ $(function() {
 
     $(".exit-modal").on("click", exitFormModal);
   };
-
-  function renderSignupErrors(jqXHR, requestStatus, errorThrown) {
-    var errorObject = jqXHR.responseJSON;
-    for (var err in errorObject) {
-      if (errorObject.hasOwnProperty(err)) {
-        var errorMessageArray = errorObject[err];
-        $("#user_" + err).prev().text(errorMessageArray[0]);
-      }
-    }
-  }
  
   createCourse.on("click", function(e) {
     e.preventDefault();
     displayFormModal();
   });
 
-  signUpForm.on("submit", function(e) {
+  $(".user-sign-up").on("click", function(e) {
     e.preventDefault();
-    $(".form-error").empty();
-    var formData = signUpForm.serialize();
-    $.ajax({
-      url: "/users?" + formData,
-      method: "POST",
-      dataType:"json",
-      success: function(user) {
-        window.location.href = "/users/" + user.id;
-      },
-      error: renderSignupErrors
-    });
+    displayFormModal();
   });
 
   signUpForm.on("change", "input", function() {

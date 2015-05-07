@@ -21,6 +21,7 @@ header {
     a, a:visited, a:focus, a:active {
       @include position-y(relative, 50%);
       @include transition(0.4s);
+      margin: 0;
       display: inline-block;
       color: $smoke-white;
       font-size: 3em;
@@ -45,7 +46,7 @@ header {
       @include position-y(relative, 50%);
       @include placeholder(inherit);
       display: inline-block;
-      margin-right: 1em;
+      margin: 0 1em 0 0;
       .search-bar-input {
         font-weight: 300;
         height: 35px;
@@ -95,17 +96,11 @@ header {
 // MAIN SECTION CONTAINER
 
 section {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 90px;
+  position: relative;
+  top: 0;
+  height: 100vh;
   margin: 0;
-  min-height: -webkit-calc(100vh - 90px);
-  min-height: -moz-calc(100vh - 90px);
-  min-height: -ms-calc(100vh - 90px);
-  min-height: -o-calc(100vh - 90px);
-  min-height: calc(100vh - 90px);
-  height: auto;
+  padding: 0;
   @include medium-viewport {
     width: 500px;
   }
@@ -114,20 +109,13 @@ section {
   }
 }
 
-.non-footer {
-  position: relative;
-  top: 0;
-  height: 100vh;
-}
-
 
 // FOOTER
 
 footer {
   position: relative;
-  bottom: 0;
-  width: 100%;
-  height: 150px;
+  margin: 0;
+  height: 180px;
   background-color: $dark-gray;
   color: $medium-gray;
   a {
@@ -165,4 +153,27 @@ footer {
   margin: 0;
   opacity: 0.7;
   z-index: -1;
+}
+
+.banner {
+  @include position-y(relative, 50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 500px;
+  margin: 0;
+  background-color: #86E2D5;
+  overflow: hidden;
+}
+
+.banner-background-image {
+  @include position-x(absolute, 50%);
+  @include brightness(30%);
+  top: 0;
+  height: auto;
+  width: 130vw;
+  padding: 0;
+  overflow: hidden;
+  margin: 0;
+  opacity: 0.7;
 }

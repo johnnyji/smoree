@@ -73,14 +73,16 @@
 
 @mixin button-style($color, $hover) {
   @include transition(0.3s);
+  font-weight: 600;
   border-style: none;
-  border-radius: 20px;
-  padding: 0.6em 1em;
-  color: $smoke-white;
+  padding: 0.3em 1em;
+  color: $white;
   background-color: $color;
+  box-shadow: 0 8px 0 $hover;
   margin: 1em;
   &:hover {
     cursor: pointer;
+    box-shadow: 0 8px 0 $color;
     background-color: $hover;
   }
 }
@@ -109,6 +111,17 @@
      color: $color;
   }
 }
+
+@mixin input-field-style {
+  outline: none;
+  padding: 0.3em;
+  border: 2px solid $dark-green;
+    &:focus {
+      outline: none;
+      border: 2px solid $primary-green;
+      box-shadow: 0 0 5px $dark-green;
+  }
+}
 //  VARIABLES
 
 $primary-orange: #D35400;
@@ -127,12 +140,14 @@ $medium-gray: #666;
 $dark-gray: #222;
 $text-gray: #464646;
 $smoke-white: #ECECEC;
+$border-radius: 20px;
 
 // APP WIDE
 
 body, html {
   box-sizing: border-box;
   font-family: "Hind", sans-serif;
+  font-weight: 300;
   color: $text-gray;
   margin: 0;
   padding: 0;
@@ -143,9 +158,9 @@ body, html {
     font-size: 0.87em;
   }
   i {
-    color: $secondary-orange;
+    color: $text-gray;
     &:hover {
-      color: $text-gray;
+      color: $secondary-green;
       cursor: pointer;
     }
   }

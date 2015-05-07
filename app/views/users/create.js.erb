@@ -1,0 +1,13 @@
+function injectError(field) {
+  $(".form-error .user-" + field + "-error").html("<%= @user.errors[:" + field + "].last %>");
+}
+
+<% if @user.errors.any? %>
+  $(".form-error.user-first_name-error").html("<%= @user.errors[:first_name].last %>");
+  $(".form-error.user-last_name-error").html("<%= @user.errors[:last_name].last %>");
+  $(".form-error.user-email-error").html("<%= @user.errors[:email].last %>");
+  $(".form-error.user-password-error").html("<%= @user.errors[:password].last %>");
+  $(".form-error.user-password_confirmation-error").html("<%= @user.errors[:password_confirmation].last %>");
+<% else %>
+  window.location.href = "<%= user_path(@user) %>"
+<% end %>

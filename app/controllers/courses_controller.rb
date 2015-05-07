@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  skip_before_action :require_login, only: [:search, :show, :index]
   before_action :find_course, only: [:show, :new, :create, :edit, :udpate, :delete, :destroy]
   
   def index

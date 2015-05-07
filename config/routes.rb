@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   root "users#new"
   
   resources :users
-  resources :courses
+
+  resources :users do
+    resources :courses, only: [:new, :create]
+  end
+
+  resources :courses, except: [:new, :create]
   resources :session, only: [:new, :create, :destroy]
 end

@@ -1,0 +1,23 @@
+<div class="form-section hidden">
+  <%= fa_icon "remove", class: "exit-modal" %>
+  <%= form_for(@user, url: users_path, html: { class: "user-form" }, remote: true) do |f| %>
+    <h1 class="user-form-title">Sign Up Today!</h1>
+
+    <div class="form-error user-first_name-error"></div>
+    <%= f.text_field :first_name, placeholder: "First name", autofocus: true %><br>
+
+    <div class="form-error user-last_name-error"></div>
+    <%= f.text_field :last_name, placeholder: "Last name" %><br>
+
+    <div class="form-error user-email-error"></div>
+    <%= f.text_field :email, placeholder: "email@domain.com" %><br>
+
+    <div class="form-error user-password-error"></div>
+    <%= f.password_field :password, placeholder: "Enter your password" %><br>
+
+    <div class="form-error user-password_confirmation-error"></div>
+    <%= f.password_field :password_confirmation, placeholder: "Re-enter your password" %><br>
+
+    <%= f.submit "Lets go!" %>
+  <% end %>
+</div>

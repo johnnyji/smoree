@@ -1,0 +1,25 @@
+@import "appwide";
+
+.intro-container {
+  @include position-center(absolute, 40%, 50%);
+  color: $white;
+  text-align: center;
+  width: 700px;
+  font-size: 1.5em;
+  .intro-title {
+    font-size: 4em;
+    margin: 0;
+  }
+  .intro-summary {
+    margin-bottom: 3em;
+  }
+  .create-course-link {
+    @include button-style($primary-green, $dark-green);
+    margin-top: 1em;
+    font-size: 1.2em; 
+    &:active, &:focus, &:visited {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}

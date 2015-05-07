@@ -7,5 +7,5 @@ class Course < ActiveRecord::Base
   validates :summary, presence: {message: "Tell people about your course!"}
   validates :description, presence: {message: "Describe what your course is about"}, length: {minimum: 3, message: "You're description is way too short!"}
 
-  scope :search lambda { |terms| where(["lower(title) LIKE ? OR lower(instructor.name) LIKE ?", "%#{terms.downcase}%", "%#{terms.downcase}%"]) }
+  scope :search, lambda { |terms| where(["lower(title) LIKE ? OR lower(instructor.name) LIKE ?", "%#{terms.downcase}%", "%#{terms.downcase}%"]) }
 end

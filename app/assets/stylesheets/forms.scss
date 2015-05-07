@@ -5,22 +5,55 @@
 }
 
 .user-form {
-  position: relative;
-  margin: 1em auto;
+  @include placeholder(rgba(236, 236, 236, 0.7));
+  @include position-center(absolute, 50%, 50%);
   width: 80%;
+  .user-form-title {
+    margin: 0.5em;
+  }
   input[type=text],
   input[type=password],
   input[type=email] {
+    @include input-field-style;
+    background-color: transparent;
     width: 70%;
-    padding: 3px;
     margin: 3px;
-    font-size: 1.1em;
+    font-size: 0.9em;
+    color: $white;
   }
   input[type=submit] {
     @include button-style($primary-green, $dark-green);
-    font-size: 1.1em;
+    font-size: 1.2em;
     &:focus {
       outline: none;
+    }
+  }
+}
+
+.new-session-form-section {
+  @include position-center(absolute, 40%, 50%);
+  margin: 0;
+  text-align: center;
+  width: 600px;
+  height: 500px;
+  padding: 1em;
+  background-color: $white;
+  border-radius: 20px;
+  .session-form-title {
+    color: $dark-green;
+    font-size: 2.2em;
+  }
+  form {
+    @include position-center(absolute, 50%, 50%);
+    input[type=email],
+    input[type=password] {
+      @include input-field-style;
+      font-size: 1.3em;
+      margin: 0.5em;
+    }
+    input[type=submit] {
+      @include button-style($primary-green, $dark-green);
+      font-size: 1.5em;
     }
   }
 }

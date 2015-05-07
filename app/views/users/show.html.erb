@@ -1,1 +1,9 @@
-<h1><%= @user.name %></h1>
+<div class="banner">
+  <img src=<%= image_path("cover.jpg") %> class="banner-background-image">
+  <div class="user-banner-nav">
+    <%= link_to "New Course", new_user_course_path(current_user), class: "user-banner-link" %>
+    <%= link_to "New Course", new_user_course_path(current_user), class: "user-banner-link" %>
+    <%= link_to "New Course", new_user_course_path(current_user), class: "user-banner-link" %>
+    <%= link_to "New Course", new_user_course_path(current_user), class: "user-banner-link" %>
+  </div>
+</div>
