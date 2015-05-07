@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-  skip_before_action :require_login, only: [:search, :show, :index]
-  before_action :find_course, only: [:show, :new, :create, :edit, :udpate, :delete, :destroy]
+  before_action :require_login, only: [:new, :create, :edit, :update, :delete, :destroy]
+  before_action :find_course, only: [:show, :edit, :udpate, :delete, :destroy]
   
   def index
     if request.xhr?
@@ -12,9 +12,11 @@ class CoursesController < ApplicationController
   end
 
   def new
+    @course = Course.new
   end
 
   def create
+    @course = Course.new(course_params)
   end
 
   def edit

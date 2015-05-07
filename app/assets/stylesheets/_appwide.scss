@@ -139,6 +139,7 @@ $gray: #BFBFBF;
 $medium-gray: #666;
 $dark-gray: #222;
 $text-gray: #464646;
+$darkest-gray: #202020;
 $smoke-white: #ECECEC;
 $border-radius: 20px;
 
@@ -151,6 +152,7 @@ body, html {
   color: $text-gray;
   margin: 0;
   padding: 0;
+  overflow: hidden;
   @include medium-viewport {
     font-size: 0.95em;
   }

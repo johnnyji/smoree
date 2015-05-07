@@ -1,0 +1,93 @@
+@import "appwide";
+
+.new-course-nav-bar {
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  width: 400px;
+  background-color: $dark-gray;
+  z-index: 3;
+  box-shadow: 0 0 10px $darkest-gray;
+  .course-nav-left {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 100%;
+    font-size: 2em;
+    margin: 0;
+    background-color: $dark-green;
+    .nav-icons {
+      position: relative;
+      height: 60px;
+      width: 50px;
+      width: 100%;
+      .hide-new-course-nav,
+      .show-new-course-nav {
+        @include transition(0.3s);
+        @include position-center(absolute, 50%, 50%);
+        color: $dark-gray;
+        outline: none;
+        &:hover {
+          color: $darkest-gray;
+        }
+      }
+    }
+    .new-course-icons {
+
+    }
+  }
+  .course-nav-content {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 315px;
+    height: 100%;
+    margin: 0;
+    padding: 0 1.2em;
+    .nav-content-title {
+      font-size: 1.9em;
+      color: $white;
+      letter-spacing: 1px;
+    }
+    .new-course-label {
+      color: $white;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+    }
+    .new-course-form {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      h1 {
+        margin: 0 0 10px 0;
+      }
+      input[type=text] {
+        @include input-field-style;
+        width: 100%;
+        font-size: 1.05em;
+        margin-bottom: 1em;
+      }
+      textarea {
+        @include input-field-style;
+        font-size: 1.05em;
+        resize: none;
+        width: 100%;
+        margin-bottom: 1em;
+      }
+      .create-course-button {
+        position: absolute;
+        bottom: 1.5em;
+        input[type=submit] {
+          @include button-style($primary-green, $dark-green);
+          font-size: 1.3em;
+        }
+      }
+      .new-course-form-summary {
+        
+      }
+      .new-course-form-description {
+        height: 200px;
+      }
+    }
+  }
+}
