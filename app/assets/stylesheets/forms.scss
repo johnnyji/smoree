@@ -1,0 +1,26 @@
+@import "appwide";
+
+.user-form-title {
+  color: $dark-green;
+}
+
+.user-form {
+  position: relative;
+  margin: 1em auto;
+  width: 80%;
+  input[type=text],
+  input[type=password],
+  input[type=email] {
+    width: 70%;
+    padding: 3px;
+    margin: 3px;
+    font-size: 1.1em;
+  }
+  input[type=submit] {
+    @include button-style($primary-green, $dark-green);
+    font-size: 1.1em;
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,8 +1,0 @@
-<%= form_for root_path, html: {class: "deviseUserForm"} do |f| %>
-  <%= f.text_field :first_name, placeholder: "First name", required: true %><br>
-  <%= f.text_field :last_name, placeholder: "Last name", required: true %><br>
-  <%= f.email_field :email, placeholder: "email@domain.com", required: true %><br>
-  <%= f.password_field :password, placeholder: "Password", required: true %><br>
-  <%= f.password_field :confirm_password, placeholder: "Confirm password", required: true %><br>
-  <%= f.submit "Lets go!" %>
-<% end %>

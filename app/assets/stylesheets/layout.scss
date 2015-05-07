@@ -157,8 +157,8 @@ footer {
 
 .full-background-image {
   @include position-center(absolute, 50%, 50%);
-  @include brightness(50%);
-  height: 105vh;
+  @include brightness(30%);
+  height: 120vh;
   width: 100vw;
   padding: 0;
   overflow: hidden;

@@ -15,10 +15,10 @@
       <% end %>
     </div>
 
-    <% if user_signed_in? %>
-      <p class="header-links"><%= link_to current_user.name, user_path(current_user) %> - <%= link_to "Signout", destroy_user_session_path, method: :delete %></p>
+    <% if logged_in? %>
+      <p class="header-links"><%= link_to current_user.name, user_path(current_user) %> - <%= link_to "Signout", session_path, method: :delete %></p>
     <% else %>
-      <p class="header-links"><%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Login", new_user_session_path %></p>
+      <p class="header-links"><%= link_to "Sign up", new_user_path %> | <%= link_to "Login", new_session_path %></p>
     <% end %>
 
   </div>

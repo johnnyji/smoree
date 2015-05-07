@@ -1,0 +1,37 @@
+<div class="index-intro-container">
+  <!-- background image -->
+  <img src=<%= image_path("cover.jpg") %> class="full-background-image">
+
+  <h1>skillup</h1>
+  <p>A place where you can create courses, take courses and share your knowledge with the world.</p>
+  <% if logged_in? %>
+    <%= link_to "Create Course", new_user_course_path %>
+  <% else %>
+    <%= link_to "Create Course", root_path, class: "index-create-course-link" %>
+  <% end %>
+  
+  <div class="overlay hidden"></div>
+  <div class="form-section hidden">
+    <%= fa_icon "remove", class: "exit-modal" %>
+    <%= form_for(@user, url: users_path, html: { class: "user-form" }) do |f| %>
+      <h1 class="user-form-title">Sign Up Today!</h1>
+
+      <div class="form-error"></div>
+      <%= f.text_field :first_name, placeholder: "First name" %><br>
+  
+      <div class="form-error"></div>
+      <%= f.text_field :last_name, placeholder: "Last name" %><br>
+
+      <div class="form-error"></div>
+      <%= f.text_field :email, placeholder: "email@domain.com" %><br>
+
+      <div class="form-error"></div>
+      <%= f.password_field :password, placeholder: "Enter your password" %><br>
+
+      <div class="form-error"></div>
+      <%= f.password_field :password_confirmation, placeholder: "Re-enter your password" %><br>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

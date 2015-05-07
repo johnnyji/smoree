@@ -2,13 +2,9 @@ Rails.application.routes.draw do
 
   get "/search/:query" => "courses#search", as: "search_courses"
 
-  root "courses#index"
+  root "users#new"
   
-  devise_for :users
- 
-  resources :users do
-    resources :courses, only: [:new, :create, :edit, :update, :delete, :destroy]
-  end
-
-  resources :courses, only: [:show]
+  resources :users
+  resources :courses
+  resources :session, only: [:new, :create, :destroy]
 end

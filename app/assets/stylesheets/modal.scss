@@ -1,0 +1,32 @@
+@import "appwide";
+
+.popup-modal {
+  @include position-center(absolute, 50%, 50%);
+  width: 600px;
+  height: 500px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px $dark-gray;
+  overflow: scroll;
+  z-index: 10;
+  background-color: $white;
+  text-align: center;
+  .exit-modal {
+    position: relative;
+    font-size: 1.6em;
+    width: 100%;
+    text-align: right;
+    padding: 7px 15px 0 0;
+  }
+  h1 {
+    color: $dark-green;
+  }
+}
+
+.backdrop {
+  @include position-center(absolute, 50%, 50%);
+  width: 100vw;
+  height: 110vh;
+  opacity: 0.75;
+  background-color: $dark-gray;
+  z-index: 9;
+}
