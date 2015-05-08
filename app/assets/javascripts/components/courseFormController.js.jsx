@@ -10,18 +10,21 @@ var CourseFormController = React.createClass({
     this.setState({ activeTabIndex: indexOfTabClicked });
   },
   render: function() {
-    var forms = [
-      <SubformInfo course={this.props.course} courseTitle={this.state.courseTitle} handleTitleChange={this.props.handleTitleChange} />,
+    var subforms = [
+      <SubformInfo 
+        course={this.props.course} 
+        handleTitleChange={this.props.handleTitleChange}
+        handleSummaryChange={this.props.handleSummaryChange}
+        handleDescriptionChange={this.props.handleDescriptionChange} 
+      />,
       <SubformDate course={this.props.course} />,
       <SubformImages course={this.props.course} />
     ]
     return (
       <div>
-        <div className="course-nav-left">
-          <FormTabManager tabs={this.props.tabs} onTabClick={this.handleTabClick} activeTabIndex={this.state.activeTabIndex} />
-        </div>
+        <FormTabManager tabs={this.props.tabs} onTabClick={this.handleTabClick} activeTabIndex={this.state.activeTabIndex} />
         <div className="course-nav-content">
-          {forms[this.state.activeTabIndex]}
+          {subforms[this.state.activeTabIndex]}
         </div>
       </div>
     )

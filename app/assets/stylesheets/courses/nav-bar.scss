@@ -1,13 +1,19 @@
 @import "appwide";
 
 .new-course-nav-bar {
+  @include transition(0.4s);
   height: 100vh;
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 400px;
   background-color: $dark-gray;
   z-index: 3;
   box-shadow: 0 0 10px $darkest-gray;
+  i {
+    @include transition(0.3s);
+    color: $white;
+    outline: none;
+  }
   .course-nav-left {
     position: relative;
     display: inline-block;
@@ -15,8 +21,9 @@
     height: 100%;
     font-size: 2em;
     margin: 0;
-    background-color: $dark-green;
+    background-color: $dark-gray;
     .nav-icons {
+      margin-top: 0.3em;
       position: relative;
       height: 60px;
       width: 100%;
@@ -24,18 +31,17 @@
       .show-new-course-nav {
         @include transition(0.3s);
         @include position-center(absolute, 50%, 50%);
-        color: $dark-gray;
-        outline: none;
-        &:hover {
-          color: $darkest-gray;
-        }
       }
     }
     .new-course-icons {
       position: relative;
       margin: 1em 0;
-      height: 400px;
-      width: 100%;;
+      width: 100%;
+      .course-nav-icons {
+        position: relative;
+        margin: 0 auto;
+        text-align: center;
+      }
     }
   }
   .course-nav-content {
@@ -47,6 +53,7 @@
     margin: 0;
     padding: 0 1.2em;
     .nav-content-title {
+      padding: 0.5em 0;
       font-size: 1.9em;
       color: $white;
       letter-spacing: 1px;
@@ -92,4 +99,8 @@
       }
     }
   }
+}
+
+.nav-bar-hide {
+  right: -330px;
 }

@@ -152,7 +152,7 @@ body, html {
   color: $text-gray;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   @include medium-viewport {
     font-size: 0.95em;
   }

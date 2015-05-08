@@ -31,3 +31,14 @@
     color: $white;
   }
 }
+
+.course-info-section {
+  position: relative;
+  background-color: red;
+  height: 300px;
+  width: 100%;
+  .course-summary-field {
+    position: relative;
+    margin: 0;
+  }
+}
