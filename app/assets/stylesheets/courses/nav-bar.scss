@@ -19,7 +19,6 @@
     .nav-icons {
       position: relative;
       height: 60px;
-      width: 50px;
       width: 100%;
       .hide-new-course-nav,
       .show-new-course-nav {
@@ -33,7 +32,10 @@
       }
     }
     .new-course-icons {
-
+      position: relative;
+      margin: 1em 0;
+      height: 400px;
+      width: 100%;;
     }
   }
   .course-nav-content {
