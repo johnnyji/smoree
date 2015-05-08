@@ -24,17 +24,18 @@
   opacity: 0.7;
   .course-title-field {
     position: absolute;
+    bottom: 0.5em;
+    left: 0.5em;
     width: 60%;
-    left: 20px;
-    bottom: 20px;
-    font-size: 2em;
+    font-size: 2.5em;
+    font-weight: 600;
     color: $white;
   }
 }
 
 .course-info-section {
+  padding: 1em;
   position: relative;
-  background-color: red;
   height: 300px;
   width: 100%;
   .course-summary-field {

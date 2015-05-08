@@ -4,9 +4,11 @@ var CreateCoursePage = React.createClass({
   },
   getInitialState: function() {
     return {
-      courseTitle: "Super Awesome Title",
-      courseSummary: "This is where you would summarize your course!",
-      courseDescription: "This is where you would give a description about how awesome your course was!",
+      course: {
+        courseTitle: "Super Awesome Title",
+        courseSummary: "This is where you would summarize your course!",
+        courseDescription: "This is where you would give a description about how awesome your course was!"
+      },
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!"
@@ -36,7 +38,6 @@ var CreateCoursePage = React.createClass({
   render: function() {
     return (
       <div className="new-course-page-container">
-        <div className="new-course-nav-bar">
           <CourseFormController 
             tabs={this.props.tabs} 
             course={this.props.course} 
@@ -45,15 +46,11 @@ var CreateCoursePage = React.createClass({
             handleSummaryChange={this.handleSummaryChange}
             handleDescriptionChange={this.handleDescriptionChange} 
           />
-        </div>
-        
-        <div className="course-background-banner">
-          <div className="course-title-field">{this.state.courseTitle}</div>
-        </div>
-        <div className="course-info-section">
-          <h2 className="course-summary-field">{this.state.courseSummary}</h2>
-          <p className="course-description-field">{this.state.courseDescription}</p>
-        </div>
+        <CourseBanner courseTitle={this.state.courseTitle}/>
+        <CourseInfo 
+          summary={this.state.courseSummary} 
+          description={this.state.courseDescription} 
+        />
       </div>
     )
   }

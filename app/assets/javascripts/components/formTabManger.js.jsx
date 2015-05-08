@@ -8,7 +8,7 @@ var FormTabManager = React.createClass({
     var tabs = [];
     var activeTab = this.props.tabs[this.props.activeTabIndex];
     
-    for (var i = 0; i < this.props.tabs.length; i++ ) {
+    for (var i = 0; i < this.props.tabs.length; i++) {
       var currentTab = this.props.tabs[i];
       if (currentTab === activeTab) { 
         tabs.push(

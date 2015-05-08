@@ -21,7 +21,7 @@ var CourseFormController = React.createClass({
       <SubformImages course={this.props.course} />
     ]
     return (
-      <div>
+      <div className="new-course-nav-bar">
         <FormTabManager tabs={this.props.tabs} onTabClick={this.handleTabClick} activeTabIndex={this.state.activeTabIndex} />
         <div className="course-nav-content">
           {subforms[this.state.activeTabIndex]}
