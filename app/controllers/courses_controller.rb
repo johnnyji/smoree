@@ -17,6 +17,11 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    if @course.save
+      render json: { course_id: @course.id }
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -38,7 +43,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title, :location, :start_date, :end_date, :instructor_id, :student_id, :summary, :description)
+    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description)
   end
 
   def find_course
