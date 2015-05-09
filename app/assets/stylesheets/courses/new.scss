@@ -19,6 +19,11 @@
       outline: none;
     }
   }
+  .save-location-button {
+    @include button-style($primary-green, $dark-green);
+    margin: 1em auto 0 auto;
+    font-size: 1.4em;
+  }
 }
 
 .course-background-banner {

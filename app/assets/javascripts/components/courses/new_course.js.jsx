@@ -7,6 +7,8 @@ var NewCourse = React.createClass({
       courseTitle: "Super Awesome Title",
       courseSummary: "This is where you would summarize your course!",
       courseDescription: "This is where you would give a description about how awesome your course was!",
+      latitude: 49.2886,
+      longitude: 123.1111,
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
@@ -40,6 +42,9 @@ var NewCourse = React.createClass({
     if (userInput === defaultState) { return "" };
     return userInput;
   },
+  handleLocationSave: function() {
+    debugger;
+  },
   handleFormSubmit: function() {
     var self = this;
     var data = {
@@ -69,16 +74,19 @@ var NewCourse = React.createClass({
         <CourseFormController 
           tabs={this.props.tabs} 
           course={this.props.course} 
-          courseTitle={this.state.courseTitle} 
+          courseTitle={this.state.courseTitle}
           handleTitleChange={this.handleTitleChange}
           handleSummaryChange={this.handleSummaryChange}
-          handleDescriptionChange={this.handleDescriptionChange} 
+          handleDescriptionChange={this.handleDescriptionChange}
+          handleLocationSave={this.handleLocationSave}
           handleFormSubmit={this.handleFormSubmit}
         />
         <CourseBanner courseTitle={this.state.courseTitle}/>
         <CourseInfo 
           summary={this.state.courseSummary} 
           description={this.state.courseDescription} 
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
         />
         <SubmitButton handleFormSubmit={this.handleFormSubmit}/>
       </div>

@@ -14,6 +14,13 @@ var CourseStore = Reflux.createStore({
     if (inputState === defaultState) { return "" };
     return inputState;
   },
+  geocodeLocation: function(country, state, city, address) {
+    // this will take the address and geocode the LT LG
+    debugger;
+    $.ajax({
+
+    });
+  },
   animateErrors: function(errors) {
     debugger;
   }

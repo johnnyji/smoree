@@ -12,10 +12,17 @@ var CourseFormController = React.createClass({
   render: function() {
     var subforms = [
       <SubformInfo 
-        course={this.props.course} 
+        course={this.props.course}
         handleTitleChange={this.props.handleTitleChange}
         handleSummaryChange={this.props.handleSummaryChange}
         handleDescriptionChange={this.props.handleDescriptionChange} 
+      />,
+      <SubformLocation
+        country={this.props.country}
+        state={this.props.state}
+        city={this.props.city}
+        address={this.props.address}
+        handleLocationSave={this.props.handleLocationSave}
       />,
       <SubformDate course={this.props.course} />,
       <SubformImages course={this.props.course} />
