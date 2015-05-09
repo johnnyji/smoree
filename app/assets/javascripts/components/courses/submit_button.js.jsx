@@ -1,9 +1,7 @@
 var SubmitButton = React.createClass({
   render: function() {
     return ( 
-      <div className="create-course-button">
-        <button onClick={this.props.handleFormSubmit}>HELLO</button>
-      </div>
+      <button className="create-course-button" onClick={this.props.handleFormSubmit}>I'm Done!</button>
     )
   }
 });

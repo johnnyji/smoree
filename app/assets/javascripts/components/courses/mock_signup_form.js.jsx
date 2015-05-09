@@ -6,6 +6,7 @@ var MockSignupForm = React.createClass({
         <input className="user-signup-name-field" placeholder="Full Name"></input><br></br>
         <input className="user-signup-email-field" placeholder="Email"></input><br></br>
         <textarea className="user-signup-comment-field" placeholder="Tell the instructor something!"></textarea>
+        <button className="user-signup-submit-button">Register!</button>
       </div>
     )
   }

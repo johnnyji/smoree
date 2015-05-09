@@ -1,11 +1,10 @@
 @import "appwide";
 
 .popup-modal {
-  @include position-center(absolute, 50%, 50%);
+  @include position-center(fixed, 50%, 50%);
   width: 600px;
   height: 500px;
   z-index: 10;
-  background-color: red;
   text-align: center;
   .exit-modal {
     position: absolute;

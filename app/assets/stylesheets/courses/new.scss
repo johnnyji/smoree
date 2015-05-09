@@ -4,6 +4,13 @@
   position: relative;
   height: 100%;
   width: 100%;
+  .create-course-button {
+    @include button-style($primary-green, $dark-green);
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 1.8em;
+  }
 }
 
 .new-course-form {
@@ -24,9 +31,10 @@
   opacity: 0.7;
   .course-title-field {
     @include position-center(absolute, 50%, 50%);
-    font-size: 5em;
+    font-size: 4em;
     font-weight: 600;
     color: $white;
+    word-wrap: break-word;
   }
 }
 
@@ -61,6 +69,14 @@
     display: inline-block;
     margin-left: 2em;
     width: 40%;
+    .course-google-maps {
+      position: relative;
+      border-radius: $border-radius;
+      height: 200px;
+      width: 400px;
+      background-color: red;
+      margin-bottom: 2em;
+    }
     .user-signup-form {
       position: relative;
       border-radius: $border-radius;
@@ -71,15 +87,23 @@
       .user-signup-name-field,
       .user-signup-email-field {
         @include input-field-style;
-        margin: 1em auto;
-        width: 70%;
+        margin: 0.5em auto;
+        width: 80%;
         height: 40px;
+        font-size: 1.1em;
       }
       .user-signup-comment-field {
         @include input-field-style;
-        margin: 1em auto;
+        margin: 0.5em auto;
         width: 80%;
         height: 200px;
+        font-size: 1.1em;
+      }
+      .user-signup-submit-button {
+        @include button-style($primary-green, $dark-green);
+        margin: 0.5em auto;
+        width: 80%;
+        font-size: 1.2em;
       }
     }
   }
