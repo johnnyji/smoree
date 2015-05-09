@@ -23,11 +23,8 @@
   background-color: $dark-gray;
   opacity: 0.7;
   .course-title-field {
-    position: absolute;
-    bottom: 0.5em;
-    left: 0.5em;
-    width: 60%;
-    font-size: 2.5em;
+    @include position-center(absolute, 50%, 50%);
+    font-size: 5em;
     font-weight: 600;
     color: $white;
   }
@@ -36,10 +33,51 @@
 .course-info-section {
   padding: 1em;
   position: relative;
-  height: 300px;
-  width: 100%;
-  .course-summary-field {
+  margin: 2em auto;
+  min-height: 600px;
+  width: 62%;
+  font-size: 1.2em;
+  .course-info-left {
     position: relative;
-    margin: 0;
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 2em;
+    max-width: 48%;
+    .course-summary-field {
+      position: relative;
+      max-width: 95%;
+      margin: 0 0 1em 0;
+    }
+    .course-description-field {
+      position: relative;
+      max-width: 95%;
+    }
+  }
+  .course-info-right {
+    position: relative;
+    display: inline-block;
+    margin-left: 2em;
+    max-width: 48%;
+    .user-signup-form {
+      position: relative;
+      border-radius: $border-radius;
+      height: 500px;
+      width: 400px;
+      text-align: center;
+      padding: 1em;
+      .user-signup-name-field,
+      .user-signup-email-field {
+        @include input-field-style;
+        margin: 1em auto;
+        width: 70%;
+        height: 40px;
+      }
+      .user-signup-comment-field {
+        @include input-field-style;
+        margin: 1em auto;
+        width: 80%;
+        height: 200px;
+      }
+    }
   }
 }

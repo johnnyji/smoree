@@ -1,7 +1,7 @@
 <div class="new-course-page-container">
-  <%= react_component("CreateCoursePage",
+  <%= react_component("NewCoursePage",
     tabs: ["edit", "photo", "envelope-o"],
     course: @course,
-    submitUrl: user_courses_path(current_user)
+    user_id: current_user.id
   ) %> 
 </div>

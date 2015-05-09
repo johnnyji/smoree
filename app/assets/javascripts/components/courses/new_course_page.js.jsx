@@ -1,4 +1,4 @@
-var CreateCoursePage = React.createClass({
+var NewCoursePage = React.createClass({
   propTypes: {
     tabs: React.PropTypes.array
   },
@@ -35,34 +35,31 @@ var CreateCoursePage = React.createClass({
   },
   handleFormSubmit: function() {
     var self = this;
-    $.ajax({
-      url: self.props.submitUrl,
-      method: "POST",
-      data: { course: {
-        title: self.state.courseTitle,
-        summary: self.state.courseSummary,
-        description: self.state.courseDescription
-      } },
-      success: function(data) {
-        window.location.href = "/courses/" + data.course_id;
-      },
-      error: function() {
-        debugger;
-      }
-    });
+    var data = {
+      title: self.state.courseTitle,
+      summary: self.state.courseSummary,
+      description: self.state.courseDescription
+    }
+    CourseActions.createCourse(this.props.user_id, data, this.handleSubmitSuccess, this.handleSubmitError);
+  },
+  handleSubmitSuccess: function(data) {
+    window.location.href = "/courses/" + data.course_id;
+  },
+  handleSubmitError: function(jqXHR, requestCode, errorThrown) {
+    
   },
   render: function() {
     return (
       <div className="new-course-page-container">
-          <CourseFormController 
-            tabs={this.props.tabs} 
-            course={this.props.course} 
-            courseTitle={this.state.courseTitle} 
-            handleTitleChange={this.handleTitleChange}
-            handleSummaryChange={this.handleSummaryChange}
-            handleDescriptionChange={this.handleDescriptionChange} 
-            handleFormSubmit={this.handleFormSubmit}
-          />
+        <CourseFormController 
+          tabs={this.props.tabs} 
+          course={this.props.course} 
+          courseTitle={this.state.courseTitle} 
+          handleTitleChange={this.handleTitleChange}
+          handleSummaryChange={this.handleSummaryChange}
+          handleDescriptionChange={this.handleDescriptionChange} 
+          handleFormSubmit={this.handleFormSubmit}
+        />
         <CourseBanner courseTitle={this.state.courseTitle}/>
         <CourseInfo 
           summary={this.state.courseSummary} 
