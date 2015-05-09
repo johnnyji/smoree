@@ -9,7 +9,9 @@ var NewCourse = React.createClass({
       courseDescription: "This is where you would give a description about how awesome your course was!",
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
-      defaultCourseDescription: "This is where you would give a description about how awesome your course was!"
+      defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
+      submitError: false,
+      errors: null
     }
   },
   handleTitleChange: function() {
@@ -33,24 +35,37 @@ var NewCourse = React.createClass({
       this.setState({ courseDescription: event.target.value });
     }
   },
+  verifyUserInput: function(userInput, defaultState) {
+    // How can I move this into the store without it returning me a promise?
+    if (userInput === defaultState) { return "" };
+    return userInput;
+  },
   handleFormSubmit: function() {
     var self = this;
     var data = {
-      title: self.state.courseTitle,
-      summary: self.state.courseSummary,
-      description: self.state.courseDescription
+      title: self.verifyUserInput(self.state.courseTitle, self.state.defaultCourseTitle),
+      summary: self.verifyUserInput(self.state.courseSummary, self.state.defaultCourseSummary),
+      description: self.verifyUserInput(self.state.courseDescription, self.state.defaultCourseDescription)
     }
     CourseActions.createCourse(this.props.user_id, data, this.handleSubmitSuccess, this.handleSubmitError);
   },
   handleSubmitSuccess: function(data) {
     window.location.href = "/courses/" + data.course_id;
   },
-  handleSubmitError: function(jqXHR, requestCode, errorThrown) {
-    
+  handleSubmitError: function(XHR, requestCode, errorThrown) {
+    var data = $.parseJSON(XHR.responseText);
+    this.setState({
+      submitError: true,
+      errors: data.errors
+    });
+  },
+  handleExitModal: function() {
+    this.setState({ submitError: false });
   },
   render: function() {
     return (
       <div className="new-course-page-container">
+        {this.state.submitError && <CourseErrors errors={this.state.errors} handleExitModal={this.handleExitModal}/>}
         <CourseFormController 
           tabs={this.props.tabs} 
           course={this.props.course} 

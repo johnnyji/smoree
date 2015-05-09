@@ -1,6 +1,8 @@
 var CourseActions = Reflux.createActions([
   "loadCourses",
-  "createCourse"
+  "createCourse",
+  "verifyUserInput",
+  "animateErrors"
 ]);
 
 

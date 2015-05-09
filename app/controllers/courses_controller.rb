@@ -3,9 +3,6 @@ class CoursesController < ApplicationController
   before_action :find_course, only: [:show, :edit, :udpate, :delete, :destroy]
   
   def index
-    if request.xhr?
-      render partial: "devise/form"
-    end
   end
 
   def show
@@ -20,7 +17,7 @@ class CoursesController < ApplicationController
     if @course.save
       render json: { course_id: @course.id }
     else
-      redirect_to root_path
+      render json: { errors: @course.errors }, status: :unprocessable_entity
     end
   end
 
@@ -43,7 +40,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description)
+    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :user_id)
   end
 
   def find_course
