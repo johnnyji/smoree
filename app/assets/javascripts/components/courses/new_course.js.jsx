@@ -8,7 +8,11 @@ var NewCourse = React.createClass({
       courseSummary: "This is where you would summarize your course!",
       courseDescription: "This is where you would give a description about how awesome your course was!",
       latitude: 49.2886,
-      longitude: 123.1111,
+      longitude: -123.1111,
+      country: "Canada",
+      state: "BC",
+      city: "Vancouver",
+      address: "999 Canada Place",
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
@@ -42,8 +46,13 @@ var NewCourse = React.createClass({
     if (userInput === defaultState) { return "" };
     return userInput;
   },
-  handleLocationSave: function() {
+  handleLocationChange: function(coordinates) {
     debugger;
+    // var latLng = CourseActons.geocodeLocation(this.state.country, this.state.sate, this.state.city, this.state.address);
+    // this.setState({
+    //   latitude: latLng.latitude,
+    //   longitude: latLng.longitude
+    // });
   },
   handleFormSubmit: function() {
     var self = this;
@@ -80,6 +89,11 @@ var NewCourse = React.createClass({
           handleDescriptionChange={this.handleDescriptionChange}
           handleLocationSave={this.handleLocationSave}
           handleFormSubmit={this.handleFormSubmit}
+          country={this.state.country}
+          state={this.state.state}
+          city={this.state.city}
+          address={this.state.address}
+          handleLocationChange={this.handleLocatonChange}
         />
         <CourseBanner courseTitle={this.state.courseTitle}/>
         <CourseInfo 

@@ -15,10 +15,10 @@ var CourseStore = Reflux.createStore({
     return inputState;
   },
   geocodeLocation: function(country, state, city, address) {
-    // this will take the address and geocode the LT LG
-    debugger;
-    $.ajax({
-
+    var fullAddress = address + ", " + city + ", " + state + ", " + country;
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: fullAddress}, function(result, status) {
+      debugger;
     });
   },
   animateErrors: function(errors) {

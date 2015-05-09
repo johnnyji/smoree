@@ -1,7 +1,7 @@
 var CourseMap = React.createClass({
   getDefaultProps:function() {
     return {
-      initialZoom: 8
+      initialZoom: 14
     }
   },
   getInitialState: function() {
