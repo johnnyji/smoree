@@ -1,4 +1,4 @@
-var NewCoursePage = React.createClass({
+var NewCourse = React.createClass({
   propTypes: {
     tabs: React.PropTypes.array
   },

@@ -76,6 +76,7 @@
         font-size: 1.05em;
         margin-bottom: 1em;
       }
+      .new-course-form-description,
       textarea {
         @include input-field-style;
         font-size: 1.05em;
@@ -96,6 +97,8 @@
       }
       .new-course-form-description {
         height: 200px;
+        background-color: white;
+        white-space: pre;
       }
     }
   }

@@ -42,22 +42,25 @@
     vertical-align: top;
     display: inline-block;
     margin-right: 2em;
-    max-width: 48%;
+    width: 48%;
     .course-summary-field {
       position: relative;
-      max-width: 95%;
+      width: 95%;
       margin: 0 0 1em 0;
+      word-wrap: break-word;
     }
     .course-description-field {
       position: relative;
-      max-width: 95%;
+      width: 95%;
+      word-wrap: break-word;
+      white-space: pre;
     }
   }
   .course-info-right {
     position: relative;
     display: inline-block;
     margin-left: 2em;
-    max-width: 48%;
+    width: 40%;
     .user-signup-form {
       position: relative;
       border-radius: $border-radius;
