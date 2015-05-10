@@ -51,6 +51,7 @@ var NewCourse = React.createClass({
     });
   },
   handleDateChange: function(start, end) {
+    debugger;
     // start and end are coming through as strings but they aren't being set as states?
     this.setState({
       startDate: start,

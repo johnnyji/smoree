@@ -11,13 +11,13 @@ var SubformInfo = React.createClass({
         <h1 className="nav-content-title">Course Info</h1>
 
         <label className="new-course-label" for="course_title">Course Title</label>
-        <input type="text" placeholder="Course Title" id="course_title" onChange={this.props.handleTitleChange} className="new-course-form-title" value={this.props.title}></input>
+        <input type="text" placeholder="Course Title" id="course_title" onChange={this.props.handleTitleChange} className="new-course-form-title" defaultValue={this.props.title}></input>
         
         <label className="new-course-label" for="course_summary">Summarization</label>
-        <textarea type="text" placeholder="Course Summary" id="course_summary" onChange={this.props.handleSummaryChange} className="new-course-form-summary" value={this.props.summary}></textarea>
+        <textarea type="text" placeholder="Course Summary" id="course_summary" onChange={this.props.handleSummaryChange} className="new-course-form-summary" defaultValue={this.props.summary}></textarea>
         
         <label className="new-course-label" for="course_summary">Description</label>
-        <textarea placeholder="Course Description" id="course_description" onChange={this.props.handleDescriptionChange} className="new-course-form-description">{this.props.description}</textarea>
+        <textarea placeholder="Course Description" id="course_description" onChange={this.props.handleDescriptionChange} className="new-course-form-description" defaultValue={this.props.description}></textarea>
       </div>
     )
   }
