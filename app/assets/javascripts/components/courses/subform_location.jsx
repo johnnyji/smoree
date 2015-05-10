@@ -4,7 +4,8 @@ var SubformLocation = React.createClass({
       country: null,
       state: null,
       city: null,
-      address: null
+      address: null,
+      locationNotFound: false
     }
   },
   handleCountryChange: function() {
@@ -19,10 +20,15 @@ var SubformLocation = React.createClass({
   handleAddressChange: function() {
     this.setState({ address: event.target.value });
   },
-  handleLocationSave: function() {
-    debugger;
-    var coordinates = CourseActions.geocodeLocation(this.state.country, this.state.state, this.state.city, this.state.address);
-    this.props.handleLocationChange.bind(this, coordinates);
+  handleLocationChange: function() {
+    CourseActions.geocodeLocation(this.state.country, this.state.state, this.state.city, this.state.address, this.retrieveCoords);
+  },
+  retrieveCoords: function(coordsArray) {
+    if (coordsArray === null) {
+      this.setState({ locationNotFound: true });
+    } else {
+      this.props.handleLocationChange(coordsArray);
+    } 
   },
   canBeSaved: function() {
     var s = this.state;
@@ -44,8 +50,13 @@ var SubformLocation = React.createClass({
           <label className="new-course-label" for="select-state">Address:</label>
           <input type="text" id="select-address" placeholder="ex. 999 Canada Place" onChange={this.handleAddressChange}></input>
 
-          {!this.canBeSaved() && <button className="cannot-save-info-button" onClick={this.handleLocationSave}>Fill out the location</button>}
-          {this.canBeSaved() && <button className="save-info-button" onClick={this.handleLocationSave}>Save Location</button>}
+          {!this.canBeSaved() && <button className="cannot-save-info-button" onClick={this.handleLocationChange}>Fill out the location</button>}
+          {this.canBeSaved() && <button className="save-info-button" onClick={this.handleLocationChange}>Save Location</button>}
+          {this.state.locationNotFound &&
+            <div className="new-course-error-message-container">
+            <ErrorMessageBox message="Sorry, we couldn't find that address! Try another" />
+            </div>
+          }
       </div>
     )
   }

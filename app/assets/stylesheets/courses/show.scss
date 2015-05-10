@@ -50,11 +50,16 @@
     width: 40%;
     .course-google-maps {
       position: relative;
+      margin-top: -110px;
       border-radius: $border-radius;
-      height: 200px;
+      height: 250px;
       width: 400px;
       background-color: red;
       margin-bottom: 2em;
+      overflow: hidden;
+      img {
+        @include position-center(absolute, 50%, 50%);
+      }
     }
     .user-signup-form {
       position: relative;

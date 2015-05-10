@@ -7,7 +7,7 @@ var CourseInfo = React.createClass({
           <p className="course-description-field">{this.props.description}</p>
         </div>
         <div className="course-info-right">
-          <CourseMap latitude={this.props.latitude} longitude={this.props.longitude}/>
+          <StaticMap latitude={this.props.latitude} longitude={this.props.longitude}/>
           <MockSignupForm />
         </div>
       </div>

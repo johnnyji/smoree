@@ -27,3 +27,15 @@
 .form-error {
   color: $primary-red;
 }
+
+.new-course-error-message-container {
+  margin: 3em 0 0 0;
+}
+
+.error-message-box {
+  position: relative;
+  padding: 1em;
+  color: $white;
+  background-color: $primary-red;
+  box-shadow: 0 8px 0 $secondary-red;
+}

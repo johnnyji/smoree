@@ -14,11 +14,18 @@ var CourseStore = Reflux.createStore({
     if (inputState === defaultState) { return "" };
     return inputState;
   },
-  geocodeLocation: function(country, state, city, address) {
+  geocodeLocation: function(country, state, city, address, retrieveCoords) {
     var fullAddress = address + ", " + city + ", " + state + ", " + country;
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: fullAddress}, function(result, status) {
-      debugger;
+    geocoder.geocode({ address: fullAddress}, function(results, status) {
+      if (results[0] === undefined) {
+        retrieveCoords(null);
+      } else {
+        var latitude = results[0].geometry.location.A
+        var longitude = results[0].geometry.location.F
+        retrieveCoords([latitude, longitude]);
+      }
+      // this gets the latitude and the longitude, now i need to set those as the states on the main component
     });
   },
   animateErrors: function(errors) {

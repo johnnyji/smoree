@@ -1,7 +1,7 @@
 var CourseMap = React.createClass({
   getDefaultProps:function() {
     return {
-      initialZoom: 14
+      initialZoom: 14,
     }
   },
   getInitialState: function() {
@@ -10,6 +10,9 @@ var CourseMap = React.createClass({
     }
   },
   componentDidMount: function() {
+    this.setMap();
+  },
+  setMap: function() {
     var mapOptions = {
       center: this.mapCenterCoords(),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
