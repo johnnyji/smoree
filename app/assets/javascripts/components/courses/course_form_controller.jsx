@@ -29,8 +29,9 @@ var CourseFormController = React.createClass({
         address={this.props.address}
         handleLocationChange={this.props.handleLocationChange}
       />,
-      <SubformDate course={this.props.course} />,
-      <SubformImages course={this.props.course} />
+      <SubformImageDate 
+        course={this.props.course}
+      />
     ]
     return (
       <div className="new-course-nav-bar">

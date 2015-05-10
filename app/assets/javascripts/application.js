@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require moment
 //= require react
 //= require react_ujs
 //= require reflux
+//= require react_datepicker
 //= require components
 //= require_tree .

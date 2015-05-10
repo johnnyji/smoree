@@ -1,0 +1,52 @@
+var SubformLocation = React.createClass({
+  getInitialState: function() {
+    return {
+      country: null,
+      state: null,
+      city: null,
+      address: null
+    }
+  },
+  handleCountryChange: function() {
+    this.setState({ country: event.target.value });
+  },
+  handleStateChange: function() {
+    this.setState({ state: event.target.value });
+  },
+  handleCityChange: function() {
+    this.setState({ city: event.target.value });
+  },
+  handleAddressChange: function() {
+    this.setState({ address: event.target.value });
+  },
+  handleLocationSave: function() {
+    debugger;
+    var coordinates = CourseActions.geocodeLocation(this.state.country, this.state.state, this.state.city, this.state.address);
+    this.props.handleLocationChange.bind(this, coordinates);
+  },
+  canBeSaved: function() {
+    var s = this.state;
+    return s.country && s.state && s.city && s.address;
+  },
+  render: function() {
+    return (
+      <div className="new-course-form">
+        <h1 className="nav-content-title">Location</h1>
+          <label className="new-course-label" for="select-country">Country:</label>
+          <input type="text" id="select-country" placeholder="ex. Canada" onChange={this.handleCountryChange}></input>
+
+          <label className="new-course-label" for="select-state">State/Province:</label>
+          <input type="text" id="select-state" placeholder="ex. BC" onChange={this.handleStateChange}></input>
+
+          <label className="new-course-label" for="select-city">City:</label>
+          <input type="text" id="select-city" placeholder="ex. Vancouver" onChange={this.handleCityChange}></input>
+
+          <label className="new-course-label" for="select-state">Address:</label>
+          <input type="text" id="select-address" placeholder="ex. 999 Canada Place" onChange={this.handleAddressChange}></input>
+
+          {!this.canBeSaved() && <button className="cannot-save-info-button" onClick={this.handleLocationSave}>Fill out the location</button>}
+          {this.canBeSaved() && <button className="save-info-button" onClick={this.handleLocationSave}>Save Location</button>}
+      </div>
+    )
+  }
+});

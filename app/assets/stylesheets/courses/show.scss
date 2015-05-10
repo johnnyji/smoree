@@ -1,0 +1,89 @@
+@import "appwide";
+
+.course-background-banner {
+  position: relative;
+  top: 0;
+  margin: 0;
+  min-height: 300px;
+  height: 30vh;
+  background-color: $dark-gray;
+  opacity: 0.7;
+  .course-title-field {
+    @include position-center(absolute, 50%, 50%);
+    font-size: 4em;
+    font-weight: 600;
+    color: $white;
+    word-wrap: break-word;
+  }
+}
+
+.course-info-section {
+  padding: 1em;
+  position: relative;
+  margin: 2em auto;
+  min-height: 600px;
+  width: 62%;
+  font-size: 1.2em;
+  .course-info-left {
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 2em;
+    width: 48%;
+    .course-summary-field {
+      position: relative;
+      width: 95%;
+      margin: 0 0 1em 0;
+      word-wrap: break-word;
+    }
+    .course-description-field {
+      position: relative;
+      width: 95%;
+      word-wrap: break-word;
+      white-space: pre;
+    }
+  }
+  .course-info-right {
+    position: relative;
+    display: inline-block;
+    margin-left: 2em;
+    width: 40%;
+    .course-google-maps {
+      position: relative;
+      border-radius: $border-radius;
+      height: 200px;
+      width: 400px;
+      background-color: red;
+      margin-bottom: 2em;
+    }
+    .user-signup-form {
+      position: relative;
+      border-radius: $border-radius;
+      height: 500px;
+      width: 400px;
+      text-align: center;
+      padding: 1em;
+      .user-signup-name-field,
+      .user-signup-email-field {
+        @include input-field-style;
+        margin: 0.5em auto;
+        width: 80%;
+        height: 40px;
+        font-size: 1.1em;
+      }
+      .user-signup-comment-field {
+        @include input-field-style;
+        margin: 0.5em auto;
+        width: 80%;
+        height: 200px;
+        font-size: 1.1em;
+      }
+      .user-signup-submit-button {
+        @include button-style($primary-green, $dark-green);
+        margin: 0.5em auto;
+        width: 80%;
+        font-size: 1.2em;
+      }
+    }
+  }
+}
