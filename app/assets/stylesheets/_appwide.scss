@@ -80,6 +80,9 @@
   background-color: $color;
   box-shadow: 0 8px 0 $hover;
   margin: 1em;
+  &:focus {
+    outline: none;
+  }
   &:hover {
     cursor: pointer;
     box-shadow: 0 8px 0 $color;

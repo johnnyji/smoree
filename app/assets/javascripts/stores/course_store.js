@@ -19,16 +19,14 @@ var CourseStore = Reflux.createStore({
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: fullAddress}, function(results, status) {
       if (results[0] === undefined) {
-        retrieveCoords(null);
+        retrieveCoords(false);
       } else {
         var latitude = results[0].geometry.location.A
         var longitude = results[0].geometry.location.F
         retrieveCoords([latitude, longitude]);
       }
-      // this gets the latitude and the longitude, now i need to set those as the states on the main component
     });
   },
   animateErrors: function(errors) {
-    debugger;
   }
 });

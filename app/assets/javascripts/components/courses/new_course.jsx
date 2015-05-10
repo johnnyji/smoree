@@ -7,8 +7,10 @@ var NewCourse = React.createClass({
       courseTitle: "Super Awesome Title",
       courseSummary: "This is where you would summarize your course!",
       courseDescription: "This is where you would give a description about how awesome your course was!",
-      latitude: null,
-      longitude: null,
+      latitude: false,
+      longitude: false,
+      startDate: false,
+      endDate: false,
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
@@ -48,12 +50,24 @@ var NewCourse = React.createClass({
       longitude: coordinates[1]
     });
   },
+  handleDateChange: function(start, end) {
+    // start and end are coming through as strings but they aren't being set as states?
+    this.setState({
+      startDate: start,
+      endDate: end
+    });
+    debugger;
+  },
   handleFormSubmit: function() {
     var self = this;
     var data = {
       title: self.verifyUserInput(self.state.courseTitle, self.state.defaultCourseTitle),
       summary: self.verifyUserInput(self.state.courseSummary, self.state.defaultCourseSummary),
-      description: self.verifyUserInput(self.state.courseDescription, self.state.defaultCourseDescription)
+      description: self.verifyUserInput(self.state.courseDescription, self.state.defaultCourseDescription),
+      latitude: this.state.latitude,
+      longitude: this.state.longitude,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate
     }
     CourseActions.createCourse(this.props.user_id, data, this.handleSubmitSuccess, this.handleSubmitError);
   },
@@ -70,20 +84,29 @@ var NewCourse = React.createClass({
   handleExitModal: function() {
     this.setState({ submitError: false });
   },
+  readyToSubmit: function() {
+    var s = this.state;
+    return s.courseTitle && s.courseSummary && s.courseDescription && s.startDate && s.endDate && s.latitude && s.longitude
+  },
   render: function() {
     return (
       <div className="new-course-page-container">
         {this.state.submitError && <CourseErrors errors={this.state.errors} handleExitModal={this.handleExitModal}/>}
         <CourseFormController 
-          tabs={this.props.tabs} 
-          course={this.props.course} 
+          tabs={this.props.tabs}
+
           courseTitle={this.state.courseTitle}
+          courseSummary={this.state.courseSummary}
+          courseDescription={this.state.courseDescription}
+          
           handleTitleChange={this.handleTitleChange}
           handleSummaryChange={this.handleSummaryChange}
           handleDescriptionChange={this.handleDescriptionChange}
-          handleLocationSave={this.handleLocationSave}
-          handleFormSubmit={this.handleFormSubmit}
+          
           handleLocationChange={this.handleLocationChange}
+          handleDateChange={this.handleDateChange}
+        
+          handleFormSubmit={this.handleFormSubmit}
         />
         <CourseBanner courseTitle={this.state.courseTitle}/>
         <CourseInfo 
@@ -92,7 +115,8 @@ var NewCourse = React.createClass({
           latitude={this.state.latitude}
           longitude={this.state.longitude}
         />
-        <SubmitButton handleFormSubmit={this.handleFormSubmit}/>
+        {!this.readyToSubmit() && <button className="no-create-course-button">Not finished yet</button>}
+        {this.readyToSubmit() && <SubmitButton handleFormSubmit={this.handleFormSubmit}/>}
       </div>
     )
   }

@@ -5,28 +5,42 @@ var SubformLocation = React.createClass({
       state: null,
       city: null,
       address: null,
+      locationSucess: false,
       locationNotFound: false
     }
   },
   handleCountryChange: function() {
-    this.setState({ country: event.target.value });
+    this.setState({
+      country: event.target.value
+    });
   },
   handleStateChange: function() {
-    this.setState({ state: event.target.value });
+    this.setState({
+      state: event.target.value
+    });
   },
   handleCityChange: function() {
-    this.setState({ city: event.target.value });
+    this.setState({
+      city: event.target.value
+    });
   },
   handleAddressChange: function() {
-    this.setState({ address: event.target.value });
+    this.setState({
+      address: event.target.value
+    });
   },
-  handleLocationChange: function() {
+  handleLocationSave: function() {
+    this.setState({
+      locationNotFound: false,
+      locationSuccess: false
+    });
     CourseActions.geocodeLocation(this.state.country, this.state.state, this.state.city, this.state.address, this.retrieveCoords);
   },
   retrieveCoords: function(coordsArray) {
-    if (coordsArray === null) {
+    if (!coordsArray) {
       this.setState({ locationNotFound: true });
     } else {
+      this.setState({ locationSuccess: true });
       this.props.handleLocationChange(coordsArray);
     } 
   },
@@ -50,11 +64,16 @@ var SubformLocation = React.createClass({
           <label className="new-course-label" for="select-state">Address:</label>
           <input type="text" id="select-address" placeholder="ex. 999 Canada Place" onChange={this.handleAddressChange}></input>
 
-          {!this.canBeSaved() && <button className="cannot-save-info-button" onClick={this.handleLocationChange}>Fill out the location</button>}
-          {this.canBeSaved() && <button className="save-info-button" onClick={this.handleLocationChange}>Save Location</button>}
+          {!this.canBeSaved() && <button className="cannot-save-info-button">Fill out the location</button>}
+          {this.canBeSaved() && <button className="save-info-button" onClick={this.handleLocationSave}>Save Location</button>}
           {this.state.locationNotFound &&
-            <div className="new-course-error-message-container">
-            <ErrorMessageBox message="Sorry, we couldn't find that address! Try another" />
+            <div className="new-course-alert-container">
+              <ErrorMessageBox message="Sorry, we couldn't find that address! Try another" />
+            </div>
+          }
+          {this.state.locationSuccess &&
+            <div className="new-course-alert-container">
+              <SuccessMessageBox message="Your address is successfully saved!" />
             </div>
           }
       </div>

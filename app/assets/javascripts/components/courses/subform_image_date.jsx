@@ -12,6 +12,11 @@ var SubformImageDate = React.createClass({
   handleEndDateChange: function(date) {
     this.setState({ endDate: date });
   },
+  handleDateChangeClick: function() {
+    var start = this.state.startDate.toDate().toString();
+    var end = this.state.endDate.toDate().toString();
+    this.props.handleDateChange(start, end);
+  },
   canBeSaved: function() {
     return this.state.startDate && this.state.endDate;
   },
@@ -35,7 +40,7 @@ var SubformImageDate = React.createClass({
           />
         </div>
         {!this.canBeSaved() && <button className="cannot-save-info-button">Fill out the dates</button>}
-        {this.canBeSaved() && <button className="save-info-button">Save the date!</button>}
+        {this.canBeSaved() && <button className="save-info-button" onClick={this.handleDateChangeClick}>Save the date!</button>}
       </div>
     );
   }
