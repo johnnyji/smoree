@@ -3,12 +3,14 @@ class Course < ActiveRecord::Base
   has_many :students
 
   validates :title, 
-            presence: { message: "Your course needs a title!" }, 
+            presence: { message: "The course title is blank" }, 
             uniqueness: { message: "This title has already been taken" }
-  validates :start_date, presence: { message: "You need a start date" }
-  validates :end_date, presence: { message: "You need an end date" }
-  validates :summary, presence: { message: "Tell people about your course!" }
-  validates :description, presence: { message: "Describe what your course is about" }
+  validates :start_date, presence: { message: "Select a start date" }
+  validates :end_date, presence: { message: "Select a end date" }
+  validates :summary, presence: { message: "The course summary is blank" }
+  validates :description, presence: { message: "The course description is blank" }
+  validates :latitude, presence: { message: "Select a location for the course" } 
 
-  scope :search, lambda { |terms| where(["lower(title) LIKE ? OR lower(instructor.name) LIKE ?", "%#{terms.downcase}%", "%#{terms.downcase}%"]) }
+  scope :search, 
+        lambda { |terms| where(["lower(title) LIKE ? OR lower(user) LIKE ?", "%#{terms.downcase}%", "%#{terms.downcase}%"]) }
 end

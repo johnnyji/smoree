@@ -17,6 +17,5 @@ $(function() {
     hideNav.show();
     newCourseNavBar.removeClass("nav-bar-hide");
   });
-
   
 });

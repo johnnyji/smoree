@@ -109,7 +109,7 @@ var NewCourse = React.createClass({
         
           handleFormSubmit={this.handleFormSubmit}
         />
-        <CourseBanner courseTitle={this.state.courseTitle}/>
+        <Banner title={this.state.courseTitle}/>
         <CourseInfo 
           summary={this.state.courseSummary} 
           description={this.state.courseDescription} 

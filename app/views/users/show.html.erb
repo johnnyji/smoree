@@ -1,9 +1,7 @@
-<div class="banner">
-  <img src=<%= image_path("cover.jpg") %> class="banner-background-image">
-  <div class="user-banner-nav">
-    <%= link_to "New Course", new_user_course_path(current_user), class: "user-banner-link" %>
-    <%= link_to "New Course", new_user_course_path(current_user), class: "user-banner-link" %>
-    <%= link_to "New Course", new_user_course_path(current_user), class: "user-banner-link" %>
-    <%= link_to "New Course", new_user_course_path(current_user), class: "user-banner-link" %>
-  </div>
-</div>
+<%= react_component("Dashboard",
+  user: current_user,
+  courses: @courses,
+  tabs: ["Courses", "Students", "Account Settings"],
+  imagePath: image_tag("cover.jpg")
+)%>
+

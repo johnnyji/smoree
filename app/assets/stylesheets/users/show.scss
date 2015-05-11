@@ -1,14 +1,27 @@
 @import "appwide";
 
-.user-banner-nav {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  margin: 1.5em 1em;
-  font-size: 1.2em;
-  .user-banner-link {
-    color: $white;
-    margin-right: 1.3em;
-    font-weight: 600;
+.user-dashboard-container {
+  position: relative;
+  background-color: yellow;
+  .user-dashboard-nav {
+    position: relative;
+    background-color: $dark-gray;
+    padding: 1em;
+    .user-dashboard-tab {
+      @include transition(0.3s);
+      position: relative;
+      display: inline-block;
+      margin-right: 1.5em;
+      font-size: 1.4em;
+      font-weight: 400;
+      color: $white;
+      &:hover {
+        color: $secondary-green;
+        cursor: pointer;
+      }
+    }
+    .active {
+      color: $primary-green;
+    }
   }
 }
