@@ -37,10 +37,6 @@ class CoursesController < ApplicationController
     Course.search(params[:query])
   end
 
-  def upload_image
-    image = S3Uploader.new(params[:image]).call
-  end
-
   private
 
   def course_params

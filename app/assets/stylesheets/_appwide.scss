@@ -90,6 +90,20 @@
   }
 }
 
+@mixin fake-button-style($color, $hover) {
+  @include transition(0.3s);
+  font-weight: 600;
+  border-style: none;
+  padding: 0.3em 1em;
+  color: $white;
+  background-color: $color;
+  box-shadow: 0 8px 0 $hover;
+  margin: 1em;
+  &:focus {
+    outline: none;
+  }
+}
+
 @mixin brightness($percentage) {
   -webkit-filter: brightness($percentage);
   -moz-filter: brightness($percentage);

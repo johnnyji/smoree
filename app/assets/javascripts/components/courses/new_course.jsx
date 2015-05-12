@@ -67,7 +67,7 @@ var NewCourse = React.createClass({
       title: self.verifyUserInput(self.state.courseTitle, self.state.defaultCourseTitle),
       summary: self.verifyUserInput(self.state.courseSummary, self.state.defaultCourseSummary),
       description: self.verifyUserInput(self.state.courseDescription, self.state.defaultCourseDescription),
-      address: this.state.address,
+      location: this.state.address,
       latitude: this.state.latitude,
       longitude: this.state.longitude,
       image_url: this.state.imageUrl,

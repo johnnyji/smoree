@@ -1,7 +1,21 @@
 <div class="course-background-banner">
+  <img src=<%= @course.image_url %> class="banner-background-image">
   <div class="course-title-field"><%= @course.title %></div>
 </div>
 <div class="course-info-section">
-  <h2 class="course-summary-field"><%= @course.summary %></h2>
-  <p class="course-description-field"><%= @course.description %></p>
+  <div class="course-info-left">
+    <h2 class="course-summary-field"><%= @course.summary %></h2>
+    <p class="course-description-field"><%= @course.description %></p>
+  </div>
+  <div class="course-info-right">
+    <%= react_component(
+      "CourseMap",
+      latitude: @course.latitude,
+      longitude: @course.longitude
+    ) %>
+    <%= react_component(
+      "SignupForm",
+      live: true
+    ) %>
+  </div>
 </div>

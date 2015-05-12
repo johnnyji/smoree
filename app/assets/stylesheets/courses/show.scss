@@ -84,21 +84,27 @@
       .user-signup-email-field {
         @include input-field-style;
         margin: 0.5em auto;
-        width: 80%;
+        width: 95%;
         height: 40px;
         font-size: 1.1em;
       }
       .user-signup-comment-field {
         @include input-field-style;
         margin: 0.5em auto;
-        width: 80%;
+        width: 95%;
         height: 200px;
         font-size: 1.1em;
       }
       .user-signup-submit-button {
         @include button-style($primary-green, $dark-green);
         margin: 0.5em auto;
-        width: 80%;
+        width: 95%;
+        font-size: 1.2em;
+      }
+      .no-user-signup-submit-button {
+        @include fake-button-style($gray, $light-gray);
+        margin: 0.5em auto;
+        width: 95%;
         font-size: 1.2em;
       }
     }
