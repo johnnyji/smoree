@@ -36,13 +36,12 @@ var SubformLocation = React.createClass({
     });
     CourseActions.geocodeLocation(this.state.country, this.state.state, this.state.city, this.state.address, this.retrieveCoords);
   },
-  retrieveCoords: function(coordsArray) {
-    debugger;
+  retrieveCoords: function(coordsArray, fullAddress) {
     if (coordsArray === null) {
       this.setState({ locationNotFound: true });
     } else {
       this.setState({ locationSuccess: true });
-      this.props.handleLocationChange(coordsArray);
+      this.props.handleLocationChange(coordsArray, fullAddress);
     } 
   },
   canBeSaved: function() {

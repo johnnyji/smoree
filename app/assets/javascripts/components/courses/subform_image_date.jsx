@@ -3,7 +3,7 @@ var SubformImageDate = React.createClass({
     return {
       startDate: null,
       endDate: null,
-      canBeSaved: false
+      canBeSaved: false,
     }
   },
   handleStartDateChange: function(date) {
@@ -23,6 +23,9 @@ var SubformImageDate = React.createClass({
   render: function() {
     return (
       <div className="new-course-form">
+        <div className="new-course-image-uploader">
+          <ImageUploader handleImageSave={this.props.handleImageSave}/>
+        </div>
         <div className="course-start-date-picker">
           <DatePicker 
             key="start"

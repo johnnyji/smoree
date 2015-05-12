@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require titleize
 //= require moment
 //= require react
 //= require react_ujs

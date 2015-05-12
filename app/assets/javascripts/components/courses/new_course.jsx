@@ -7,10 +7,12 @@ var NewCourse = React.createClass({
       courseTitle: "Super Awesome Title",
       courseSummary: "This is where you would summarize your course!",
       courseDescription: "This is where you would give a description about how awesome your course was!",
-      latitude: false,
-      longitude: false,
-      startDate: false,
-      endDate: false,
+      imageUrl: null,
+      latitude: null,
+      address: null,
+      longitude: null,
+      startDate: null,
+      endDate: null,
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
@@ -43,10 +45,11 @@ var NewCourse = React.createClass({
     if (userInput === defaultState) { return "" };
     return userInput;
   },
-  handleLocationChange: function(coordinates) {
+  handleLocationChange: function(coordinates, fullAddress) {
     this.setState({
       latitude: coordinates[0],
-      longitude: coordinates[1]
+      longitude: coordinates[1],
+      address: titleize(fullAddress)
     });
   },
   handleDateChange: function(start, end) {
@@ -55,17 +58,21 @@ var NewCourse = React.createClass({
       endDate: end
     });
   },
+  handleImageSave: function(image) {
+    this.setState({ imageUrl: image });
+  },
   handleFormSubmit: function() {
-    debugger;
     var self = this;
     var data = {
       title: self.verifyUserInput(self.state.courseTitle, self.state.defaultCourseTitle),
       summary: self.verifyUserInput(self.state.courseSummary, self.state.defaultCourseSummary),
       description: self.verifyUserInput(self.state.courseDescription, self.state.defaultCourseDescription),
+      address: this.state.address,
       latitude: this.state.latitude,
       longitude: this.state.longitude,
-      startDate: this.state.startDate,
-      endDate: this.state.endDate
+      image_url: this.state.imageUrl,
+      start_date: this.state.startDate,
+      end_date: this.state.endDate
     }
     CourseActions.createCourse(this.props.user_id, data, this.handleSubmitSuccess, this.handleSubmitError);
   },
@@ -103,10 +110,11 @@ var NewCourse = React.createClass({
           
           handleLocationChange={this.handleLocationChange}
           handleDateChange={this.handleDateChange}
+          handleImageSave={this.handleImageSave}
         
           handleFormSubmit={this.handleFormSubmit}
         />
-        <Banner title={this.state.courseTitle}/>
+        <Banner title={this.state.courseTitle} imageUrl={this.state.imageUrl}/>
         <CourseInfo 
           summary={this.state.courseSummary} 
           description={this.state.courseDescription} 

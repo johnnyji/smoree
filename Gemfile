@@ -23,6 +23,6 @@ group :development, :test do
   gem 'pry', '~> 0.10.1'
   gem 'pry-nav', '~> 0.2.4'
   gem 'web-console', '~> 2.0'
-  gem 'spring', '~> 1.3.4'
+  gem 'spring', '~> 1.3.6'
 end
 

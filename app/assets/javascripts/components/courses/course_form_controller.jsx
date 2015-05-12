@@ -30,6 +30,7 @@ var CourseFormController = React.createClass({
       <SubformImageDate 
         course={this.props.course}
         handleDateChange={this.props.handleDateChange}
+        handleImageSave={this.props.handleImageSave}
       />
     ]
     return (

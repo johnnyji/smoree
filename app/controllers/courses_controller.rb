@@ -37,10 +37,14 @@ class CoursesController < ApplicationController
     Course.search(params[:query])
   end
 
+  def upload_image
+    image = S3Uploader.new(params[:image]).call
+  end
+
   private
 
   def course_params
-    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :user_id)
+    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :user_id, :image_url, :latitude, :longitude)
   end
 
   def find_course

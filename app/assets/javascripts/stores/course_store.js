@@ -20,7 +20,7 @@ var CourseStore = Reflux.createStore({
       } else {
         var latitude = results[0].geometry.location.A
         var longitude = results[0].geometry.location.F
-        retrieveCoords([latitude, longitude]);
+        retrieveCoords([latitude, longitude], fullAddress);
       }
     });
   }
