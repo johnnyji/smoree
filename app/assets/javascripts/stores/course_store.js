@@ -1,5 +1,7 @@
 var CourseStore = Reflux.createStore({
-  createCourse: function(userId, course, success, error) {
+  listenables: CourseActions,
+  onCreateCourse: function(userId, course, success, error) {
+    debugger;
     $.ajax({
       url: "/users/" + userId + "/courses" ,
       method: "POST",
@@ -9,23 +11,17 @@ var CourseStore = Reflux.createStore({
       error: error
     });
   },
-  verifyUserInput: function(inputState, defaultState) {
-    if (inputState === defaultState) { return "" };
-    return inputState;
-  },
-  geocodeLocation: function(country, state, city, address, retrieveCoords) {
+  onGeocodeLocation: function(country, state, city, address, retrieveCoords) {
     var fullAddress = address + ", " + city + ", " + state + ", " + country;
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: fullAddress}, function(results, status) {
       if (results[0] === undefined) {
-        retrieveCoords(false);
+        retrieveCoords(null);
       } else {
         var latitude = results[0].geometry.location.A
         var longitude = results[0].geometry.location.F
         retrieveCoords([latitude, longitude]);
       }
     });
-  },
-  animateErrors: function(errors) {
   }
 });

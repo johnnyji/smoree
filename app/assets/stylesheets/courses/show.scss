@@ -48,6 +48,14 @@
       word-wrap: break-word;
       white-space: pre;
     }
+    .course-additional-info {
+      width: 95%;
+      background-color: red;
+      .row {
+        b { min-width: 40%; background-color: yellow;}
+      }
+      h1 { margin-bottom: 1em; }
+    }
   }
   .course-info-right {
     position: relative;

@@ -2,11 +2,11 @@
 
 .user-dashboard-container {
   position: relative;
-  background-color: yellow;
   .user-dashboard-nav {
     position: relative;
     background-color: $dark-gray;
     padding: 1em;
+    box-shadow: 0 0 10px $darkest-gray;
     .user-dashboard-tab {
       @include transition(0.3s);
       position: relative;
@@ -22,6 +22,34 @@
     }
     .active {
       color: $primary-green;
+    }
+  }
+  .user-dashboard-content {
+    position: relative;
+    padding: 3em;
+    .user-dashboard-course-container {
+      @include transition(0.3s);
+      position: relative;
+      vertical-align: top;
+      display: inline-block;
+      margin: 1%;
+      width: 23%;
+      height: 0;
+      padding-bottom: 18%;
+      background-color: $light-gray;
+      border-radius: $border-radius;
+      &:hover {
+        box-shadow: 0 0 5px $medium-gray;
+        cursor: pointer;
+      }
+      i {
+        @include position-center(absolute, 50%, 50%);
+        font-size: 5em;
+        color: $primary-green;
+        &:hover {
+          color: $secondary-green;
+        }
+      }
     }
   }
 }

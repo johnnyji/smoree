@@ -40,7 +40,6 @@ var NewCourse = React.createClass({
     }
   },
   verifyUserInput: function(userInput, defaultState) {
-    // How can I move this into the store without it returning me a promise?
     if (userInput === defaultState) { return "" };
     return userInput;
   },
@@ -51,15 +50,13 @@ var NewCourse = React.createClass({
     });
   },
   handleDateChange: function(start, end) {
-    debugger;
-    // start and end are coming through as strings but they aren't being set as states?
     this.setState({
       startDate: start,
       endDate: end
     });
-    debugger;
   },
   handleFormSubmit: function() {
+    debugger;
     var self = this;
     var data = {
       title: self.verifyUserInput(self.state.courseTitle, self.state.defaultCourseTitle),

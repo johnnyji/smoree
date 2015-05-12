@@ -16,5 +16,5 @@
  *= require_self
  */
 
-@import "appwide";
 @import "font-awesome";
+@import "appwide";

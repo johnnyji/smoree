@@ -6,7 +6,11 @@ var ManageCourses = React.createClass({
   },
   componentDidMount: function () {
     this.setState({ 
-      newCourseContainer: <i className="fa fa-plus" onClick={this.handleNewCourseClick}></i> 
+      newCourseContainer: (
+        <div className="user-dashboard-course-container" onClick={this.handleNewCourseClick} >
+          <i className="fa fa-plus"></i>
+        </div>
+      ) 
     });
   },
   handleNewCourseClick: function() {
@@ -16,7 +20,7 @@ var ManageCourses = React.createClass({
     var p = this.props;
     var courses = [this.state.newCourseContainer];
 
-    for (var i = 0; i < p.courses.length + 3; i++) {
+    for (var i = 0; i < p.courses.length + 10; i++) {
       var course = p.courses[i];
       courses.push(<CourseContainer course={course} />);
     }
