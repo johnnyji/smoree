@@ -36,16 +36,45 @@
       width: 23%;
       height: 0;
       padding-bottom: 18%;
-      background-color: $light-gray;
       border-radius: $border-radius;
+      box-shadow: 0 0 5px $medium-gray;
+      .dashboard-course-title {
+        @include position-center(absolute, 30%, 50%);
+        color: $white;
+        width: 90%;
+        font-size: 1.5em;
+        text-align: center;
+      }
+      .dashboard-options {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30%;
+        background-color: $dark-gray;
+        padding: 1em;
+          i {
+            position: relative;
+            margin: 0 1em 0 0;
+            font-size: 1.5em;
+            color: $white;
+          }
+      }
+      img {
+        @include brightness(20%);
+        @include position-center(absolute, 50%, 50%);
+        width: 100%;
+        height: 101%;
+        border-radius: $border-radius;
+        opacity: 0.7;
+      }
       &:hover {
-        box-shadow: 0 0 5px $medium-gray;
         cursor: pointer;
+        box-shadow: 0 0 8px $dark-gray;
       }
       i {
         @include position-center(absolute, 50%, 50%);
         font-size: 5em;
-        color: $primary-green;
+        color: $dark-gray;
         &:hover {
           color: $secondary-green;
         }

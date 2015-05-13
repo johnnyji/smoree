@@ -1,7 +1,6 @@
 var CourseStore = Reflux.createStore({
   listenables: CourseActions,
   onCreateCourse: function(userId, course, success, error) {
-    debugger;
     $.ajax({
       url: "/courses" ,
       method: "POST",
@@ -9,6 +8,15 @@ var CourseStore = Reflux.createStore({
       data: { course: course },
       success: success,
       error: error
+    });
+  },
+  onDeleteCourse: function(courseId, success) {
+    $.ajax({
+      url: "/courses/" + courseId,
+      method: "DELETE",
+      dataType: "json",
+      data: { id: courseId },
+      success: success
     });
   },
   onGeocodeLocation: function(country, state, city, address, retrieveCoords) {
@@ -22,6 +30,16 @@ var CourseStore = Reflux.createStore({
         var longitude = results[0].geometry.location.F
         retrieveCoords([latitude, longitude], fullAddress);
       }
+    });
+  },
+  onAddStudent: function(data, success, error) {
+    $.ajax({
+      url: "/students",
+      method: "POST",
+      dataType: "json",
+      data: { student: data },
+      success: success,
+      error: error
     });
   }
 });

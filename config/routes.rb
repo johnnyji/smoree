@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root "users#new"
   
+  resources :students
   resources :users
   resources :courses
   resources :session, only: [:new, :create, :destroy]

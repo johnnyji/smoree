@@ -1,6 +1,8 @@
 var CourseActions = Reflux.createActions([
   "createCourse",
-  "geocodeLocation"
+  "deleteCourse",
+  "geocodeLocation",
+  "addStudent"
 ]);
 
 

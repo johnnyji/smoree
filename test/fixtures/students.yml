@@ -4,12 +4,10 @@ one:
   first_name: MyString
   last_name: MyString
   email: MyString
-  message: MyString
-  user_id: 
+  course_id: 
 
 two:
   first_name: MyString
   last_name: MyString
   email: MyString
-  message: MyString
-  user_id: 
+  course_id: 

@@ -9,7 +9,7 @@ var CourseInfo = React.createClass({
         </div>
         <div className="course-info-right">
           <StaticMap latitude={this.props.latitude} longitude={this.props.longitude}/>
-          <SignupForm live={false}/>
+          <SignupForm live={false} />
         </div>
       </div>
     )

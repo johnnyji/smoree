@@ -67,7 +67,7 @@
       border-radius: $border-radius;
       height: 250px;
       width: 400px;
-      margin-bottom: 2em;
+      margin-bottom: 0.5em;
       overflow: hidden;
       img {
         @include position-center(absolute, 50%, 50%);

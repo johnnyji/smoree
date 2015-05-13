@@ -28,9 +28,12 @@ class CoursesController < ApplicationController
   end
 
   def delete
+    binding.pry
   end
 
   def destroy
+    @course.destroy
+    render nothing: true, status: :ok
   end
 
   def search
