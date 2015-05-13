@@ -37,6 +37,7 @@ var SubformLocation = React.createClass({
     CourseActions.geocodeLocation(this.state.country, this.state.state, this.state.city, this.state.address, this.retrieveCoords);
   },
   retrieveCoords: function(coordsArray, fullAddress) {
+    debugger;
     if (coordsArray === null) {
       this.setState({ locationNotFound: true });
     } else {

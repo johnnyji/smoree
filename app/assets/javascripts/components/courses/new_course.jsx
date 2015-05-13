@@ -13,6 +13,7 @@ var NewCourse = React.createClass({
       longitude: null,
       startDate: null,
       endDate: null,
+      welcomeEmail: null,
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
@@ -49,10 +50,11 @@ var NewCourse = React.createClass({
     this.setState({
       latitude: coordinates[0],
       longitude: coordinates[1],
-      address: titleize(fullAddress)
+      address: fullAddress
     });
   },
   handleDateChange: function(start, end) {
+    debugger;
     this.setState({
       startDate: start,
       endDate: end
@@ -61,7 +63,11 @@ var NewCourse = React.createClass({
   handleImageSave: function(image) {
     this.setState({ imageUrl: image });
   },
+  handleWelcomeEmailChange: function(email) {
+    this.setState({ welcomeEmail: email });
+  },
   handleFormSubmit: function() {
+    debugger;
     var self = this;
     var data = {
       title: self.verifyUserInput(self.state.courseTitle, self.state.defaultCourseTitle),
@@ -71,6 +77,7 @@ var NewCourse = React.createClass({
       latitude: this.state.latitude,
       longitude: this.state.longitude,
       image_url: this.state.imageUrl,
+      welcome_email: this.state.welcomeEmail,
       user_id: this.props.userId,
       start_date: this.state.startDate,
       end_date: this.state.endDate
@@ -92,7 +99,7 @@ var NewCourse = React.createClass({
   },
   readyToSubmit: function() {
     var s = this.state;
-    return s.courseTitle && s.courseSummary && s.courseDescription && s.startDate && s.endDate && s.latitude && s.longitude
+    return s.courseTitle && s.courseSummary && s.courseDescription && s.startDate && s.endDate && s.latitude && s.longitude && s.welcomeEmail
   },
   render: function() {
     return (
@@ -112,6 +119,7 @@ var NewCourse = React.createClass({
           handleLocationChange={this.handleLocationChange}
           handleDateChange={this.handleDateChange}
           handleImageSave={this.handleImageSave}
+          handleWelcomeEmailChange={this.handleWelcomeEmailChange}
         
           handleFormSubmit={this.handleFormSubmit}
         />
@@ -121,6 +129,9 @@ var NewCourse = React.createClass({
           description={this.state.courseDescription} 
           latitude={this.state.latitude}
           longitude={this.state.longitude}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          address={this.state.address}
         />
         {!this.readyToSubmit() && <button className="no-create-course-button">Not finished yet</button>}
         {this.readyToSubmit() && <SubmitButton handleFormSubmit={this.handleFormSubmit}/>}

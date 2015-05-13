@@ -1,7 +1,8 @@
 var ImageUploader = React.createClass({
   getInitialState: function () {
       return {
-        imageUrl: null     
+        imageUrl: null,
+        imagePlaceholder: "Select an image here!"   
       }
   },
   handlePictureUpload: function(e) {
@@ -12,10 +13,17 @@ var ImageUploader = React.createClass({
       self.props.handleImageSave(reader.result);
     };
     reader.readAsDataURL(blob);
+    this.setState({ imagePlaceholder: "Looking good!" });
   },
   render: function() {
     return (
-        <input type="file" className="image-uploader" onChange={this.handlePictureUpload}></input>
+      <div>
+        <div className="image-uploader-wrapper">
+          <div className="fake-uploader-cover"></div>
+          <input type="text" className="fake-uploader" id="fake_uploader" placeholder={this.state.imagePlaceholder}></input>
+          <input type="file" className="image-uploader" onChange={this.handlePictureUpload}></input>
+        </div>
+      </div>
     );
   }
 });

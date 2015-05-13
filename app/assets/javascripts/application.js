@@ -19,5 +19,6 @@
 //= require react_ujs
 //= require reflux
 //= require react_datepicker
+//= require react_dropzone
 //= require components
 //= require_tree .

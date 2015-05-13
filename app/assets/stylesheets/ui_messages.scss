@@ -48,5 +48,9 @@
   box-shadow: 0 8px 0 $secondary-green;
   i {
     color: $white;
+    &:hover {
+      color: $white;
+      cursor: default;
+    }
   }
 }

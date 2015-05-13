@@ -26,7 +26,7 @@
 .course-info-section {
   padding: 1em;
   position: relative;
-  margin: 2em auto;
+  margin: 3em auto;
   min-height: 600px;
   width: 62%;
   font-size: 1.2em;
@@ -64,10 +64,10 @@
     width: 40%;
     .course-google-maps {
       position: relative;
-      border-radius: $border-radius;
+      box-shadow: 0 0 10px $light-gray;
       height: 250px;
       width: 400px;
-      margin-bottom: 0.5em;
+      margin-bottom: 2em;
       overflow: hidden;
       img {
         @include position-center(absolute, 50%, 50%);
@@ -75,11 +75,16 @@
     }
     .user-signup-form {
       position: relative;
-      border-radius: $border-radius;
-      height: 500px;
+      box-shadow: 0 0 10px $light-gray;
+      height: 620px;
       width: 400px;
       text-align: center;
       padding: 1em;
+      .signup-form-title {
+        margin: 0 0 -0.5em 0;
+        font-size: 2em;
+        color: $dark-green;
+      }
       .user-signup-name-field,
       .user-signup-email-field {
         @include input-field-style;

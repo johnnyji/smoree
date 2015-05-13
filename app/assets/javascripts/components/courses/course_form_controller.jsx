@@ -24,13 +24,16 @@ var CourseFormController = React.createClass({
         state={this.props.state}
         city={this.props.city}
         address={this.props.address}
-        handleLocationSave={this.props.handleLocationSave}
         handleLocationChange={this.props.handleLocationChange}
       />,
       <SubformImageDate 
         course={this.props.course}
         handleDateChange={this.props.handleDateChange}
         handleImageSave={this.props.handleImageSave}
+      />,
+      <SubformMessage 
+        course={this.props.course}
+        handleWelcomeEmailChange={this.props.handleWelcomeEmailChange}
       />
     ]
     return (

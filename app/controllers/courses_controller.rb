@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :user_id, :image_url, :latitude, :longitude)
+    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :user_id, :image_url, :latitude, :longitude, :welcome_email)
   end
 
   def find_course

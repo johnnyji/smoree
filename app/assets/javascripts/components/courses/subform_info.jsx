@@ -22,19 +22,3 @@ var SubformInfo = React.createClass({
     )
   }
 });
-
-var SubformDate = React.createClass({
-  render: function() {
-    return (
-      <h1>Hello Data!</h1>
-    )
-  }
-});
-
-var SubformImages = React.createClass({
-  render: function() {
-    return (
-      <h1>Hello Images!</h1>
-    )
-  }
-});

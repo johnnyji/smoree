@@ -31,6 +31,7 @@ var SignupForm = React.createClass({
     return (
       <div>
         <div className="user-signup-form"> 
+          <h1 className="signup-form-title">Sign Up Here!</h1>
           {s.submitted && <SuccessMessageBox message={"Thanks " + s.firstName + "!"} />}
           <br/>
           <input type="text" className="user-signup-name-field" placeholder="First Name" id="student-first-name"></input><br></br>
