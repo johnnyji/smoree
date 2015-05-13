@@ -6,7 +6,7 @@
   <p class="intro-summary">A place where you can create courses, take courses and share your knowledge with the world.</p>
 
   <% if logged_in? %>
-    <%= link_to "Create Course", new_user_course_path(current_user), class: "create-course-link" %>
+    <%= link_to "Create Course", new_course_path, class: "create-course-link" %>
   <% else %>
     <%= link_to "Create Course", root_path, class: " create-course-link non-user-create-course-link" %>
   <% end %>

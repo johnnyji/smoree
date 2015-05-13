@@ -14,13 +14,13 @@ var ManageCourses = React.createClass({
     });
   },
   handleNewCourseClick: function() {
-    UserActions.createNewCourse(this.props.user.id);
+    UserActions.createNewCourse();
   },  
   render: function() {
     var p = this.props;
     var courses = [this.state.newCourseContainer];
 
-    for (var i = 0; i < p.courses.length + 10; i++) {
+    for (var i = 0; i < p.courses.length; i++) {
       var course = p.courses[i];
       courses.push(<CourseContainer course={course} />);
     }

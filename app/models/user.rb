@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
-  
   has_many :courses
-  has_many :students
 
   validates :first_name, :last_name, presence: { message: "Your name can't be blank!"} 
   validates :email, 

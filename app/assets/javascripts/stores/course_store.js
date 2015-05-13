@@ -1,8 +1,9 @@
 var CourseStore = Reflux.createStore({
   listenables: CourseActions,
   onCreateCourse: function(userId, course, success, error) {
+    debugger;
     $.ajax({
-      url: "/users/" + userId + "/courses" ,
+      url: "/courses" ,
       method: "POST",
       dataType: "json",
       data: { course: course },

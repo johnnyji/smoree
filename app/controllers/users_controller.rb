@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @courses = @user.courses.all.order("created_at DESC")
+    @courses = current_user.courses.all.order("created_at DESC")
   end
 
   def edit

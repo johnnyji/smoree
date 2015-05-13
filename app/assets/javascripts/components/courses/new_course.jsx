@@ -71,6 +71,7 @@ var NewCourse = React.createClass({
       latitude: this.state.latitude,
       longitude: this.state.longitude,
       image_url: this.state.imageUrl,
+      user_id: this.props.userId,
       start_date: this.state.startDate,
       end_date: this.state.endDate
     }

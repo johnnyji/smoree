@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(course_params)
+    @course = current_user.courses.build(course_params)
     if @course.save
       render json: { course_id: @course.id }
     else
