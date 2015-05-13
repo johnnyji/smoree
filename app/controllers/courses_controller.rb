@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :delete, :destroy]
-  before_action :find_course, only: [:show, :edit, :udpate, :delete, :destroy]
+  before_action :find_course, only: [:show, :edit, :update, :delete, :destroy, :info]
   
   def index
   end
@@ -25,6 +25,11 @@ class CoursesController < ApplicationController
   end
 
   def update
+    if @course.update(course_params)
+      render json: { course_id: @course.id }
+    else
+      render json: { errors: @course.errors }, status: :unprocessable_entity
+    end
   end
 
   def delete
@@ -36,6 +41,10 @@ class CoursesController < ApplicationController
     render nothing: true, status: :ok
   end
 
+  def info
+
+  end
+
   def search
     Course.search(params[:query])
   end
@@ -43,7 +52,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :user_id, :image_url, :latitude, :longitude, :welcome_email)
+    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :image_url, :latitude, :longitude, :welcome_email)
   end
 
   def find_course

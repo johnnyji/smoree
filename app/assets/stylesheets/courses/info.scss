@@ -1,0 +1,16 @@
+@import "appwide";
+
+.students-container {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  .student-container {
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    background-color: red;
+  }
+  .student-container-selected {
+    background-color: green;
+  }
+}

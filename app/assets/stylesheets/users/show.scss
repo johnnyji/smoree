@@ -27,15 +27,16 @@
   .user-dashboard-content {
     position: relative;
     padding: 3em;
+    text-align: center;
     .user-dashboard-course-container {
       @include transition(0.3s);
       position: relative;
       vertical-align: top;
       display: inline-block;
-      margin: 1%;
-      width: 23%;
+      margin: 2%;
+      width: 25%;
       height: 0;
-      padding-bottom: 18%;
+      padding-bottom: 20%;
       border-radius: $border-radius;
       box-shadow: 0 0 5px $medium-gray;
       .dashboard-course-title {

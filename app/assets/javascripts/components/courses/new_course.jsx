@@ -4,16 +4,16 @@ var NewCourse = React.createClass({
   },
   getInitialState: function() {
     return {
-      courseTitle: "Super Awesome Title",
-      courseSummary: "This is where you would summarize your course!",
-      courseDescription: "This is where you would give a description about how awesome your course was!",
-      imageUrl: null,
-      latitude: null,
-      address: null,
-      longitude: null,
-      startDate: null,
-      endDate: null,
-      welcomeEmail: null,
+      courseTitle: this.props.course.title,
+      courseSummary: this.props.course.summary,
+      courseDescription: this.props.course.description,
+      imageUrl: this.props.course.image_url,
+      latitude: this.props.course.latitude,
+      address: this.props.course.address,
+      longitude: this.props.course.longitude,
+      startDate: this.props.course.start_date,
+      endDate: this.props.course.end_date,
+      welcomeEmail: this.props.course.welcome_email,
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
@@ -54,7 +54,6 @@ var NewCourse = React.createClass({
     });
   },
   handleDateChange: function(start, end) {
-    debugger;
     this.setState({
       startDate: start,
       endDate: end
@@ -67,7 +66,6 @@ var NewCourse = React.createClass({
     this.setState({ welcomeEmail: email });
   },
   handleFormSubmit: function() {
-    debugger;
     var self = this;
     var data = {
       title: self.verifyUserInput(self.state.courseTitle, self.state.defaultCourseTitle),
@@ -78,16 +76,22 @@ var NewCourse = React.createClass({
       longitude: this.state.longitude,
       image_url: this.state.imageUrl,
       welcome_email: this.state.welcomeEmail,
-      user_id: this.props.userId,
       start_date: this.state.startDate,
       end_date: this.state.endDate
     }
-    CourseActions.createCourse(this.props.user_id, data, this.handleSubmitSuccess, this.handleSubmitError);
+    if (this.props.editing) {
+      debugger;
+      CourseActions.editCourse(this.props.course.id, data, this.handleSubmitSuccess, this.handleSubmitError);  
+    } else {
+      debugger;
+      CourseActions.createCourse(data, this.handleSubmitSuccess, this.handleSubmitError);  
+    }
   },
   handleSubmitSuccess: function(data) {
     window.location.href = "/courses/" + data.course_id;
   },
   handleSubmitError: function(XHR, requestCode, errorThrown) {
+    debugger;
     var data = $.parseJSON(XHR.responseText);
     this.setState({
       submitError: true,
@@ -107,6 +111,7 @@ var NewCourse = React.createClass({
         {this.state.submitError && <CourseErrors errors={this.state.errors} handleExitModal={this.handleExitModal}/>}
         <CourseFormController 
           tabs={this.props.tabs}
+          course={this.props.course}
 
           courseTitle={this.state.courseTitle}
           courseSummary={this.state.courseSummary}

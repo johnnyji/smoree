@@ -13,6 +13,9 @@ var CourseContainer = React.createClass({
     debugger;
     window.location.reload();
   },
+  handleCourseInfoRedirect: function() {
+    window.location.href = "/courses/" + this.props.course.id + "/info";
+  },
   render: function() {
     var course = this.props.course;
     return (
@@ -21,9 +24,10 @@ var CourseContainer = React.createClass({
           <img src={course.image_url} onClick={this.handleNavToCourse} ></img>
           <h1 className="dashboard-course-title" onClick={this.handleNavToCourse}>{course.title}</h1>
           <div className="dashboard-options">
-              <i className="fa fa-edit" onClick={this.handleEditCourse}></i>
-              <i className="fa fa-remove" onClick={this.handleCourseDelete}></i>
-              <i className="fa fa-remove"></i>
+            <i className="fa fa-envelope-o" onClick={this.handleCourseInfoRedirect}></i>
+            <i className="fa fa-edit" onClick={this.handleEditCourse}></i>
+            <i className="fa fa-remove" onClick={this.handleCourseDelete}></i>
+            <i className="fa fa-remove"></i>
           </div>
         </div>
       </div>

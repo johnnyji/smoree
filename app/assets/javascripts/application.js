@@ -14,11 +14,11 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require titleize
+//= require filedrop
 //= require moment
 //= require react
 //= require react_ujs
 //= require reflux
 //= require react_datepicker
-//= require react_dropzone
 //= require components
 //= require_tree .

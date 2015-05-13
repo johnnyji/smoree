@@ -14,7 +14,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'react-rails', '~> 1.0.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'responders', '~> 2.1.0'
-gem 'geocoder', '~> 1.2.8'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 

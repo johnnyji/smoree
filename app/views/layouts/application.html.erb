@@ -14,11 +14,13 @@
 
 <section>
   <%= render partial: "layouts/header" %>
-  <div class="flash-message">
-    <% flash.each do |key, value| %>
+
+  <% flash.each do |key, value| %>
+    <div class="react-flash-message">
       <%= content_tag(:div, value, class: key.to_s) %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+  
   <%= yield %>
 </section>
 
