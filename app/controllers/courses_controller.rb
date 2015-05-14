@@ -56,10 +56,10 @@ class CoursesController < ApplicationController
   end
 
   def find_course
-    if request.subdomain.blank?
-      @course = Course.find(params[:id])
+    if request.subdomain.present?
+      @course = Course.find_by!(slug: request.subdomain)
     else
-      @course = Course.find_by(slug: request.subdomain)
+      @course = Course.find(params[:id])
     end
   end
 end

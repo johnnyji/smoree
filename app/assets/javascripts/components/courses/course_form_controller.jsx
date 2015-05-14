@@ -12,6 +12,7 @@ var CourseFormController = React.createClass({
   render: function() {
     var subforms = [
       <SubformInfo
+        slug={this.props.slug}
         title={this.props.courseTitle}
         summary={this.props.courseSummary}
         description={this.props.courseDescription}

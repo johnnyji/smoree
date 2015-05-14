@@ -94,9 +94,8 @@ var NewCourse = React.createClass({
   handleSubmitSuccess: function(data) {
     window.location.href = "/courses/" + data.course_id;
   },
-  handleSubmitError: function(XHR, requestCode, errorThrown) {
-    debugger;
-    var data = $.parseJSON(XHR.responseText);
+  handleSubmitError: function(xhr, requestCode, errorThrown) {
+    var data = $.parseJSON(xhr.responseText);
     this.setState({
       submitError: true,
       errors: data.errors
@@ -117,6 +116,7 @@ var NewCourse = React.createClass({
           tabs={this.props.tabs}
           course={this.props.course}
 
+          slug={this.state.slug}
           courseTitle={this.state.courseTitle}
           courseSummary={this.state.courseSummary}
           courseDescription={this.state.courseDescription}
