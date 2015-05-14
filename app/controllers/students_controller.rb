@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :require_login, only: [:mail, :mail_all]
   respond_to :json
 
   def create
@@ -18,6 +19,14 @@ class StudentsController < ApplicationController
       StudentMailer.teacher_email(student, student.course, body).deliver
     end
     render json: { student_count: @students.count }, status: :ok
+  end
+
+  def mail_all
+    subject = params[:subject]
+    body = params[:email]
+    current_user.students.each do |student|
+      StudentMailer.teacher_email_all(student, subject, body).deliver
+    end
   end
 
   private

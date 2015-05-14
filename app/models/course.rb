@@ -13,4 +13,13 @@ class Course < ActiveRecord::Base
 
   scope :search, 
         lambda { |terms| where(["lower(title) LIKE ? OR lower(user) LIKE ?", "%#{terms.downcase}%", "%#{terms.downcase}%"]) }
+
+  def ended
+    self.end_date < Date.today
+  end
+
+  def in_progress
+    self.start_date > Date.today
+  end
+
 end

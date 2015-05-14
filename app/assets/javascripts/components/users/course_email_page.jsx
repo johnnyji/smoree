@@ -22,7 +22,7 @@ var CourseEmailPage = React.createClass({
       <div>
         <Banner imageUrl={p.course.image_url} title={p.course.title} />
         
-        <EmailBox students={s.selectedStudents}/>
+        <EmailBox students={s.selectedStudents} course={p.course}/>
 
         <StudentsContainer 
           students={p.students} 

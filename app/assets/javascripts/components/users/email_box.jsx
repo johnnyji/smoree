@@ -5,7 +5,7 @@ var EmailBox = React.createClass({
         sent: false,
         studentCount: null,
         flash: false,
-        error: false
+        error: null
       }
   },
   handleEmailChange: function(e) {
@@ -15,14 +15,16 @@ var EmailBox = React.createClass({
     }
   },
   handleEmailSend: function() {
+    var subject = document.getElementById("email_subject").value;
     var email = document.getElementById("email_box").value;
-    if (this.props.students.length === 0) {
-      this.setState({
-        flash: true,
-        error: true
-      });
+    if (subject === "") {
+      this.setError("Your subject can't be empty!");
+    } else if (email === "") {
+      this.setError("Your email can't be empty!");
+    } else if (this.props.students.length === 0){
+      this.setError("Please select students to send to");
     } else {
-      this.setState({ error: false });
+      this.setState({ error: null });
       UserActions.sendEmail(this.props.students, email, this.handleEmailSuccess, this.handleEmailError);
     }
   },
@@ -34,20 +36,46 @@ var EmailBox = React.createClass({
     });
   },  
   handleEmailError: function(XHR) {
-    debugger;
+    this.setError("Error :( Unable to set email");
   },
   handleHideFlash: function() {
-    this.setState({ flash: false })
-  },  
+    this.setState({
+      flash: false,
+      error: null
+    })
+  },
+  setError: function(errorMessage) {
+    this.setState({
+      flash: true,
+      error: errorMessage
+    });
+  },
   render: function() {
     var s = this.state;
+    var p = this.props;
     return (
       <div className="email-box-container">
-        {s.sent && s.flash && <FlashMessage message={"Emailed to " + s.studentCount + " students"} flashType={"flash-success"} hideFlash={this.handleHideFlash} />}
-        {s.error && s.flash && <FlashMessage message={"No students selected!"} flashType={"flash-error"} hideFlash={this.handleHideFlash} />}
+        <div className="email-box-info">
+          <h2>{p.course.title} Mailing List</h2>
+          <p>This is where you would keep your students informed about the course! Select students and send them all emails!</p>
+          <ul>
+            <h2>Examples</h2>
+            <li>Contact specific students</li>
+            <li>Update students on change of schedule</li>
+            <li>Inform students on emergencies</li>
+          </ul>
+        </div>
 
-        <textarea placeholder="Dear Students..." id="email_box" onChange={this.handleEmailChange}></textarea><br/>
-        {s.sendable && <button className="email-box-submit-button" onClick={this.handleEmailSend}>Send Email</button>}
+        <div className="email-box-form">
+          {s.sent && s.flash && <FlashMessage message={"Emailed to " + s.studentCount + " students"} flashType={"flash-success"} hideFlash={this.handleHideFlash} />}
+          {s.error && s.flash && <FlashMessage message={s.error} flashType={"flash-error"} hideFlash={this.handleHideFlash} />}
+
+          <input placeholder="Email Subject" id="email_subject" onChange={this.handleEmailChange}></input><br/>
+          <textarea placeholder="Dear Students..." id="email_box" onChange={this.handleEmailChange}></textarea><br/>
+
+          {!s.sendable && <button className="no-email-box-submit-button" onClick={this.handleEmailSend}>Compose your email</button>}
+          {s.sendable && <button className="email-box-submit-button" onClick={this.handleEmailSend}>Send Email</button>}
+        </div>
       </div>
     )
   }
