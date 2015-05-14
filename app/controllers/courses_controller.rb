@@ -42,11 +42,6 @@ class CoursesController < ApplicationController
   end
 
   def info
-
-  end
-
-  def search
-    Course.search(params[:query])
   end
 
   private
@@ -57,9 +52,14 @@ class CoursesController < ApplicationController
 
   def find_course
     if request.subdomain.present?
-      @course = Course.find_by!(slug: request.subdomain)
+      begin
+        @course = Course.find_by!(slug: request.subdomain)
+      rescue ActiveRecord::RecordNotFound
+        redirect_to root_url(subdomain: false), notice: "Sorry, that course wasn't found!"
+      end
     else
       @course = Course.find(params[:id])
     end
   end
+
 end

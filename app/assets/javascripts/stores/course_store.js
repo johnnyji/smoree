@@ -11,7 +11,6 @@ var CourseStore = Reflux.createStore({
     });
   },
   onCreateCourse: function(course, success, error) {
-    debugger;
     $.ajax({
       url: "/courses" ,
       method: "POST",

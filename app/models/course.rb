@@ -12,10 +12,7 @@ class Course < ActiveRecord::Base
   validates :end_date, presence: { message: "Select a end date" }
   validates :summary, presence: { message: "The course summary is blank" }
   validates :description, presence: { message: "The course description is blank" }
-  validates :latitude, presence: { message: "Select a location for the course" } 
-
-  scope :search, 
-        lambda { |terms| where(["lower(title) LIKE ? OR lower(user) LIKE ?", "%#{terms.downcase}%", "%#{terms.downcase}%"]) }
+  validates :latitude, presence: { message: "Select a location for the course" }
 
   def ended
     self.end_date < Date.today
