@@ -52,10 +52,14 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :image_url, :latitude, :longitude, :welcome_email)
+    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :image_url, :latitude, :longitude, :welcome_email, :slug)
   end
 
   def find_course
-    @course = Course.find(params[:id])
+    if request.subdomain.blank?
+      @course = Course.find(params[:id])
+    else
+      @course = Course.find_by(slug: request.subdomain)
+    end
   end
 end

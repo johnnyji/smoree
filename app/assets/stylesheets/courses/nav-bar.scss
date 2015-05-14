@@ -71,6 +71,23 @@
       h1 {
         margin: 0 0 10px 0;
       }
+      .new-course-form-slug {
+        width: 100%;
+        margin-bottom: 1em;
+        input {
+          @include input-field-style;
+          display: inline-block;
+          width: 100px;
+          font-size: 1.05em;
+          margin: 0 1em 1em 0;
+        }
+        p {
+          display: inline-block;
+          font-size: 1.6em;
+          text-align: right;
+          margin: 0 10px 0 0;
+        }
+      }
       input[type=text] {
         @include input-field-style;
         width: 100%;

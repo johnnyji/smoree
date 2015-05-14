@@ -2,9 +2,12 @@ class Course < ActiveRecord::Base
   belongs_to :user
   has_many :students
 
-  validates :title, 
-            presence: { message: "The course title is blank" }, 
-            uniqueness: { message: "This title has already been taken" }
+  validates :slug,
+              uniqueness: { message: "Sorry! This subdomain is taken" },
+              presence: { message: "The course subdomain cannot be blank" }
+  validates :title,  
+              presence: { message: "The course title is blank" }, 
+              uniqueness: { message: "This title has already been taken" }
   validates :start_date, presence: { message: "Select a start date" }
   validates :end_date, presence: { message: "Select a end date" }
   validates :summary, presence: { message: "The course summary is blank" }

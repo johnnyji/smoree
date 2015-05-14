@@ -14,6 +14,7 @@ var NewCourse = React.createClass({
       startDate: this.props.course.start_date,
       endDate: this.props.course.end_date,
       welcomeEmail: this.props.course.welcome_email,
+      slug: this.props.course.slug,
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
@@ -41,6 +42,9 @@ var NewCourse = React.createClass({
     } else {
       this.setState({ courseDescription: event.target.value });
     }
+  },
+  handleSlugChange: function() {
+    this.setState({ slug: event.target.value });
   },
   verifyUserInput: function(userInput, defaultState) {
     if (userInput === defaultState) { return "" };
@@ -76,15 +80,14 @@ var NewCourse = React.createClass({
       latitude: this.state.latitude,
       longitude: this.state.longitude,
       image_url: this.state.imageUrl,
+      slug: this.state.slug,
       welcome_email: this.state.welcomeEmail,
       start_date: this.state.startDate.format("MMMM Do YYYY").toString(),
       end_date: this.state.endDate.format("MMMM Do YYYY").toString()
     }
     if (this.props.editing) {
-      debugger;
       CourseActions.editCourse(this.props.course.id, data, this.handleSubmitSuccess, this.handleSubmitError);  
     } else {
-      debugger;
       CourseActions.createCourse(data, this.handleSubmitSuccess, this.handleSubmitError);  
     }
   },
@@ -104,7 +107,7 @@ var NewCourse = React.createClass({
   },
   readyToSubmit: function() {
     var s = this.state;
-    return s.courseTitle && s.courseSummary && s.courseDescription && s.startDate && s.endDate && s.latitude && s.longitude && s.welcomeEmail
+    return s.courseTitle && s.courseSummary && s.courseDescription && s.startDate && s.endDate && s.latitude && s.longitude && s.welcomeEmail && s.slug
   },
   render: function() {
     return (
@@ -121,6 +124,7 @@ var NewCourse = React.createClass({
           handleTitleChange={this.handleTitleChange}
           handleSummaryChange={this.handleSummaryChange}
           handleDescriptionChange={this.handleDescriptionChange}
+          handleSlugChange={this.handleSlugChange}
           
           handleLocationChange={this.handleLocationChange}
           handleDateChange={this.handleDateChange}

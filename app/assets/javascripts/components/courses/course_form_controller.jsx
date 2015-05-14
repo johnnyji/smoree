@@ -18,6 +18,7 @@ var CourseFormController = React.createClass({
         handleTitleChange={this.props.handleTitleChange}
         handleSummaryChange={this.props.handleSummaryChange}
         handleDescriptionChange={this.props.handleDescriptionChange} 
+        handleSlugChange={this.props.handleSlugChange}
       />,
       <SubformLocation
         country={this.props.country}
