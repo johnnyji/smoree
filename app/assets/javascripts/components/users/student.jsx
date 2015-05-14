@@ -10,21 +10,12 @@ var Student = React.createClass({
     var s = this.state;
     var p = this.props;
     if (!s.selected && p.selectedAll) {
-      this.setState({
-        selected: true,
-        containerClass: "student-container selected",
-        selectButtonText: "Drop"
-      });
+      this.selectStudent()
     } else if (s.selected && p.droppedAll) {
-      this.setState({
-        selected: false,
-        containerClass: "student-container",
-        selectButtonText: "Select"
-      });
+      this.dropStudent()
     }
   },
   handleSelectClick: function() {
-    debugger;
     if (this.state.selected || this.props.selectedAll) {
       this.dropStudent();
       this.props.handleRemoveSelectedStudent(this.props.student.id);

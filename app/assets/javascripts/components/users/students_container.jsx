@@ -15,7 +15,7 @@ var StudentsContainer = React.createClass({
       )
     }
     if (students.length === 0) {
-      return(
+      return (
         <div className="students-container">
           <h1 className="students-container-title">No students for this class yet!</h1>
         </div>

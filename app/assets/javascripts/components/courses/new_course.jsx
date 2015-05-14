@@ -47,6 +47,7 @@ var NewCourse = React.createClass({
     return userInput;
   },
   handleLocationChange: function(coordinates, fullAddress) {
+    debugger;
     this.setState({
       latitude: coordinates[0],
       longitude: coordinates[1],
@@ -76,8 +77,8 @@ var NewCourse = React.createClass({
       longitude: this.state.longitude,
       image_url: this.state.imageUrl,
       welcome_email: this.state.welcomeEmail,
-      start_date: this.state.startDate,
-      end_date: this.state.endDate
+      start_date: this.state.startDate.format("MMMM Do YYYY").toString(),
+      end_date: this.state.endDate.format("MMMM Do YYYY").toString()
     }
     if (this.props.editing) {
       debugger;

@@ -21,8 +21,8 @@ var SubformImageDate = React.createClass({
   },
   handleDateChangeClick: function() {
     this.setState({ dateSaved: true });
-    var start = this.state.startDate.format("MMMM Do YYYY").toString();
-    var end = this.state.endDate.format("MMMM Do YYYY").toString();
+    var start = this.state.startDate;
+    var end = this.state.endDate;
     this.props.handleDateChange(start, end);
   },
   canBeSaved: function() {

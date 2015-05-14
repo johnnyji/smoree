@@ -4,8 +4,18 @@
 </div>
 <div class="course-info-section">
   <div class="course-info-left">
-    <h2 class="course-summary-field"><%= @course.summary %></h2>
-    <p class="course-description-field"><%= @course.description %></p>
+    <div class="main-info">
+      <h2 class="course-summary-field"><%= @course.summary %></h2>
+      <p class="course-description-field"><%= @course.description %></p>
+    </div>
+    <div class="additional-info">
+      <%= react_component(
+        "CourseDetails",
+        startDate: @course.start_date,
+        endDate: @course.end_date,
+        address: @course.location
+      ) %>
+    </div>
   </div>
   <div class="course-info-right">
     <%= react_component(
@@ -19,4 +29,5 @@
       course_id: @course.id
     ) %>
   </div>
+  
 </div>

@@ -3,7 +3,7 @@ var DashboardNav = React.createClass({
     this.props.handleClick(tabIndex);
   },  
   render: function() {
-    var tabs = []
+    var tabs = [];
     var activeTab = this.props.tabs[this.props.activeTabIndex];
 
     for (var i = 0; i < this.props.tabs.length; i++ ) {
