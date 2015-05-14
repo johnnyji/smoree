@@ -10,7 +10,6 @@ var CourseContainer = React.createClass({
     CourseActions.deleteCourse(this.props.course.id, this.handleCourseDeleteSuccess);
   },
   handleCourseDeleteSuccess: function(data) {
-    debugger;
     window.location.reload();
   },
   handleCourseInfoRedirect: function() {

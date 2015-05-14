@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :update, :delete, :destroy, :show]
   before_action :find_user, only: [:show, :edit, :update, :delete, :destroy]
+  respond_to :json, :html, :js
 
   def new
     @user = User.new

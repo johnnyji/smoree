@@ -12,7 +12,7 @@ var SubformInfo = React.createClass({
 
         <label className="new-course-label" for="course_slug">Website URL</label>
         <div className="new-course-form-slug">
-          <input type="text" placeholder="Domain" id="course_slug" onChange={this.props.handleSlugChange} className="new-course-form-slug" defaultValue={this.props.slug}></input>
+          <input placeholder="Domain" id="course_slug" onChange={this.props.handleSlugChange} className="new-course-form-slug" defaultValue={this.props.slug}></input>
           <p>.skillup.com</p>
         </div>
 

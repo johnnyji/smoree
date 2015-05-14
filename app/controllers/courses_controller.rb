@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :delete, :destroy]
   before_action :find_course, only: [:show, :edit, :update, :delete, :destroy, :info]
+  respond_to :json, :html
   
   def index
   end
@@ -38,7 +39,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    render nothing: true, status: :ok
+    render json: nil, status: :ok 
   end
 
   def info
