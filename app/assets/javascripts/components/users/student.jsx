@@ -6,22 +6,46 @@ var Student = React.createClass({
         selectButtonText: "Select" 
       } 
   },
-  handleSelectClick: function() {
-    if (this.state.selected) {
+  componentDidUpdate: function() {
+    var s = this.state;
+    var p = this.props;
+    if (!s.selected && p.selectedAll) {
+      this.setState({
+        selected: true,
+        containerClass: "student-container selected",
+        selectButtonText: "Drop"
+      });
+    } else if (s.selected && p.droppedAll) {
       this.setState({
         selected: false,
         containerClass: "student-container",
         selectButtonText: "Select"
       });
+    }
+  },
+  handleSelectClick: function() {
+    debugger;
+    if (this.state.selected || this.props.selectedAll) {
+      this.dropStudent();
       this.props.handleRemoveSelectedStudent(this.props.student.id);
-    } else {
-      this.setState({ 
-        selected: true,
-        containerClass: "student-container selected",
-        selectButtonText: "Unselect"
-      });
+    } else if (!this.state.selected || this.props.droppedAll) {
+      this.selectStudent();
       this.props.handleSelectedStudent(this.props.student.id);
     }
+  },
+  selectStudent: function() {
+    this.setState({ 
+      selected: true,
+      containerClass: "student-container selected",
+      selectButtonText: "Drop"
+    });
+  },
+  dropStudent: function() {
+    this.setState({
+      selected: false,
+      containerClass: "student-container",
+      selectButtonText: "Select"
+    });
   },
   render: function() {
     var p = this.props;

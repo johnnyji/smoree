@@ -2,7 +2,7 @@
 
 .email-box-container {
   position: relative;
-  margin: 3em auto 1em auto;
+  margin: 5em auto;
   text-align: center;
   width: 80%;
   .email-box-info {
@@ -66,28 +66,49 @@
 
 .students-container {
   position: relative;
-  margin: 0 auto;
+  margin: 0 auto 5em auto;
+  padding: 1.5em; 
   width: 80%;
   text-align: center;
+  box-shadow: 0 0 10px $gray;
+  .students-container-title {
+    font-size: 2em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .select-all {
+    display: inline-block;
+    margin: 0 1em;
+    vertical-align: middle;
+    font-size: 1.2em;
+  }
+  .drop-all {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2em;
+  }
   .student-container {
+    @include fake-button-style($medium-gray, $dark-gray);
     position: relative;
     display: inline-block;
     text-align: left;
     margin: 2%;
     padding: 1em;
     width: 28%;
-    background-color: red;
+    color: $white;
     h1 {
       display: inline-block;
       margin: 0;
     }
     button {
-
       display: inline-block;
       float: right;
+      font-size: 1.2em;
+      border-style: none;
     }
   }
   .selected {
-    background-color: green;
+    background-color: $primary-green;
+    box-shadow: 0 8px 0 $secondary-green
   }
 }
