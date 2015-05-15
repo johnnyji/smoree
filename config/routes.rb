@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   
   resources :students do
     collection do
-      get :mail
-      get :mail_all
+      post :mail
     end
   end
 

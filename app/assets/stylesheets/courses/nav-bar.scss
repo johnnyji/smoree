@@ -98,8 +98,10 @@
       textarea {
         @include input-field-style;
         font-size: 1.05em;
-        resize: none;
         width: 100%;
+        min-height: 300px;
+        height: 300px;
+        max-height: 500px;
         margin-bottom: 1em;
         white-space: pre;
       }

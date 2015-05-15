@@ -1,4 +1,4 @@
-var FlashMessage = React.createClass({
+var ReactFlashMessage = React.createClass({
   render: function() {
     return (
       <div className={"react-flash-message " + this.props.flashType}>

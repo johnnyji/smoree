@@ -13,20 +13,11 @@ class StudentsController < ApplicationController
   end
 
   def mail
-    @students = Student.where(id: params[:id_array])
-    body = params[:email]
-    @students.each do |student| 
-      StudentMailer.teacher_email(student, student.course, body).deliver
+    students = Student.where(id: params[:id_array])
+    students.each do |student| 
+      StudentMailer.teacher_email(student, student.course, params[:subject], params[:email]).deliver
     end
-    render json: { student_count: @students.count }, status: :ok
-  end
-
-  def mail_all
-    subject = params[:subject]
-    body = params[:email]
-    current_user.students.each do |student|
-      StudentMailer.teacher_email_all(student, subject, body).deliver
-    end
+    render json: { student_count: students.count }, status: :ok
   end
 
   private

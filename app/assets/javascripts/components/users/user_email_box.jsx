@@ -25,7 +25,8 @@ var UserEmailBox = React.createClass({
       this.setError("Please select students to send to");
     } else {
       this.setState({ error: null });
-      UserActions.sendEmail(this.props.students, email, this.handleEmailSuccess, this.handleEmailError);
+      debugger;
+      UserActions.sendEmail(this.props.students, subject, email, this.handleEmailSuccess, this.handleEmailError);
     }
   },
   handleEmailSuccess: function(data) {
@@ -56,7 +57,7 @@ var UserEmailBox = React.createClass({
     return (
       <div className="email-box-container">
         <div className="email-box-info">
-          <h2>{p.user.first_name + "'s"} Mailing List</h2>
+          <h2>Student Mailing List</h2>
           <p>This mailing list is for all your students. Only use this when you want to contact every student you have!</p>
           <ul>
             <h2>Examples</h2>
@@ -67,8 +68,8 @@ var UserEmailBox = React.createClass({
         </div>
 
         <div className="email-box-form">
-          {s.sent && s.flash && <FlashMessage message={"Emailed to " + s.studentCount + " students"} flashType={"flash-success"} hideFlash={this.handleHideFlash} />}
-          {s.error && s.flash && <FlashMessage message={s.error} flashType={"flash-error"} hideFlash={this.handleHideFlash} />}
+          {s.sent && s.flash && <ReactFlashMessage message={"Emailed to " + s.studentCount + " students"} flashType={"flash-success"} hideFlash={this.handleHideFlash} />}
+          {s.error && s.flash && <ReactFlashMessage message={s.error} flashType={"flash-error"} hideFlash={this.handleHideFlash} />}
 
           <input placeholder="Email Subject" id="email_subject" onChange={this.handleEmailChange}></input><br/>
           <textarea placeholder="Dear Students..." id="email_box" onChange={this.handleEmailChange}></textarea><br/>

@@ -4,6 +4,7 @@
 
 .react-flash-message {
   @include position-x(fixed, 50%);
+  font-weight: 600;
   background-color: $gray;
   box-shadow: 0 8px 0 $light-gray;
   margin: 0;
@@ -34,12 +35,14 @@
   }
 }
 
-.flash-success {
+.flash-success,
+.notice {
   background-color: $primary-green;
   box-shadow: 0 8px 0 $secondary-green;
 }
 
-.flash-error {
+.flash-error,
+.alert {
   background-color: $primary-red;
   box-shadow: 0 8px 0 $secondary-red;
 }
@@ -49,18 +52,6 @@
   margin: 0 auto;
   text-align: center;
   font-size: 1.3em;
-}
-
-.notice {
-  margin: 0 auto;
-  text-align: center;
-  color: green;
-}
-
-.alert {
-  margin: 0 auto;
-  text-align: center;
-  color: $secondary-red;
 }
 
 .validation-error {

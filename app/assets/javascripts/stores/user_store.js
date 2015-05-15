@@ -1,8 +1,10 @@
 var UserStore = Reflux.createStore({
   listenables: UserActions,
-  onSendEmail: function(studentsArray, email, success, error) {
+  onSendEmail: function(studentsArray, subject, email, success, error) {
+    debugger;
     var info = { 
       id_array: studentsArray,
+      subject: subject,
       email: email
     }
     $.ajax({

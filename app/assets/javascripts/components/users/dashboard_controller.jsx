@@ -2,7 +2,8 @@ var DashboardController = React.createClass({
   propTypes: {
     tabs: React.PropTypes.array.isRequired,
     courses: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired,
+    students: React.PropTypes.object.isRequired
   },
   getInitialState: function() {
     return {
@@ -17,7 +18,7 @@ var DashboardController = React.createClass({
     var p = this.props;
     var sections = [
       <ManageCourses user={p.user} courses={p.courses}/>,
-      <ManageStudents user={p.user} />,
+      <ManageStudents user={p.user} students={p.students}/>,
       <ManageAccount />
     ]
     return (

@@ -25,7 +25,6 @@ var ManageStudents = React.createClass({
       selectedStudents: students,
       selectedAll: false
     });
-    debugger;
   },
   handleSelectAll: function() {
     var allStudents = [];
@@ -37,7 +36,6 @@ var ManageStudents = React.createClass({
       droppedAll: false,
       selectedStudents: allStudents
     });
-    debugger;
   },
   handleDropAll: function() {
     this.setState({
@@ -48,9 +46,10 @@ var ManageStudents = React.createClass({
   },
   render: function() {
     var p = this.props;
+    var s = this.state;
     return (
       <div>
-        <UserEmailBox students={p.students} user={p.user} />
+        <UserEmailBox students={s.selectedStudents} />
         <AllStudentsContainer
           students={p.students}
           selectedAll={s.selectedAll}
