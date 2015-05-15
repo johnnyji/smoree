@@ -51,7 +51,6 @@ var NewCourse = React.createClass({
     return userInput;
   },
   handleLocationChange: function(coordinates, fullAddress) {
-    debugger;
     this.setState({
       latitude: coordinates[0],
       longitude: coordinates[1],

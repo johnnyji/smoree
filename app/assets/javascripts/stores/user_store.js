@@ -1,7 +1,6 @@
 var UserStore = Reflux.createStore({
   listenables: UserActions,
   onSendEmail: function(studentsArray, subject, email, success, error) {
-    debugger;
     var info = { 
       id_array: studentsArray,
       subject: subject,
@@ -15,8 +14,5 @@ var UserStore = Reflux.createStore({
       success: success,
       error: error
     });
-  },
-  onCreateNewCourse: function() {
-    window.location.href = "/courses/new";
   }
 });

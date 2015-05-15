@@ -22,7 +22,6 @@ var CourseEmailPage = React.createClass({
       selectedStudents: students,
       selectedAll: false
     });
-    debugger;
   },
   handleSelectAll: function() {
     var allStudents = [];
@@ -34,7 +33,6 @@ var CourseEmailPage = React.createClass({
       droppedAll: false,
       selectedStudents: allStudents
     });
-    debugger;
   },
   handleDropAll: function() {
     this.setState({

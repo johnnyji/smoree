@@ -53,6 +53,9 @@
         height: 30%;
         background-color: $dark-gray;
         padding: 1em;
+        &:hover {
+          cursor: default;
+        }
         .options-nav-left {
           position: relative;
           display: inline-block;
@@ -60,6 +63,15 @@
           text-align: left;
           .icon {
             float: left;
+            margin-right: 1em;
+          }
+          .clipboard {
+            .react-flash-message {
+              i {
+                color: $white;
+              font-size: 25px;
+              }
+            }
           }
         }
         .options-nav-right {
@@ -75,13 +87,13 @@
             top: 14px;
           }
         }
-        i {
-            position: relative;
-            font-size: 1.5em;
-            color: $white;
-            margin: 0;
-            top: 0.5em;
-          }
+        .nav-option-icons {
+          position: relative;
+          font-size: 1.5em;
+          color: $white;
+          margin: 0;
+          top: 0.5em;
+        }
       }
       img {
         @include brightness(20%);
@@ -90,6 +102,9 @@
         height: 101%;
         border-radius: $border-radius;
         opacity: 0.7;
+        &:hover {
+          @include brightness(30%);
+        }
       }
       &:hover {
         cursor: pointer;

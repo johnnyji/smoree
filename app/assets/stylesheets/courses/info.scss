@@ -72,17 +72,20 @@
   text-align: center;
   box-shadow: 0 0 10px $gray;
   .students-container-title {
+    margin-right: 1em;
     font-size: 2em;
     display: inline-block;
     vertical-align: middle;
   }
   .select-all {
+    @include button-style($primary-green, $secondary-green);
+    margin: 0;
     display: inline-block;
-    margin: 0 1em;
     vertical-align: middle;
     font-size: 1.2em;
   }
   .drop-all {
+    @include button-style($primary-green, $secondary-green);
     display: inline-block;
     vertical-align: middle;
     font-size: 1.2em;
@@ -101,10 +104,20 @@
       margin: 0;
     }
     button {
+      position: relative;
       display: inline-block;
+      margin: 0;
+      top: -3px;
       float: right;
-      font-size: 1.2em;
+      font-size: 1.6em;
       border-style: none;
+      background-color: transparent;
+      &:focus {
+        outline: none;
+      }
+    }
+    i {
+      color: white;
     }
   }
   .selected {

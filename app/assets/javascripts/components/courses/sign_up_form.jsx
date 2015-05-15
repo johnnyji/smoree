@@ -3,7 +3,15 @@ var SignupForm = React.createClass({
     return  {
       submitted: false,
       firstName: null,
-      error: false
+      error: false,
+      errorMessage: null
+    }
+  },
+  hideFlash: function() {
+    if (this.state.error) {
+      this.setState({ error: false });
+    } else if (this.state.submitted) {
+      this.setState({ submitted: false });
     }
   },
   handleFormSubmission: function() {
@@ -24,7 +32,6 @@ var SignupForm = React.createClass({
     });
   },
   handleAddStudentSuccess: function(data) {
-    debugger;
     this.setState({ 
       submitted: true,
       firstName: data.first_name
@@ -34,16 +41,20 @@ var SignupForm = React.createClass({
     document.getElementById("student-email").value = "";
     document.getElementById("student-description").value = "";
   },
-  handleAddStudentError: function(XHR) {
-    debugger;
-    var error = JSON.parse(XHR.responseText)[0];
+  handleAddStudentError: function(xhr) {
+    var error = JSON.parse(xhr.responseText).error;
+    this.setState({ 
+      error: true,
+      errorMessage: error
+    });
   },
   render: function() {
-    var s = this.state
+    var s = this.state;
     return (
       <div>
         <div className="user-signup-form"> 
-          {s.submitted && <FlashMessage flashType={"flash-success"} message={"Thanks " + s.firstName + "!"}/>}
+          {s.error && <ReactFlashMessage flashType={"flash-error"} message={s.errorMessage} hideFlash={this.hideFlash}/>}
+          {s.submitted && <ReactFlashMessage flashType={"flash-success"} message={"Thanks " + s.firstName + "!"} hideFlash={this.hideFlash}/>}
           <h1 className="signup-form-title">Register Here!</h1>
           <input type="text" className="user-signup-name-field" placeholder="First Name" id="student-first-name" onChange={this.handleChange}></input><br></br>
           <input type="text" className="user-signup-name-field" placeholder="Last Name" id="student-last-name" onChange={this.handleChange}></input><br></br>

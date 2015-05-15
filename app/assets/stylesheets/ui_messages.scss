@@ -4,6 +4,7 @@
 
 .react-flash-message {
   @include position-x(fixed, 50%);
+  font-size: 18px;
   font-weight: 600;
   background-color: $gray;
   box-shadow: 0 8px 0 $light-gray;
@@ -16,22 +17,24 @@
   z-index: 8;
   padding: 1em;
   color: $white;
+  .flash-exit {
+    @include position-center(absolute, 50%, 50%);
+    top: 50%; 
+    left: 96%;
+    font-size: 20px;
+    i {
+      color: $white;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
   h3 {
     @include position-center(absolute, 50%, 50%);
     top: 50%;
     left: 50%;
     margin: 0;
     display: inline-block;
-  }
-  i {
-    position: relative;
-    display: inline-block;
-    float: right;
-    font-size: 1.5em;
-    color: $white;
-    &:hover {
-      color: $white;
-    }
   }
 }
 

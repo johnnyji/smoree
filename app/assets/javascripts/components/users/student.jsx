@@ -3,7 +3,7 @@ var Student = React.createClass({
       return {
         selected: false,
         containerClass: "student-container",
-        selectButtonText: "Select" 
+        selectButtonText: "fa fa-plus" 
       } 
   },
   componentDidUpdate: function() {
@@ -28,14 +28,14 @@ var Student = React.createClass({
     this.setState({ 
       selected: true,
       containerClass: "student-container selected",
-      selectButtonText: "Drop"
+      selectButtonText: "fa fa-remove"
     });
   },
   dropStudent: function() {
     this.setState({
       selected: false,
       containerClass: "student-container",
-      selectButtonText: "Select"
+      selectButtonText: "fa fa-plus"
     });
   },
   render: function() {
@@ -43,9 +43,17 @@ var Student = React.createClass({
     var s = this.state;
     return (
       <div className={s.containerClass}>
-        <h1>{p.student.first_name} {p.student.last_name}</h1>
-        <button onClick={this.handleSelectClick}>{s.selectButtonText}</button>
-        <p>{p.student.email }</p>
+        <h1>
+          <i className="fa fa-user" onClick={this.handleSelectClick}></i>
+          &nbsp;&nbsp;{p.student.first_name} {p.student.last_name}
+        </h1>
+        <button onClick={this.handleSelectClick}>
+          <i className={s.selectButtonText}></i>
+        </button>
+        <p>
+          <i className="fa fa-envelope" onClick={this.handleSelectClick}></i>&nbsp;&nbsp;
+          {p.student.email }
+        </p>
       </div>
     )
   }

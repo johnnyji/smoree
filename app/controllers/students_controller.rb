@@ -8,7 +8,8 @@ class StudentsController < ApplicationController
       StudentMailer.welcome_email(student, student.course).deliver
       render json: { first_name: student.first_name.capitalize }, status: :ok
     else
-      render json: { errors: student.errors.to_json }, status: :unprocessable_entity
+      # this gets the first error key value pair in an array, the second is the actual error message
+      render json: { error: student.errors.first.second }, status: :unprocessable_entity
     end
   end
 

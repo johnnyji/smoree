@@ -1,6 +1,5 @@
 var CourseContainer = React.createClass({
   handleNavToCourse: function() {
-    debugger;
     window.location.href = "/courses/" + this.props.course.id;
   },
   handleEditCourse: function() {
@@ -25,15 +24,18 @@ var CourseContainer = React.createClass({
           <div className="dashboard-options">
             <div className="options-nav-left">
               <div className="icon">
-                <i className="fa fa-envelope-o" onClick={this.handleCourseInfoRedirect}></i>
+                <Clipboard text={course.slug + ".skillup.com"} />
+              </div>
+              <div className="icon">
+                <i className="fa fa-envelope-o nav-option-icons" onClick={this.handleCourseInfoRedirect}></i>
               </div>
             </div>
             <div className="options-nav-right">
               <div className="icon">  
-                <i className="fa fa-remove" onClick={this.handleCourseDelete}></i>
+                <i className="fa fa-remove nav-option-icons" onClick={this.handleCourseDelete}></i>
               </div>
               <div className="icon">
-                <i className="fa fa-edit" onClick={this.handleEditCourse}></i>
+                <i className="fa fa-edit nav-option-icons" onClick={this.handleEditCourse}></i>
               </div>
             </div>
           </div>

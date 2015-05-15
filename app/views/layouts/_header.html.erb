@@ -1,7 +1,11 @@
 <header>
 
   <div class="header-left">
-    <%= link_to "skillup", root_path %>
+    <% if logged_in? %>
+      <%= link_to "skillup", root_path %>
+    <% else %>
+      <%= link_to "skillup", user_path(current_user) %>
+    <% end %>
   </div>
 
   <div class="header-right">
