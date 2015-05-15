@@ -37,13 +37,11 @@ var CourseEmailPage = React.createClass({
     debugger;
   },
   handleDropAll: function() {
-    debugger;
     this.setState({
       selectedAll: false,
       droppedAll: true,
       selectedStudents: []
     });
-    debugger;
   },
   render: function() {
     var p = this.props;

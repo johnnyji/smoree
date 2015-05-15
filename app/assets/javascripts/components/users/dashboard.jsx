@@ -1,4 +1,9 @@
 var Dashboard = React.createClass({
+  propTypes: {
+    tabs: React.PropTypes.array.isRequired,
+    courses: React.PropTypes.object.isRequired,
+    user: React.PropTypes.object.isRequired
+  },
   render: function() {
     var p = this.props;
     return (

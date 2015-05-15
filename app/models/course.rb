@@ -8,9 +8,6 @@ class Course < ActiveRecord::Base
   validates :title,  
               presence: { message: "The course title is blank" }, 
               uniqueness: { message: "This title has already been taken" }
-  validates :max_students_allowed, 
-              presence: { message: "Select a student limit for the course"},
-              numericality: { only_integer: true, message: "Student limit must be a number" }
   validates :start_date, presence: { message: "Select a start date" }
   validates :end_date, presence: { message: "Select a end date" }
   validates :summary, presence: { message: "The course summary is blank" }
