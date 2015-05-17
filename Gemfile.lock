@@ -183,7 +183,7 @@ DEPENDENCIES
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.1.0)
   font-awesome-rails (~> 4.3.0.0)
-  geocoder (~> 1.2.8)
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks (~> 2.1.0)
