@@ -60,8 +60,7 @@ var SignupForm = React.createClass({
           <input type="text" className="user-signup-name-field" placeholder="Last Name" id="student-last-name" onChange={this.handleChange}></input><br></br>
           <input type="email" className="user-signup-email-field" placeholder="Email" id="student-email" onChange={this.handleChange}></input><br></br>
           <textarea className="user-signup-comment-field" placeholder="Tell the instructor something!" id="student-description" onChange={this.handleChange}></textarea>
-          {this.props.live && <button className="user-signup-submit-button" onClick={this.handleFormSubmission}>Register!</button> }
-          {!this.props.live && <button className="no-user-signup-submit-button" disabled>Demo Purpose Only</button>}
+          <button className="user-signup-submit-button" onClick={this.handleFormSubmission}>Register!</button>
         </div>
       </div>
     );
