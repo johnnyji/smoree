@@ -1,4 +1,7 @@
 var CourseContainer = React.createClass({
+  formatDate: function(date) {
+    return moment(date).format("MMMM Do YYYY");
+  },
   handleNavToCourse: function() {
     window.location.href = "/courses/" + this.props.course.id;
   },
@@ -20,7 +23,12 @@ var CourseContainer = React.createClass({
       <div className="user-dashboard-course-container">
         <div className="dashboard-course-wrapper">
           <img src={course.image_url} onClick={this.handleNavToCourse} ></img>
-          <h1 className="dashboard-course-title" onClick={this.handleNavToCourse}>{course.title}</h1>
+
+          <div className="dashboard-course-title">
+            <h1 onClick={this.handleNavToCourse}>{course.title}</h1>
+            <p>{this.formatDate(course.start_date)} - {this.formatDate(course.end_date)}</p>
+          </div>
+
           <div className="dashboard-options">
             <div className="options-nav-left">
               <div className="icon">

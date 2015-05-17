@@ -1,0 +1,20 @@
+@import "appwide";
+
+.edit-user-container {
+  @include border-shadow;
+  position: relative;
+  margin: 0 auto;
+  padding: 2em;
+  width: 70%;
+  text-align: left;
+  .title {
+    font-size: 2.2em;
+    margin-top: 0;
+  }
+  input[type=text] {
+
+  }
+  .save-profile {
+    @include button-style($primary-green, $secondary-green);
+  }
+}

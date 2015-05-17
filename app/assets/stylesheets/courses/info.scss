@@ -65,12 +65,12 @@
 }
 
 .students-container {
+  @include border-shadow;
   position: relative;
   margin: 0 auto 5em auto;
   padding: 1.5em; 
   width: 80%;
   text-align: center;
-  box-shadow: 0 0 10px $gray;
   .students-container-title {
     margin-right: 1em;
     font-size: 2em;
@@ -122,6 +122,6 @@
   }
   .selected {
     background-color: $primary-green;
-    box-shadow: 0 8px 0 $secondary-green
+    box-shadow: 0 8px 0 $secondary-green;
   }
 }

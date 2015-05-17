@@ -23,6 +23,9 @@ class UsersController < ApplicationController
 
   def show
     @courses = current_user.courses.all.order("created_at DESC")
+    if request.xhr?
+      render json: { user: @user }, status: :ok
+    end
   end
 
   def edit
@@ -31,10 +34,10 @@ class UsersController < ApplicationController
   def update
     @user.update(user_params)
     if @user.save
-      redirect_to user_path(@user), notice: "You've succesfully updated your profile"
+      binding.pry
+      render json: { user: @user }, status: :ok
     else
-      flash.now.notice = "Something went wrong"
-      render :edit
+      render json: { errors: @user.errors }, status: :unprocessable_entity
     end
   end
 

@@ -40,11 +40,17 @@
       border-radius: $border-radius;
       box-shadow: 0 0 5px $medium-gray;
       .dashboard-course-title {
-        @include position-center(absolute, 30%, 50%);
+        @include position-center(absolute, 35%, 50%);
         color: $white;
         width: 90%;
-        font-size: 1.5em;
         text-align: center;
+        h1 {
+          margin-bottom: 0;
+          font-size: 1.8em;
+        }
+        p {
+          margin: 0;
+        }
       }
       .dashboard-options {
         position: absolute;
@@ -59,17 +65,22 @@
         .options-nav-left {
           position: relative;
           display: inline-block;
+          margin-top: 1em;
           width: 40%;
           text-align: left;
           .icon {
             float: left;
             margin-right: 1em;
+            font-size: 1.2em;
           }
           .clipboard {
+            &:hover {
+              cursor: pointer;
+            }
             .react-flash-message {
               i {
                 color: $white;
-              font-size: 25px;
+                font-size: 25px;
               }
             }
           }
@@ -77,14 +88,16 @@
         .options-nav-right {
           position: relative;
           display: inline-block;
+          margin-top: 1em;
           width: 50%;
           text-align: right;
           .icon {
             float: right;
             margin-left: 1em;
+            font-size: 1.2em;
           }
           .fa-edit {
-            top: 14px;
+            top: 17px;
           }
         }
         .nav-option-icons {
@@ -102,9 +115,6 @@
         height: 101%;
         border-radius: $border-radius;
         opacity: 0.7;
-        &:hover {
-          @include brightness(30%);
-        }
       }
       &:hover {
         cursor: pointer;
