@@ -16,6 +16,7 @@
 //= require titleize
 //= require filedrop
 //= require moment
+//= require zeroclipboard
 //= require react
 //= require react_ujs
 //= require reflux

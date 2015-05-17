@@ -1,4 +1,4 @@
-var EmailBox = React.createClass({
+var UserEmailBox = React.createClass({
   getInitialState: function () {
       return {
         sendable: false,
@@ -25,6 +25,7 @@ var EmailBox = React.createClass({
       this.setError("Please select students to send to");
     } else {
       this.setState({ error: null });
+      debugger;
       UserActions.sendEmail(this.props.students, subject, email, this.handleEmailSuccess, this.handleEmailError);
     }
   },
@@ -56,8 +57,8 @@ var EmailBox = React.createClass({
     return (
       <div className="email-box-container">
         <div className="email-box-info">
-          <h2>{p.course.title} Mailing List</h2>
-          <p>This is where you would keep your students informed about the course! Select students and send them all emails!</p>
+          <h2>Student Mailing List</h2>
+          <p>This mailing list is for all your students. Only use this when you want to contact every student you have!</p>
           <ul>
             <h2>Examples</h2>
             <li>Contact specific students</li>

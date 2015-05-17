@@ -1,6 +1,8 @@
 var CourseContainer = React.createClass({
+  formatDate: function(date) {
+    return moment(date).format("MMMM Do YYYY");
+  },
   handleNavToCourse: function() {
-    debugger;
     window.location.href = "/courses/" + this.props.course.id;
   },
   handleEditCourse: function() {
@@ -10,7 +12,6 @@ var CourseContainer = React.createClass({
     CourseActions.deleteCourse(this.props.course.id, this.handleCourseDeleteSuccess);
   },
   handleCourseDeleteSuccess: function(data) {
-    debugger;
     window.location.reload();
   },
   handleCourseInfoRedirect: function() {
@@ -22,12 +23,29 @@ var CourseContainer = React.createClass({
       <div className="user-dashboard-course-container">
         <div className="dashboard-course-wrapper">
           <img src={course.image_url} onClick={this.handleNavToCourse} ></img>
-          <h1 className="dashboard-course-title" onClick={this.handleNavToCourse}>{course.title}</h1>
+
+          <div className="dashboard-course-title">
+            <h1 onClick={this.handleNavToCourse}>{course.title}</h1>
+            <p>{this.formatDate(course.start_date)} - {this.formatDate(course.end_date)}</p>
+          </div>
+
           <div className="dashboard-options">
-            <i className="fa fa-envelope-o" onClick={this.handleCourseInfoRedirect}></i>
-            <i className="fa fa-edit" onClick={this.handleEditCourse}></i>
-            <i className="fa fa-remove" onClick={this.handleCourseDelete}></i>
-            <i className="fa fa-remove"></i>
+            <div className="options-nav-left">
+              <div className="icon">
+                <Clipboard text={course.slug + ".skillup.com"} />
+              </div>
+              <div className="icon">
+                <i className="fa fa-envelope-o nav-option-icons" onClick={this.handleCourseInfoRedirect}></i>
+              </div>
+            </div>
+            <div className="options-nav-right">
+              <div className="icon">  
+                <i className="fa fa-remove nav-option-icons" onClick={this.handleCourseDelete}></i>
+              </div>
+              <div className="icon">
+                <i className="fa fa-edit nav-option-icons" onClick={this.handleEditCourse}></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>

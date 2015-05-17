@@ -1,4 +1,4 @@
-var StudentsContainer = React.createClass({
+var AllStudentsContainer = React.createClass({
   render: function() {
     var students = [];
     var p = this.props;
@@ -24,7 +24,7 @@ var StudentsContainer = React.createClass({
       return (
         <div className="students-container">
           <div>
-            <h1 className="students-container-title">Students for {p.course.title}</h1>
+            <h1 className="students-container-title">All Students</h1>
             <button className="select-all" onClick={p.handleSelectAll}>Select All</button>
             <button className="drop-all" onClick={p.handleDropAll}>Drop All</button>
           </div>

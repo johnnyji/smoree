@@ -139,6 +139,10 @@
       box-shadow: 0 0 5px $dark-green;
   }
 }
+
+@mixin border-shadow {
+  box-shadow: 0 0 10px $gray;
+}
 //  VARIABLES
 
 $primary-orange: #D35400;

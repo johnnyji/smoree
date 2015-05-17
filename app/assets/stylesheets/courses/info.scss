@@ -1,16 +1,127 @@
 @import "appwide";
 
-.students-container {
+.email-box-container {
   position: relative;
-  margin: 0 auto;
+  margin: 5em auto;
+  text-align: center;
   width: 80%;
-  .student-container {
-    position: relative;
+  .email-box-info {
     display: inline-block;
     width: 30%;
-    background-color: red;
+    text-align: left;
+    h2 {
+      margin: 0 auto 0.5em auto;
+      font-size: 2em;
+    }
+    p {
+      font-size: 1.1em;
+      margin-bottom: 2em;
+    }
+    ul {
+      font-size: 1.1em;
+      padding: 0;
+      margin-left: 0;
+      h2 {
+        font-size: 1.8em;
+      }
+      li {
+        @include fake-button-style($primary-green, $secondary-green);
+        margin: 0 0 1em 0;
+      }
+    }
   }
-  .student-container-selected {
-    background-color: green;
+  .email-box-form {
+    margin-top: 1em;
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    input {
+      @include input-field-style;
+      font-size: 1.1em;
+      width: 500px;
+      height: 40px;
+      margin-bottom: 1em;
+    }
+    textarea {
+      @include input-field-style;
+      font-size: 1.1em;
+      width: 500px;
+      height: 250px;
+      resize: none;
+      white-space: pre;
+    }
+    h1 {
+      font-size: 1.8em;
+    }
+    .email-box-submit-button {
+      @include button-style($primary-green, $secondary-green);
+      font-size: 1.4em;
+    }
+    .no-email-box-submit-button {
+      @include fake-button-style($gray, $light-gray);
+      font-size: 1.4em;
+    }
+  }
+}
+
+.students-container {
+  @include border-shadow;
+  position: relative;
+  margin: 0 auto 5em auto;
+  padding: 1.5em; 
+  width: 80%;
+  text-align: center;
+  .students-container-title {
+    margin-right: 1em;
+    font-size: 2em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .select-all {
+    @include button-style($primary-green, $secondary-green);
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2em;
+  }
+  .drop-all {
+    @include button-style($primary-green, $secondary-green);
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2em;
+  }
+  .student-container {
+    @include fake-button-style($medium-gray, $dark-gray);
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    margin: 2%;
+    padding: 1em;
+    width: 28%;
+    color: $white;
+    h1 {
+      display: inline-block;
+      margin: 0;
+    }
+    button {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      top: -3px;
+      float: right;
+      font-size: 1.6em;
+      border-style: none;
+      background-color: transparent;
+      &:focus {
+        outline: none;
+      }
+    }
+    i {
+      color: white;
+    }
+  }
+  .selected {
+    background-color: $primary-green;
+    box-shadow: 0 8px 0 $secondary-green;
   }
 }

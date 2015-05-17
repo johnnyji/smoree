@@ -24,11 +24,10 @@
 }
 
 .course-info-section {
-  padding: 1em;
   position: relative;
   margin: 3em auto;
   min-height: 600px;
-  width: 62%;
+  width: 70%;
   font-size: 1.2em;
   .course-info-left {
     position: relative;
@@ -36,25 +35,38 @@
     display: inline-block;
     margin-right: 2em;
     width: 48%;
-    .course-summary-field {
-      position: relative;
-      width: 95%;
-      margin: 0 0 1em 0;
-      word-wrap: break-word;
+    .main-info {
+      box-shadow: 0 0 10px $gray;
+      padding: 1.5em;
+      margin-bottom: 3em;
+      .course-summary-field {
+        position: relative;
+        width: 95%;
+        margin: 0 0 1em 0;
+        word-wrap: break-word;
+      }
+      .course-description-field {
+        position: relative;
+        width: 95%;
+        word-wrap: break-word;
+        white-space: pre;
+      }
     }
-    .course-description-field {
-      position: relative;
-      width: 95%;
-      word-wrap: break-word;
-      white-space: pre;
+    .additional-info {
+      box-shadow: 0 0 10px $gray;
+      padding: 0.5em 1em;
     }
     .course-additional-info {
-      width: 95%;
-      background-color: red;
-      .row {
-        b { min-width: 40%; background-color: yellow;}
+      .display-additional-div {
+        margin: 1em 0;
+        .display-detail-title {
+        margin: 0;
+        }
+        p {
+          margin: 0;
+          font-weight: 400;
+        }
       }
-      h1 { margin-bottom: 1em; }
     }
   }
   .course-info-right {
@@ -67,7 +79,7 @@
       box-shadow: 0 0 10px $light-gray;
       height: 250px;
       width: 400px;
-      margin-bottom: 2em;
+      margin-bottom: 3em;
       overflow: hidden;
       img {
         @include position-center(absolute, 50%, 50%);
@@ -75,7 +87,7 @@
     }
     .user-signup-form {
       position: relative;
-      box-shadow: 0 0 10px $light-gray;
+      box-shadow: 0 0 10px $gray;
       height: 620px;
       width: 400px;
       text-align: center;

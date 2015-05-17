@@ -71,20 +71,43 @@
       h1 {
         margin: 0 0 10px 0;
       }
+      .new-course-form-slug {
+        width: 100%;
+        margin-bottom: 1em;
+        input {
+          @include input-field-style;
+          display: inline-block;
+          width: 100px;
+          font-size: 1.05em;
+          margin: 0 1em 1em 0;
+        }
+        p {
+          display: inline-block;
+          font-size: 1.6em;
+          text-align: right;
+          margin: 0 10px 0 0;
+        }
+      }
       input[type=text] {
         @include input-field-style;
         width: 100%;
         font-size: 1.05em;
         margin-bottom: 1em;
       }
-      .new-course-form-description,
-      textarea {
+      .new-course-form-description, textarea {
         @include input-field-style;
         font-size: 1.05em;
-        resize: none;
         width: 100%;
+        min-height: 300px;
+        height: 300px;
+        max-height: 500px;
         margin-bottom: 1em;
         white-space: pre;
+      }
+      .new-course-form-summary {
+        min-height: 80px;
+        max-height: 80px;
+        resize: none;
       }
       .create-course-button {
         position: absolute;
@@ -93,10 +116,6 @@
           @include button-style($primary-green, $dark-green);
           font-size: 1.3em;
         }
-      }
-      .new-course-form-description {
-        height: 200px;
-        background-color: white;
       }
     }
   }

@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :delete, :destroy]
   before_action :find_course, only: [:show, :edit, :update, :delete, :destroy, :info]
+  respond_to :json, :html
   
   def index
   end
@@ -38,24 +39,28 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    render nothing: true, status: :ok
+    render json: nil, status: :ok 
   end
 
   def info
-
-  end
-
-  def search
-    Course.search(params[:query])
   end
 
   private
 
   def course_params
-    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :image_url, :latitude, :longitude, :welcome_email)
+    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :image_url, :latitude, :longitude, :welcome_email, :slug)
   end
 
   def find_course
-    @course = Course.find(params[:id])
+    if request.subdomain.present?
+      begin
+        @course = Course.find_by!(slug: request.subdomain)
+      rescue ActiveRecord::RecordNotFound
+        redirect_to root_url(subdomain: false), notice: "Sorry, that course wasn't found!"
+      end
+    else
+      @course = Course.find(params[:id])
+    end
   end
+
 end

@@ -1,24 +1,7 @@
 var ManageCourses = React.createClass({
-  getInitialState: function () {
-      return {
-        newCourseContainer: null    
-      } 
-  },
-  componentDidMount: function () {
-    this.setState({ 
-      newCourseContainer: (
-        <div className="user-dashboard-course-container" onClick={this.handleNewCourseClick} >
-          <i className="fa fa-plus"></i>
-        </div>
-      ) 
-    });
-  },
-  handleNewCourseClick: function() {
-    UserActions.createNewCourse();
-  },  
   render: function() {
     var p = this.props;
-    var courses = [this.state.newCourseContainer];
+    var courses = [<NewCourseButton />];
 
     for (var i = 0; i < p.courses.length; i++) {
       var course = p.courses[i];

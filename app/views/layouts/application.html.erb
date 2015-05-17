@@ -16,9 +16,12 @@
   <%= render partial: "layouts/header" %>
 
   <% flash.each do |key, value| %>
-    <div class="react-flash-message">
-      <%= content_tag(:div, value, class: key.to_s) %>
-    </div>
+    <%= react_component(
+      "UiFlashMessage",
+      flashType: key.to_s, 
+      message: value
+    ) %>
+    <%#= content_tag(:div, value, class: "react-flash-message #{key.to_s}") %>
   <% end %>
   
   <%= yield %>

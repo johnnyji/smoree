@@ -3,7 +3,15 @@ var SignupForm = React.createClass({
     return  {
       submitted: false,
       firstName: null,
-      formHeader: "Register Here!"
+      error: false,
+      errorMessage: null
+    }
+  },
+  hideFlash: function() {
+    if (this.state.error) {
+      this.setState({ error: false });
+    } else if (this.state.submitted) {
+      this.setState({ submitted: false });
     }
   },
   handleFormSubmission: function() {
@@ -15,7 +23,6 @@ var SignupForm = React.createClass({
       course_id: this.props.course_id,
 
     }
-    // add function to submit the form info and create a student with it
     CourseActions.addStudent(data, this.handleAddStudentSuccess, this.handleAddStudentError);
   },
   handleChange: function() {
@@ -27,20 +34,28 @@ var SignupForm = React.createClass({
   handleAddStudentSuccess: function(data) {
     this.setState({ 
       submitted: true,
-      firstName: data.first_name,
-      formHeader: "Thanks "
+      firstName: data.first_name
+    });
+    document.getElementById("student-first-name").value = "";
+    document.getElementById("student-last-name").value = "";
+    document.getElementById("student-email").value = "";
+    document.getElementById("student-description").value = "";
+  },
+  handleAddStudentError: function(xhr) {
+    var error = JSON.parse(xhr.responseText).error;
+    this.setState({ 
+      error: true,
+      errorMessage: error
     });
   },
-  handleAddStudentError: function(XHR) {
-
-  },
   render: function() {
-    var s = this.state
+    var s = this.state;
     return (
       <div>
         <div className="user-signup-form"> 
-          {s.submitted && <h1 className="signup-form-title">{s.formHeader} {s.firstName}!</h1>}
-          {!s.submitted && <h1 className="signup-form-title">{s.formHeader}</h1>}
+          {s.error && <ReactFlashMessage flashType={"flash-error"} message={s.errorMessage} hideFlash={this.hideFlash}/>}
+          {s.submitted && <ReactFlashMessage flashType={"flash-success"} message={"Thanks " + s.firstName + "!"} hideFlash={this.hideFlash}/>}
+          <h1 className="signup-form-title">Register Here!</h1>
           <input type="text" className="user-signup-name-field" placeholder="First Name" id="student-first-name" onChange={this.handleChange}></input><br></br>
           <input type="text" className="user-signup-name-field" placeholder="Last Name" id="student-last-name" onChange={this.handleChange}></input><br></br>
           <input type="email" className="user-signup-email-field" placeholder="Email" id="student-email" onChange={this.handleChange}></input><br></br>

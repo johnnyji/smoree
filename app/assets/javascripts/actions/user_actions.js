@@ -1,4 +1,5 @@
 var UserActions = Reflux.createActions([
-  "sendEmail",
-  "createNewCourse"
+  "loadUser",
+  "updateProfile",
+  "sendEmail"
 ]);
