@@ -10,6 +10,7 @@ var UserStore = Reflux.createStore({
     });
   },
   onUpdateProfile: function(userId, data, success, error) {
+    debugger;
     $.ajax({
       url: "/users/" + userId,
       method: "PUT",

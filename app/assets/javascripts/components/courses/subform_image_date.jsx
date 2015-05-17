@@ -28,6 +28,9 @@ var SubformImageDate = React.createClass({
   canBeSaved: function() {
     return this.state.startDate && this.state.endDate;
   },
+  onDrop: function() {
+
+  },
   render: function() {
     return (
       <div className="new-course-form">

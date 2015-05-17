@@ -1,4 +1,7 @@
 var ImageUploader = React.createClass({
+  propTypes: {
+    handleImageSave: React.PropTypes.func.isRequired
+  },
   getInitialState: function () {
       return {
         imageUrl: null,

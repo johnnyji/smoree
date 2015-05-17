@@ -19,7 +19,7 @@ var DashboardController = React.createClass({
     var sections = [
       <ManageCourses user={p.user} courses={p.courses}/>,
       <ManageStudents user={p.user} students={p.students}/>,
-      <ManageAccount userId={p.user.id} />
+      <ManageAccount userId={p.user.id} handleImageSave={p.handleImageSave}/>
     ]
     return (
       <div className="user-dashboard-container">

@@ -34,7 +34,6 @@ class CoursesController < ApplicationController
   end
 
   def delete
-    binding.pry
   end
 
   def destroy

@@ -12,7 +12,7 @@ var UiFlashMessage = React.createClass({
       return (
         <div className={"react-flash-message " + this.props.flashType}>
           <h3>{this.props.message}</h3>
-          <i className="fa fa-remove" onClick={this.hideFlash}></i>
+          <i className="fa fa-remove flash-exit" onClick={this.hideFlash}></i>
         </div>
       )
     } else {

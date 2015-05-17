@@ -9,7 +9,8 @@ var ManageAccount = React.createClass({
       email: null,
       description: null,
       picture: null,
-      banner: null
+      banner: null,
+      saved: false
     };
   },
   componentWillMount: function() {
@@ -27,32 +28,45 @@ var ManageAccount = React.createClass({
   onLoadUserError: function(xhr, responseCode, error) {
     debugger;
   },
-  handleSaveProfile: function() {
+  handleImageSave: function(imageBlob) {
+    var data = { image_blob: imageBlob }
+    UserActions.updateProfile(this.props.userId, data, this.handleImageUpdateSuccess);
+  },
+  handleSaveProfile: function(e) {
+    e.preventDefault();
     var data = {
       first_name: this.refs.firstName.getDOMNode().value,
       last_name: this.refs.lastName.getDOMNode().value,
       email: this.refs.email.getDOMNode().value,
       description: this.refs.description.getDOMNode().value
     };
-    UserActions.updateProfile(this.props.userId, data, this.handleUpdateSuccess, this.handleUpdateError);
+    UserActions.updateProfile(this.props.userId, data, this.handleUpdateSuccess);
+  },
+  handleImageUpdateSuccess: function(data) {
+    var imageBlob = data.user.image_blob;
+    this.props.handleImageSave(imageBlob);
   },
   handleUpdateSuccess: function(data) {
-    debugger;
-  },  
-  handleUpdateError: function(xhr, responseCode, error) {
-    debugger;
+    this.setState({ saved: true });
+  },
+  handleHideFlash: function() {
+    this.setState({ saved: false });
   },
   render: function() {
     var s = this.state;
     return (
-      <form className="edit-user-container" onSubmit={this.handleSaveProfile}>
-        <h1 className="title">Edit Profile</h1>
-        <input ref="firstName" placeholder="First name" value={s.firstName}></input><br/>
-        <input ref="lastName" placeholder="Last name" value={s.lastName}></input><br/>
-        <input ref="email" placeholder="email@domain.com" value={s.email}></input><br/>
-        <textarea ref="description" placeholder="Describe yourself to your students!" value={this.state.description}></textarea>
-        <input type="submit" className="save-profile"></input>
-      </form>
+      <div>
+      {s.saved && <ReactFlashMessage flashType="flash-success" message="Profile saved!" hideFlash={this.handleHideFlash} />}
+        <form className="edit-user-container" onSubmit={this.handleSaveProfile}>
+          <h1 className="title">Edit Profile</h1>
+          <input ref="firstName" placeholder="First name" value={s.firstName}></input><br/>
+          <input ref="lastName" placeholder="Last name" value={s.lastName}></input><br/>
+          <input ref="email" placeholder="email@domain.com" value={s.email}></input><br/>
+          <textarea ref="description" placeholder="Describe yourself to your students!" defaultValue={this.state.description}></textarea><br/>
+          <ImageUploader handleImageSave={this.handleImageSave} />
+          <input type="submit" className="save-profile"></input>
+        </form>
+      </div>
     )
   }
 });

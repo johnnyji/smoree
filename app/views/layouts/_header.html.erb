@@ -2,19 +2,21 @@
 
   <div class="header-left">
     <% if logged_in? %>
-      <%= link_to "skillup", root_path %>
-    <% else %>
       <%= link_to "skillup", user_path(current_user) %>
+    <% else %>
+      <%= link_to "skillup", root_path %>
     <% end %>
   </div>
 
   <div class="header-right">
     <% if logged_in? %>
-      <p class="header-links"><%= link_to current_user.name, user_path(current_user) %> - <%= link_to "Signout", session_path("current"), method: :delete %></p>
+      <p class="header-links">
+        <%= link_to image_tag(current_user.image_blob), user_path(current_user) %>
+        <%= link_to current_user.name, user_path(current_user) %>&nbsp;&nbsp;-&nbsp;&nbsp;<%= link_to "Signout", session_path("current"), method: :delete %>
+      </p>
     <% else %>
       <p class="header-links"><%= link_to "Sign up", new_user_path, class: "user-sign-up" %> | <%= link_to "Login", new_session_path %></p>
     <% end %>
-
   </div>
 
 </header>
