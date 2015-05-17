@@ -20,7 +20,8 @@ var ManageAccount = React.createClass({
     this.setState({
       firstName: user.first_name,
       lastName: user.last_name,
-      email: user.email
+      email: user.email,
+      description: user.description
     });
   },
   onLoadUserError: function(xhr, responseCode, error) {
@@ -49,7 +50,7 @@ var ManageAccount = React.createClass({
         <input ref="firstName" placeholder="First name" value={s.firstName}></input><br/>
         <input ref="lastName" placeholder="Last name" value={s.lastName}></input><br/>
         <input ref="email" placeholder="email@domain.com" value={s.email}></input><br/>
-        <textarea ref="description" placeholder="Describe yourself to your students!" defaultValue={this.state.description}></textarea>
+        <textarea ref="description" placeholder="Describe yourself to your students!" value={this.state.description}></textarea>
         <input type="submit" className="save-profile"></input>
       </form>
     )
