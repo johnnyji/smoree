@@ -1,5 +1,6 @@
 class StudentMailer < ApplicationMailer
   default from: "no-reply@skillup.com"
+  include Roadie::Rails::Automatic
 
   def welcome_email(student, course)
     @course = course

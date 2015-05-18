@@ -33,8 +33,10 @@ var CourseFormController = React.createClass({
         handleDateChange={this.props.handleDateChange}
         handleImageSave={this.props.handleImageSave}
       />,
-      <SubformMessage 
+      <SubformMessage
+        user={this.props.user}
         course={this.props.course}
+        welcomeEmail={this.props.welcomeEmail}
         handleWelcomeEmailChange={this.props.handleWelcomeEmailChange}
       />
     ]

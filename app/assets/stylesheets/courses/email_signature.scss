@@ -1,0 +1,32 @@
+.instructor-info {
+  position: relative;
+  width: 100%;
+  margin-top: 1em;
+  padding: 2em 1em 1em 1em;
+  width: 90%;
+  border-top: 1px solid #DBDBDB;
+}
+
+.instructor-info img {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.instructor-info .instructor-title {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 180%;
+  margin-left: 1em;
+}
+
+.instructor-title h3 {
+  margin: 0;
+}
+
+.instructor-title p {
+  margin: 0;
+}

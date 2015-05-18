@@ -1,2 +1,72 @@
-<h1>Heyo <%= @student.name %>!</h1>
-<p><%= @body %></p>
+<div class="email-container">
+  <h1 class="email-title">Heyo, <%= @student.first_name %> <%= @student.last_name %></h1>
+  <p class="welcome-email-body"><%= @body %></p>
+  <p>Sincerely,</p>
+  <div class="instructor-info">
+    <img src=<%= @student.course.user.image_blob %>>
+    <div class="instructor-title">
+      <h3><%= @student.course.user.name %></h3>
+      <p><%= mail_to @student.course.user.email, @student.course.user.email %></p>
+    </div>
+    <p class="instructor-bio"><%= @student.course.user.description %></p>
+  </div>
+</div>
+
+<style type="text/css">
+  .email-container {
+    position: relative;
+    width: 80%;
+    margin: 1em auto;
+    padding: 2em;
+    box-shadow: 0 0 10px #222;
+    font-family: sans-serif;
+  }
+
+  .email-container a {
+    color: #3FC380;
+    text-decoration: none;
+  }
+
+  .email-title {
+    margin-bottom: 1.5em;
+  }
+
+  .welcome-email-body {
+    white-space: pre;
+    margin: 1.5em 0 3em 0;
+  }
+
+  .instructor-info {
+    position: relative;
+    width: 100%;
+    margin-top: 1em;
+    padding: 2em 1em 1em 1em;
+    width: 60%;
+    border-top: 1px solid #DBDBDB;
+  }
+
+  .instructor-info img {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+  }
+
+  .instructor-info .instructor-title {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 180%;
+    margin-left: 1em;
+  }
+
+  .instructor-title h3 {
+    margin: 0;
+  }
+
+  .instructor-title p {
+    margin: 0;
+  }
+
+</style>

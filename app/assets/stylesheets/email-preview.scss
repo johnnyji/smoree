@@ -1,0 +1,62 @@
+@import "appwide";
+
+.modal-email-preview {
+  @include position-center(fixed, 50%, 50%);
+  left: 50%;
+  height: 50%;
+  background-color: rgba(34, 34, 34, 0.7);
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.pop-up-email-preview {
+  @include position-center(fixed, 50%, 50%);
+  left: 40%;
+  top: 50%;
+  width: 40%;
+  height: 70%;
+  box-shadow: 0 0 10px $gray;
+  background-color: $white;
+  z-index: -1;
+  overflow: scroll;
+  .fake-email-header {
+    padding: 1em 0;
+    color: $text-gray;
+    font-size: 0.9em;
+    border-bottom: 1px solid $light-gray;
+    span {
+      position: relative;
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+      margin-right: 1em;
+      color: $gray;
+      font-weight: 400;
+    }
+    p {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      color: $text-gray;
+    }
+  }
+  .fake-email-body {
+    width: 90%;
+    padding: 2em;
+    color: $text-gray;
+    .email-body {
+      position: relative;
+      width: 100%;
+      word-wrap: break-word;
+      white-space: pre;
+      color: $text-gray;
+    }
+  }
+  .fake-email-footer {
+    width: 90%;
+    padding: 0 2em 2em 2em;
+    color: $text-gray;
+    white-space: pre;
+  }
+}

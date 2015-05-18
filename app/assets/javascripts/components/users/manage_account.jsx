@@ -34,7 +34,7 @@ var ManageAccount = React.createClass({
   },
   handleBannerSave: function(bannerBlob) {
     var data = { banner_blob: bannerBlob }
-    UserActions.updateProfil(this.props.userId, data, this.handleBannerSaveSuccess);
+    UserActions.updateProfile(this.props.userId, data, this.handleBannerSaveSuccess);
   },
   handleSaveProfile: function(e) {
     e.preventDefault();

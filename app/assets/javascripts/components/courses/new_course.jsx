@@ -112,6 +112,7 @@ var NewCourse = React.createClass({
       <div className="new-course-page-container">
         {this.state.submitError && <CourseErrors errors={this.state.errors} handleExitModal={this.handleExitModal}/>}
         <CourseFormController 
+          user={this.props.user}
           tabs={this.props.tabs}
           course={this.props.course}
 
@@ -119,6 +120,7 @@ var NewCourse = React.createClass({
           courseTitle={this.state.courseTitle}
           courseSummary={this.state.courseSummary}
           courseDescription={this.state.courseDescription}
+          welcomeEmail={this.state.welcomeEmail}
           
           handleTitleChange={this.handleTitleChange}
           handleSummaryChange={this.handleSummaryChange}

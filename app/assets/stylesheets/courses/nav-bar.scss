@@ -7,7 +7,7 @@
   right: 0;
   width: 400px;
   background-color: $dark-gray;
-  z-index: 3;
+  z-index: 10;
   box-shadow: 0 0 10px $darkest-gray;
   i {
     @include transition(0.3s);
@@ -22,6 +22,7 @@
     font-size: 2em;
     margin: 0;
     background-color: $dark-gray;
+    z-index: 10;
     .nav-icons {
       margin-top: 0.3em;
       position: relative;
@@ -52,6 +53,7 @@
     height: 100%;
     margin: 0;
     padding: 0 1.2em;
+    z-index: 10;
     .nav-content-title {
       padding: 0.6em 0 1em 0;
       font-size: 1.9em;
