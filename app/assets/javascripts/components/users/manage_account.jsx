@@ -19,6 +19,7 @@ var ManageAccount = React.createClass({
   onLoadUserSuccess: function(data) {
     var user = data.user;
     this.setState({
+      profilePictureSave: false,
       firstName: user.first_name,
       lastName: user.last_name,
       email: user.email,
@@ -47,11 +48,12 @@ var ManageAccount = React.createClass({
     UserActions.updateProfile(this.props.userId, data, this.handleUpdateSuccess);
   },
   handleImageSaveSuccess: function(data) {
-    var imageBlob = data.user.image_blob;
-    this.props.handleImageSave(imageBlob);
+    this.setState({ profilePictureSave: true });
   },
   handleBannerSaveSuccess: function(data) {
     debugger;
+    var imageBlob = data.user.banner_blob;
+    this.props.handleBannerSave(imageBlob);
   },
   handleUpdateSuccess: function(data) {
     this.setState({ saved: true });
@@ -59,11 +61,15 @@ var ManageAccount = React.createClass({
   handleHideFlash: function() {
     this.setState({ saved: false });
   },
+  handleProfilePictureHideFlash: function() {
+    this.setState({ profilePictureSave: false });
+  },
   render: function() {
     var s = this.state;
     return (
       <div>
         {s.saved && <ReactFlashMessage flashType="flash-success" message="Profile saved!" hideFlash={this.handleHideFlash} />}
+        {s.profilePictureSave && <ReactFlashMessage flashType="flash-success" message="Profile picture saved" hideFlash={this.handleProfilePictureHideFlash} />}
         <form className="edit-user-container" onSubmit={this.handleSaveProfile}>
           <h1 className="title">Edit Profile</h1>
           <label>First Name</label>

@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20150518160742) do
     t.string "profile_pic_url"
     t.string "banner_pic_url"
     t.string "image_blob",      default: "avatar.png"
-    t.string "banner_blog"
+    t.string "banner_blob"
   end
 
   add_foreign_key "courses", "users"

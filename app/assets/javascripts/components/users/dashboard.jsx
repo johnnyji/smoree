@@ -7,11 +7,11 @@ var Dashboard = React.createClass({
   },
   getInitialState: function() {
     return {
-      imageBlob: this.props.user.image_blob
+      bannerBlob: this.props.user.banner_blob
     }
   },
-  handleImageSave: function(imageBlob) {
-    this.setState({ imageBlob: imageBlob });
+  handleBannerSave: function(imageBlob) {
+    this.setState({ bannerBlob: imageBlob });
   },
   render: function() {
     var p = this.props;
@@ -20,7 +20,7 @@ var Dashboard = React.createClass({
       <div>
         <Banner 
           title={"Heyo, " + p.user.first_name + " " + p.user.last_name}
-          imageUrl={s.imageBlob}
+          imageUrl={s.bannerBlob}
         />
         <DashboardController 
           tabs={p.tabs} 
@@ -28,7 +28,7 @@ var Dashboard = React.createClass({
           courses={p.courses} 
           students={p.students}
 
-          handleImageSave={this.handleImageSave}
+          handleBannerSave={this.handleBannerSave}
         />
       </div>
     )
