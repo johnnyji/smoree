@@ -9,6 +9,9 @@
   background-color: $dark-gray;
   opacity: 0.7;
   overflow: hidden;
+  @include mobile-viewport {
+    width: 100vw;
+  }
   img {
     @include position-center(absolute, 50%, 50%);
   }
@@ -20,6 +23,12 @@
     word-wrap: break-word;
     opacity: 1;
     z-index: 10;
+    text-align: center;
+    width: 100%;
+    @include mobile-viewport {
+      font-size: 2.8em;
+      width: 100%;
+    }
   }
 }
 
@@ -29,12 +38,21 @@
   min-height: 600px;
   width: 70%;
   font-size: 1.2em;
+  @include mobile-viewport {
+    width: 95%;
+  }
   .course-info-left {
     position: relative;
     vertical-align: top;
     display: inline-block;
     margin-right: 2em;
     width: 48%;
+    @include mobile-viewport {
+      @include position-x(relative, 50%);
+      left: 50%;
+      width: 100%;
+      margin: 0 auto;
+    }
     .instructor-info {
       box-shadow: 0 0 10px $gray;
       padding: 1.5em;
@@ -132,4 +150,10 @@
       }
     }
   }
+}
+
+.social-share-buttons {
+  margin-bottom: 1.5em;
+  width: 400px;
+  text-align: center;
 }

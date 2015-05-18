@@ -24,6 +24,9 @@
       latitude: @course.latitude,
       longitude: @course.longitude
     ) %>
+    <div class="social-share-buttons">
+      <%= render_shareable buttons: ["twitter", "linkedin", "tumblr"] %>
+    </div>
     <%= react_component(
       "SignupForm",
       course_id: @course.id

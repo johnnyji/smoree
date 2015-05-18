@@ -6,12 +6,25 @@
   text-align: center;
   width: 700px;
   font-size: 1.5em;
+  @include mobile-viewport {
+    .full-background-image {
+      width: 100%;
+    }
+  }
+  @include medium-viewport {
+    .full-background-image {
+      width: 100%;
+    }
+  }
   .intro-title {
     font-size: 4em;
     margin: 0;
   }
   .intro-summary {
-    margin-bottom: 3em;
+    margin: 0 auto 3em auto;
+    @include mobile-viewport {
+      width: 80vw;
+    }
   }
   .create-course-link {
     @include button-style($primary-green, $dark-green);

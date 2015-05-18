@@ -2,26 +2,32 @@
 
 .user-dashboard-container {
   position: relative;
+  @include mobile-viewport {
+    width: 100%;
+  }
   .user-dashboard-nav {
     position: relative;
-    background-color: $dark-gray;
+    background-color: inherit;
     padding: 1em;
-    box-shadow: 0 0 10px $darkest-gray;
+    text-align: center;
+    @include mobile-viewport {
+      width: 100%;
+    }
     .user-dashboard-tab {
       @include transition(0.3s);
       position: relative;
       display: inline-block;
       margin-right: 1.5em;
       font-size: 1.4em;
-      font-weight: 400;
-      color: $white;
+      font-weight: 600;
       &:hover {
-        color: $secondary-green;
         cursor: pointer;
       }
     }
     .active {
-      color: $primary-green;
+      @include button-style($primary-green, $secondary-green);
+      color: $white;
+
     }
   }
   .user-dashboard-content {

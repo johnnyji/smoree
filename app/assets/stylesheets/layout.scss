@@ -9,9 +9,13 @@ header {
   z-index: 2;
   margin: 0;
   background-color: transparent;
+  @include mobile-viewport {
+    width: 100%;
+  }
   .header-left {
     position: relative;
     float: left;
+    top: -8px;
     margin: 0 0 0 1em;
     display: inline-block;
     max-width: 50%;
