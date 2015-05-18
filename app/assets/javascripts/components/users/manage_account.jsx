@@ -30,7 +30,11 @@ var ManageAccount = React.createClass({
   },
   handleImageSave: function(imageBlob) {
     var data = { image_blob: imageBlob }
-    UserActions.updateProfile(this.props.userId, data, this.handleImageUpdateSuccess);
+    UserActions.updateProfile(this.props.userId, data, this.handleImageSaveSuccess);
+  },
+  handleBannerSave: function(bannerBlob) {
+    var data = { banner_blob: bannerBlob }
+    UserActions.updateProfil(this.props.userId, data, this.handleBannerSaveSuccess);
   },
   handleSaveProfile: function(e) {
     e.preventDefault();
@@ -42,9 +46,12 @@ var ManageAccount = React.createClass({
     };
     UserActions.updateProfile(this.props.userId, data, this.handleUpdateSuccess);
   },
-  handleImageUpdateSuccess: function(data) {
+  handleImageSaveSuccess: function(data) {
     var imageBlob = data.user.image_blob;
     this.props.handleImageSave(imageBlob);
+  },
+  handleBannerSaveSuccess: function(data) {
+    debugger;
   },
   handleUpdateSuccess: function(data) {
     this.setState({ saved: true });
@@ -56,14 +63,20 @@ var ManageAccount = React.createClass({
     var s = this.state;
     return (
       <div>
-      {s.saved && <ReactFlashMessage flashType="flash-success" message="Profile saved!" hideFlash={this.handleHideFlash} />}
+        {s.saved && <ReactFlashMessage flashType="flash-success" message="Profile saved!" hideFlash={this.handleHideFlash} />}
         <form className="edit-user-container" onSubmit={this.handleSaveProfile}>
           <h1 className="title">Edit Profile</h1>
+          <label>First Name</label>
           <input ref="firstName" placeholder="First name" value={s.firstName}></input><br/>
+          <label>Last Name</label>
           <input ref="lastName" placeholder="Last name" value={s.lastName}></input><br/>
+          <label>Email</label>
           <input ref="email" placeholder="email@domain.com" value={s.email}></input><br/>
           <textarea ref="description" placeholder="Describe yourself to your students!" defaultValue={this.state.description}></textarea><br/>
+          <label>Profile Picture</label>
           <ImageUploader handleImageSave={this.handleImageSave} />
+          <label>Banner Picture</label>
+          <ImageUploader handleImageSave={this.handleBannerSave} />
           <input type="submit" className="save-profile"></input>
         </form>
       </div>
