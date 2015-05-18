@@ -3,9 +3,7 @@ var CourseInfo = React.createClass({
     return (
       <div className="course-info-section">
         <div className="course-info-left">
-          <div className="instructor-info">
-            hello
-          </div>
+          <InstructorCard user={this.props.user}/>
           <div className="main-info">
             <h2 className="course-summary-field">{this.props.summary}</h2>
             <p className="course-description-field">{this.props.description}</p>
