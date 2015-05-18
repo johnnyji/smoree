@@ -81,13 +81,20 @@ var NewCourse = React.createClass({
       image_url: this.state.imageUrl,
       slug: this.state.slug,
       welcome_email: this.state.welcomeEmail,
-      start_date: this.state.startDate.format("MMMM Do YYYY").toString(),
-      end_date: this.state.endDate.format("MMMM Do YYYY").toString()
+      start_date: this.verifyDate(this.state.startDate),
+      end_date: this.verifyDate(this.state.endDate)
     }
     if (this.props.editing) {
       CourseActions.editCourse(this.props.course.id, data, this.handleSubmitSuccess, this.handleSubmitError);  
     } else {
       CourseActions.createCourse(data, this.handleSubmitSuccess, this.handleSubmitError);  
+    }
+  },
+  verifyDate: function(date) {
+    if(typeof(date) === "object") {
+      return date.format("MMMM Do YYYY").toString();
+    } else {
+      return date
     }
   },
   handleSubmitSuccess: function(data) {

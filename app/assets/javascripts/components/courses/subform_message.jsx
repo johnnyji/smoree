@@ -16,7 +16,10 @@ var SubformMessage = React.createClass({
     if (welcomeEmail === null) {
       this.setState({ message: "" });
     } else {
-      this.setState({ message: welcomeEmail });
+      this.setState({
+        message: welcomeEmail,
+        canBeSaved: true
+      });
     }
   },
   handleEmailChange: function(e) {

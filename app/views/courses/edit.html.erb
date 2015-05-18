@@ -2,6 +2,7 @@
   <%= react_component("NewCourse",
     tabs: ["edit", "map-marker", "photo", "envelope-o"],
     course: @course,
+    user: current_user,
     user_id: current_user.id,
     editing: true
   ) %> 
