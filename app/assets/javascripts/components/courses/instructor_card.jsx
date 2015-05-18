@@ -1,4 +1,4 @@
-var EmailSignature = React.createClass({
+var InstructorCard = React.createClass({
   propTypes: {
     user: React.PropTypes.object.isRequired
   },

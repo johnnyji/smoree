@@ -145,7 +145,8 @@ var NewCourse = React.createClass({
           title={this.state.courseTitle} 
           imageUrl={this.state.imageUrl}
         />
-        <CourseInfo 
+        <CourseInfo
+          user={this.props.user} 
           summary={this.state.courseSummary} 
           description={this.state.courseDescription} 
           latitude={this.state.latitude}

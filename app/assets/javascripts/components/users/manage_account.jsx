@@ -72,16 +72,17 @@ var ManageAccount = React.createClass({
         {s.profilePictureSave && <ReactFlashMessage flashType="flash-success" message="Profile picture saved" hideFlash={this.handleProfilePictureHideFlash} />}
         <form className="edit-user-container" onSubmit={this.handleSaveProfile}>
           <h1 className="title">Edit Profile</h1>
-          <label>First Name</label>
+          <label>First Name</label><br/>
           <input ref="firstName" placeholder="First name" value={s.firstName}></input><br/>
-          <label>Last Name</label>
+          <label>Last Name</label><br/>
           <input ref="lastName" placeholder="Last name" value={s.lastName}></input><br/>
-          <label>Email</label>
+          <label>Email</label><br/>
           <input ref="email" placeholder="email@domain.com" value={s.email}></input><br/>
+          <label>Description</label><br/>
           <textarea ref="description" placeholder="Describe yourself to your students!" defaultValue={this.state.description}></textarea><br/>
-          <label>Profile Picture</label>
+          <label>Profile Picture</label><br/>
           <ImageUploader handleImageSave={this.handleImageSave} />
-          <label>Banner Picture</label>
+          <label>Banner Picture</label><br/>
           <ImageUploader handleImageSave={this.handleBannerSave} />
           <input type="submit" className="save-profile"></input>
         </form>

@@ -19,8 +19,8 @@ var PreviewEmail = React.createClass({
             <p className="email-body">{p.message}</p>
           </div>
           <div className="fake-email-footer">
-            Sincerely,
-            <EmailSignature user={p.user} />
+            Sincerely,<br/><br/>
+            <InstructorCard user={p.user} />
           </div>
         </div>
       </div>

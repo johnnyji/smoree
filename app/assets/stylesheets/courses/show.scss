@@ -35,6 +35,12 @@
     display: inline-block;
     margin-right: 2em;
     width: 48%;
+    .instructor-info {
+      box-shadow: 0 0 10px $gray;
+      padding: 1.5em;
+      margin-bottom: 3em;
+      width: 100%;
+    }
     .main-info {
       box-shadow: 0 0 10px $gray;
       padding: 1.5em;

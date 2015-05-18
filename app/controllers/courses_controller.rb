@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    render json: nil, status: :ok 
+    render json: nil, status: :ok
   end
 
   def info
