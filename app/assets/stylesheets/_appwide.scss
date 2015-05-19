@@ -129,6 +129,20 @@
   }
 }
 
+@mixin invisible-input-field-style {
+  @include placeholder($dark-green);
+  @include transition(0.3s);
+  outline: none;
+  padding: 0.3em;
+  border-style: none;
+  border-bottom: 2px solid $dark-green;
+  background-color: $light-green;
+  &:focus {
+    outline: none;
+    background-color: $light-green;
+  }
+}
+
 @mixin input-field-style {
   outline: none;
   padding: 0.3em;
@@ -153,6 +167,7 @@ $primary-red: #c0392b;
 $secondary-red: #e74c3c;
 $primary-green: #3FC380;
 $secondary-green: #27ae60;
+$light-green: rgba(162, 222, 208, 0.3);
 $dark-green: #1E824C;
 $light-gray: #DBDBDB;
 $white : #FFF;

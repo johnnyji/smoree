@@ -18,6 +18,7 @@ var NewCourse = React.createClass({
       defaultCourseTitle: "Super Awesome Title",
       defaultCourseSummary: "This is where you would summarize your course!",
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
+      editingEmail: false,
       submitError: false,
       errors: null
     }
@@ -69,6 +70,13 @@ var NewCourse = React.createClass({
   handleWelcomeEmailChange: function(email) {
     this.setState({ welcomeEmail: email });
   },
+  handleEditingEmail: function() {
+    if (this.state.editingEmail) {
+      this.setState({ editingEmail: false });
+    } else {
+      this.setState({ editingEmail: true });
+    }
+  },
   handleFormSubmit: function() {
     var self = this;
     var data = {
@@ -115,19 +123,22 @@ var NewCourse = React.createClass({
     return s.courseTitle && s.courseSummary && s.courseDescription && s.startDate && s.endDate && s.latitude && s.longitude && s.welcomeEmail && s.slug
   },
   render: function() {
+    var s = this.state;
+    var p = this.props;
     return (
       <div className="new-course-page-container">
-        {this.state.submitError && <CourseErrors errors={this.state.errors} handleExitModal={this.handleExitModal}/>}
+        {this.state.submitError && <CourseErrors errors={s.errors} handleExitModal={this.handleExitModal}/>}
+        {s.editingEmail && <PreviewEmail user={p.user} message={s.welcomeEmail} handleExitModal={this.handleEditingEmail}/>}
         <CourseFormController 
-          user={this.props.user}
-          tabs={this.props.tabs}
-          course={this.props.course}
+          user={p.user}
+          tabs={p.tabs}
+          course={p.course}
 
-          slug={this.state.slug}
-          courseTitle={this.state.courseTitle}
-          courseSummary={this.state.courseSummary}
-          courseDescription={this.state.courseDescription}
-          welcomeEmail={this.state.welcomeEmail}
+          slug={s.slug}
+          courseTitle={s.courseTitle}
+          courseSummary={s.courseSummary}
+          courseDescription={s.courseDescription}
+          welcomeEmail={s.welcomeEmail}
           
           handleTitleChange={this.handleTitleChange}
           handleSummaryChange={this.handleSummaryChange}
@@ -138,22 +149,23 @@ var NewCourse = React.createClass({
           handleDateChange={this.handleDateChange}
           handleImageSave={this.handleImageSave}
           handleWelcomeEmailChange={this.handleWelcomeEmailChange}
+          handleEditingEmail={this.handleEditingEmail}
         
           handleFormSubmit={this.handleFormSubmit}
         />
         <Banner
-          title={this.state.courseTitle} 
-          imageUrl={this.state.imageUrl}
+          title={s.courseTitle} 
+          imageUrl={s.imageUrl}
         />
         <CourseInfo
-          user={this.props.user} 
-          summary={this.state.courseSummary} 
-          description={this.state.courseDescription} 
-          latitude={this.state.latitude}
-          longitude={this.state.longitude}
-          startDate={this.state.startDate}
-          endDate={this.state.endDate}
-          address={this.state.address}
+          user={p.user} 
+          summary={s.courseSummary} 
+          description={s.courseDescription} 
+          latitude={s.latitude}
+          longitude={s.longitude}
+          startDate={s.startDate}
+          endDate={s.endDate}
+          address={s.address}
         />
         {!this.readyToSubmit() && <button className="no-create-course-button">Not finished yet</button>}
         {this.readyToSubmit() && <SubmitButton handleFormSubmit={this.handleFormSubmit}/>}

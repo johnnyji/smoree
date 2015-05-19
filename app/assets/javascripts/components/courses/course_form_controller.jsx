@@ -38,6 +38,7 @@ var CourseFormController = React.createClass({
         course={this.props.course}
         welcomeEmail={this.props.welcomeEmail}
         handleWelcomeEmailChange={this.props.handleWelcomeEmailChange}
+        handleEditingEmail={this.props.handleEditingEmail}
       />
     ]
     return (
