@@ -6,7 +6,7 @@ var InstructorCard = React.createClass({
     var p = this.props;
     return (
       <div className="instructor-info">
-        <img src={p.user.image_blob}></img>
+        {p.user.image_blob !== "avatar.png" && <img src={p.user.image_blob}></img>}
         <div className="instructor-title">
           <h3>{p.user.first_name} {p.user.last_name}</h3>
           <p>{p.user.email}</p>

@@ -20,6 +20,12 @@
   background-color: $white;
   z-index: -1;
   overflow: scroll;
+  i {
+    float: right;
+    margin: 0.5em 1em 0 0;
+    color: $dark-gray;
+    font-size: 1.3em;
+  }
   .fake-email-header {
     padding: 1em 0;
     color: $text-gray;

@@ -63,6 +63,7 @@
 
 .image-uploader-wrapper {
   position: relative;
+  z-index: 101;
   .image-uploader {
     position: relative;
     z-index: 2;
@@ -86,6 +87,12 @@
     left: 0px;
     z-index: 1;
     margin-bottom: 1em;
+  }
+}
+
+.preview-email {
+  &:hover {
+    cursor: pointer;
   }
 }
 
