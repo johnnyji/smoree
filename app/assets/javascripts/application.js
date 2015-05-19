@@ -16,10 +16,12 @@
 //= require titleize
 //= require filedrop
 //= require moment
+//= require quill
 //= require zeroclipboard
 //= require react
 //= require react_ujs
 //= require reflux
 //= require react_datepicker
+//= require react_quill
 //= require components
 //= require_tree .

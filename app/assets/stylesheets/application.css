@@ -12,6 +12,7 @@
  *
  *= require font-awesome
  *= require react_datepicker
+ *= require quill.snow
  *= require_tree .
  *= require_self
  */

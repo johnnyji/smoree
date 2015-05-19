@@ -19,10 +19,9 @@ var UserStore = Reflux.createStore({
       error: error
     });
   },
-  onSendEmail: function(studentsArray, subject, email, success, error) {
+  onSendEmail: function(studentsArray, email, success, error) {
     var info = { 
       id_array: studentsArray,
-      subject: subject,
       email: email
     }
     $.ajax({

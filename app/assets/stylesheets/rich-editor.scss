@@ -1,0 +1,23 @@
+@import "appwide";
+
+.quill-toolbar.ql-toolbar.ql-snow {
+  @include position-x(relative, 50%);
+  left: 50%;
+  font-size: 20px;
+  text-align: center;
+}
+
+.quill-contents.ql-container.ql-snow {
+  @include position-x(relative, 50%);
+  left: 50%;
+  font-family: "Hind", sans-serif;
+  font-size: 1.2em;
+  text-align: left;
+  margin: 1em auto;
+  padding: 1em;
+  min-height: 200px;
+  min-width: 400px;
+  width: 700px;
+  height: 300px;
+  @include border-shadow;
+}

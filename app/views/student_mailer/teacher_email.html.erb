@@ -1,6 +1,6 @@
 <div class="email-container">
   <h1 class="email-title">Heyo, <%= @student.first_name %> <%= @student.last_name %></h1>
-  <p class="welcome-email-body"><%= @body %></p>
+  <p class="welcome-email-body"><%= (@body).html_safe %></p>
   <p>Sincerely,</p>
   <div class="instructor-info">
     <img src=<%= @student.course.user.image_blob %>>

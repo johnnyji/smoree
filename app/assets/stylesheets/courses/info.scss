@@ -2,7 +2,7 @@
 
 .email-box-container {
   position: relative;
-  margin: 5em auto;
+  margin: 0 auto 2.5em auto;
   text-align: center;
   width: 80%;
   .email-box-info {
@@ -35,6 +35,7 @@
     display: inline-block;
     width: 48%;
     vertical-align: top;
+    margin: 0 auto;
     input {
       @include input-field-style;
       font-size: 1.1em;
