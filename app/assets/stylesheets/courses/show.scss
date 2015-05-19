@@ -7,13 +7,13 @@
   min-height: 300px;
   height: 30vh;
   background-color: $dark-gray;
-  opacity: 0.7;
   overflow: hidden;
   @include mobile-viewport {
     width: 100vw;
   }
   img {
     @include position-center(absolute, 50%, 50%);
+    @include brightness(60%, 2px);
   }
   .course-title-field {
     @include position-center(absolute, 50%, 50%);

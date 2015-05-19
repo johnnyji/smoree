@@ -104,12 +104,12 @@
   }
 }
 
-@mixin brightness($percentage) {
-  -webkit-filter: brightness($percentage);
-  -moz-filter: brightness($percentage);
-  -ms-filter: brightness($percentage);
-  -o-filter: brightness($percentage);
-  filter: brightness($percentage);
+@mixin brightness($percentage, $blur) {
+  -webkit-filter: brightness($percentage) blur($blur);
+  -moz-filter: brightness($percentage) blur($blur);
+  -ms-filter: brightness($percentage) blur($blur);
+  -o-filter: brightness($percentage) blur($blur);
+  filter: brightness($percentage) blur($blur);
 }
 
 @mixin placeholder($color) {

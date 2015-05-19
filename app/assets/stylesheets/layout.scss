@@ -120,7 +120,7 @@ footer {
 
 .full-background-image {
   @include position-center(absolute, 50%, 50%);
-  @include brightness(30%);
+  @include brightness(30%, 0);
   height: 120vh;
   width: 100vw;
   padding: 0;
@@ -143,7 +143,7 @@ footer {
 
 .banner-background-image {
   @include position-x(absolute, 50%);
-  @include brightness(30%);
+  @include brightness(30%, 0);
   top: 0;
   height: auto;
   width: 130vw;

@@ -37,14 +37,19 @@
     .user-dashboard-course-container {
       @include transition(0.3s);
       position: relative;
-      vertical-align: top;
       display: inline-block;
       margin: 2%;
       width: 25%;
       height: 0;
       padding-bottom: 20%;
-      border-radius: $border-radius;
-      box-shadow: 0 0 5px $medium-gray;
+      img {
+        width: 100%;
+        height: 100.5%;
+        @include brightness(30%, 1px);
+        @include position-center(absolute, 50%, 50%);
+        left: 50%;
+        top: 50%;
+      }
       .dashboard-course-title {
         @include position-center(absolute, 35%, 50%);
         color: $white;
@@ -63,7 +68,6 @@
         bottom: 0;
         width: 100%;
         height: 30%;
-        background-color: $dark-gray;
         padding: 1em;
         &:hover {
           cursor: default;
@@ -113,14 +117,6 @@
           margin: 0;
           top: 0.5em;
         }
-      }
-      img {
-        @include brightness(20%);
-        @include position-center(absolute, 50%, 50%);
-        width: 101%;
-        height: 101%;
-        border-radius: $border-radius;
-        opacity: 0.7;
       }
       &:hover {
         cursor: pointer;
