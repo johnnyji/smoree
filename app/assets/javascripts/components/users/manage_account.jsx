@@ -10,20 +10,22 @@ var ManageAccount = React.createClass({
       description: null,
       picture: null,
       banner: null,
-      saved: false
+      saved: false,
+      ready: false
     };
   },
   componentWillMount: function() {
     UserActions.loadUser(this.props.userId, this.onLoadUserSuccess, this.onLoadUserError);
   },
   onLoadUserSuccess: function(data) {
-    var user = data.user;
+    var user = JSON.parse(data.user);
     this.setState({
       profilePictureSave: false,
       firstName: user.first_name,
       lastName: user.last_name,
       email: user.email,
-      description: user.description
+      description: user.description,
+      ready: true
     });
   },
   onLoadUserError: function(xhr, responseCode, error) {
@@ -51,7 +53,6 @@ var ManageAccount = React.createClass({
     this.setState({ profilePictureSave: true });
   },
   handleBannerSaveSuccess: function(data) {
-    debugger;
     var imageBlob = data.user.banner_blob;
     this.props.handleBannerSave(imageBlob);
   },
@@ -66,6 +67,7 @@ var ManageAccount = React.createClass({
   },
   render: function() {
     var s = this.state;
+    if (!s.ready) { return <div>Loading...</div> }
     return (
       <div>
         {s.saved && <ReactFlashMessage flashType="flash-success" message="Profile saved!" hideFlash={this.handleHideFlash} />}
@@ -79,7 +81,7 @@ var ManageAccount = React.createClass({
           <label>Email</label><br/>
           <input ref="email" placeholder="email@domain.com" value={s.email}></input><br/>
           <label>Description</label><br/>
-          <textarea ref="description" placeholder="Describe yourself to your students!" defaultValue={this.state.description}></textarea><br/>
+          <textarea ref="description" placeholder="Describe yourself to your students!" defaultValue={s.description}></textarea><br/>
           <label>Profile Picture</label><br/>
           <ImageUploader handleImageSave={this.handleImageSave} />
           <label>Banner Picture</label><br/>
