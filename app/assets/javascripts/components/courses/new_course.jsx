@@ -37,7 +37,7 @@ var NewCourse = React.createClass({
       this.setState({ courseSummary: event.target.value });
     }
   },
-  handleDescriptionChange: function() {
+  handleDescriptionChange: function(e) {
     if (event.target.value === "") {
       this.setState({ courseDescription: this.state.defaultCourseDescription });
     } else {

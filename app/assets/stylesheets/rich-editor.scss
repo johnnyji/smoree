@@ -1,5 +1,26 @@
 @import "appwide";
 
+.quill.subform-rich-text-editor {
+  .quill-toolbar.ql-toolbar.ql-snow {
+    position: relative;
+    font-size: 20px;
+    text-align: left;
+    padding: 0;
+  }
+  .quill-contents.ql-container.ql-snow {
+    @include invisible-input-field-style;
+    position: relative;
+    font-family: "Hind", sans-serif;
+    font-size: 1.05em;
+    text-align: left;
+    height: 300px;
+    white-space: pre;
+  }
+  #ql-editor-1.ql-editor {
+    width: 100%;
+  }
+}
+
 .quill-toolbar.ql-toolbar.ql-snow {
   @include position-x(relative, 50%);
   left: 50%;
