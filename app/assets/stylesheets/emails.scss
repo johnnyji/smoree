@@ -1,7 +1,15 @@
-.email-container {
+.date-container {
   min-width: 390px;
-  width: 70%;
+  width: 650px;
   padding: 1em;
   margin: 1em auto;
   background-color: aliceblue;
+  .date-header {
+    text-align: left;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #DBDBDB;
+  }
+  .email-container {
+
+  }
 }

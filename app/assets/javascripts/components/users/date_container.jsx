@@ -8,13 +8,13 @@ var DateContainer = React.createClass({
     var p = this.props;
     var s = this.state;
     var emails = [];
-    debugger;
+
     for (var i = 0; i < p.emails.length; i++) {
       emails.push(<EmailContainer email={p.emails[i]}/>)
     }
     return (
-      <div>
-        <div>{p.date}</div>
+      <div className="date-container">
+        <div className="date-header">{p.date}</div>
         <div>{emails}</div>
       </div>
     )
