@@ -2,8 +2,8 @@ class EmailsController < ApplicationController
   respond_to :json
   
   def index
-    emails = Email.where(user_id: params[:user_id])
-    render json: { emails: emails.to_json }, status: :ok
+    @emails = Email.where(user_id: params[:user_id]).order("created_at DESC")
+    @emails_by_month = @emails.group_by { |e| e.created_at.strftime("%b %d %Y") }
   end
 
   def create

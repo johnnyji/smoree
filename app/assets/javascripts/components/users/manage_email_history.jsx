@@ -5,34 +5,41 @@ var ManageEmailHistory = React.createClass({
   getInitialState: function() {
     return {
       ready: false, 
-      emails: null
+      error: false,
+      emailsByDate: null
     };
   },
   componentWillMount: function() {
     UserActions.loadEmails(this.props.user.id, this.loadEmailsSuccess, this.loadEmailsError);
   },
   loadEmailsSuccess: function(data) {
-    var emails = JSON.parse(data.emails)
     this.setState({
-      emails: emails,
+      emailsByDate: data,
       ready: true
     });
   },
   loadEmailsError: function(xhr, requestCode, error) {
-    debugger;
+    this.setState({
+      ready: true,
+      error: true
+    });
   },
   render: function() {
     var s = this.state;
     var p = this.props;
-    var emails = [];
+    var dates = [];
+
     if (!s.ready) { return <div>Loading...</div> }
-    for (var i = 0; i < s.emails.length; i++) {
-      emails.push(<EmailContainer email={s.emails[i]} />)
+    if (s.ready && s.error) { return <div>Error! Could not load.</div> }
+
+    for (var i = 0; i < s.emailsByDate.length; i++) {
+      dates.push(<DateContainer date={s.emailsByDate[i].created_at} emails={s.emailsByDate[i].emails} />)
     }
+
     return (
       <div>
         <h1>History of Emails Sent</h1>
-        <div>{emails}</div>
+        <div>{dates}</div>
       </div>
     )
   }

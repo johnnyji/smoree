@@ -6,7 +6,9 @@ var EmailContainer = React.createClass({
     var p = this.props;
     var s = this.state;
     return (
-      <div>{this.props.email.body}</div>
+      <div className="email-container">
+        <div>{this.props.email.body}</div>
+      </div>
     )
   }
 });
