@@ -9,6 +9,15 @@ var UserStore = Reflux.createStore({
       error: error
     });
   },
+  onLoadEmails: function(userId, success, error) {
+    $.ajax({
+      url: "/users/" + userId + "/emails",
+      method: "GET",
+      dataType: "json",
+      success: success,
+      error: error
+    });
+  },
   onUpdateProfile: function(userId, data, success, error) {
     $.ajax({
       url: "/users/" + userId,
@@ -25,7 +34,7 @@ var UserStore = Reflux.createStore({
       email: email
     }
     $.ajax({
-      url: "/students/mail",
+      url: "/emails",
       method: "POST",
       dataType: "json",
       data: info,

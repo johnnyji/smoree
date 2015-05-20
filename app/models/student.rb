@@ -1,6 +1,9 @@
 class Student < ActiveRecord::Base
   belongs_to :course
 
+  has_many :email_students
+  has_many :emails, through: :email_students
+
   validates :first_name, presence: { message: "Please enter your first name" }
   validates :last_name, presence: { message: "Please enter your last name" }
   validates :email, 

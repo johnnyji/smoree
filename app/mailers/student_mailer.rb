@@ -8,7 +8,7 @@ class StudentMailer < ApplicationMailer
     mail(to: @student.email, subject: "Thanks for signing up for #{@course.title}")
   end
 
-  def teacher_email(student, course, email_body)
+  def email(student, course, email_body)
     @course = course
     @student = student
     @body = email_body

@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :emails, dependent: :destroy
+
   has_many :courses, dependent: :destroy
   has_many :students, -> { uniq }, through: :courses, dependent: :destroy
 

@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    resources :emails, only: [:index]  
+  end
+
+  resources :emails, only: [:create]
   resources :session, only: [:new, :create, :destroy]
 end

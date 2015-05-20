@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518160742) do
+ActiveRecord::Schema.define(version: 20150520191728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150518160742) do
     t.string   "location"
     t.string   "summary"
     t.string   "description"
+    t.string   "slug"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at",    null: false
@@ -30,23 +31,28 @@ ActiveRecord::Schema.define(version: 20150518160742) do
     t.integer  "user_id"
     t.string   "image_url"
     t.string   "welcome_email"
-    t.string   "slug"
   end
 
   add_index "courses", ["user_id"], name: "index_courses_on_user_id", using: :btree
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope"
-    t.datetime "created_at"
+  create_table "email_students", force: :cascade do |t|
+    t.integer  "email_id"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  add_index "email_students", ["email_id"], name: "index_email_students_on_email_id", using: :btree
+  add_index "email_students", ["student_id"], name: "index_email_students_on_student_id", using: :btree
+
+  create_table "emails", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "emails", ["user_id"], name: "index_emails_on_user_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
@@ -73,5 +79,8 @@ ActiveRecord::Schema.define(version: 20150518160742) do
   end
 
   add_foreign_key "courses", "users"
+  add_foreign_key "email_students", "emails"
+  add_foreign_key "email_students", "students"
+  add_foreign_key "emails", "users"
   add_foreign_key "students", "courses"
 end
