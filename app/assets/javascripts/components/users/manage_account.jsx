@@ -67,7 +67,7 @@ var ManageAccount = React.createClass({
   },
   render: function() {
     var s = this.state;
-    if (!s.ready) { return <div>Loading...</div> }
+    if (!s.ready) { return <Spinner /> }
     return (
       <div>
         {s.saved && <ReactFlashMessage flashType="flash-success" message="Profile saved!" hideFlash={this.handleHideFlash} />}

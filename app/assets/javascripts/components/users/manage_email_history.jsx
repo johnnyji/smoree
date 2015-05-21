@@ -49,7 +49,7 @@ var ManageEmailHistory = React.createClass({
     var dates = [];
 
     if (s.noEmails) { return <h1>No Previous Emails</h1> }
-    if (!s.ready) { return <div>Loading...</div> }
+    if (!s.ready) { return <Spinner /> }
     if (s.ready && s.error) { return <div>Error! Could not load.</div> }
 
 

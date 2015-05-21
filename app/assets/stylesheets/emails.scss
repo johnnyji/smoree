@@ -7,13 +7,14 @@
 .date-container {
   position: relative;
   min-width: 390px;
-  width: 650px;
+  width: 700px;
   padding: 1em;
   margin: 1em auto;
   .date-header {
     position: relative;
-    text-align: left;
-    padding-bottom: 0.5em;
+    text-align: center;
+    letter-spacing: 1px;
+    padding-bottom: 1em;
     margin-bottom: 1.5em;
     border-bottom: 1px solid #DBDBDB;
   }
@@ -70,7 +71,7 @@
 }
 
 .confirm-email-lightbox {
-  @include position-center(absolute, 50%, 50%);
+  @include position-center(fixed, 50%, 50%);
   box-shadow: 0 0 8px $gray;
   background-color: $white;
   width: 600px;

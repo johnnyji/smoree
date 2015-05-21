@@ -1,8 +1,14 @@
 var CourseContainer = React.createClass({
+  getInitialState: function() {
+    return {
+      loadNavigation: false 
+    }
+  },
   formatDate: function(date) {
     return moment(date).format("MMMM Do YYYY");
   },
   handleNavToCourse: function() {
+    this.setState({ loadNavigation: true });
     window.location.href = "/courses/" + this.props.course.id;
   },
   handleEditCourse: function() {
@@ -19,13 +25,19 @@ var CourseContainer = React.createClass({
   },
   render: function() {
     var course = this.props.course;
+    var s = this.state;
     return (
       <div className="user-dashboard-course-container">
         <img src={course.image_url} onClick={this.handleNavToCourse} ></img>
 
         <div className="dashboard-course-title">
-          <h1 onClick={this.handleNavToCourse}>{course.title}</h1>
-          <p>{this.formatDate(course.start_date)} - {this.formatDate(course.end_date)}</p>
+          {!s.loadNavigation && 
+            <div onClick={this.handleNavToCourse}>
+              <h1>{course.title}</h1>
+              <p>{this.formatDate(course.start_date)} - {this.formatDate(course.end_date)}</p>
+            </div>
+          }
+          {s.loadNavigation && <Spinner color="white"/>}
         </div>
 
         <div className="dashboard-options">
