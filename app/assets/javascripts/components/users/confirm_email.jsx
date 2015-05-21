@@ -59,7 +59,10 @@ var ConfirmEmail = React.createClass({
     return (
       <div className="fullscreen-modal backdrop">
         <div className="confirm-email-lightbox">
-          <button onClick={this.handleConfirm}>Send</button>
+          <button onClick={this.handleConfirm} className="send-button">
+            <i className="fa fa-paper-plane"></i>Send
+          </button>
+          <i className="fa fa-remove exit-button" onClick={p.handleExitModal}></i>
           <h1>Selected Students</h1>
           {s.students}
         </div>

@@ -77,6 +77,18 @@
   width: 600px;
   height: 600px;
   z-index: 11;
+  .send-button {
+    @include button-style($primary-green, $secondary-green);
+    position: relative;
+    margin: 1em auto;
+    font-size: 1.2em;
+  }
+  .exit-button {
+    position: absolute;
+    top: 1em;
+    right: 0.5em;
+    font-size: 1.3em;
+  }
   .resend-student-container { color: $text-gray; }
   .selected { color: $dark-green; }
 }

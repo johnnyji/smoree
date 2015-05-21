@@ -26,6 +26,9 @@ var EmailContainer = React.createClass({
     this.setState({ resend: false });
     this.props.emailSent();
   },
+  handleExitModal: function() {
+    this.setState({ resend: false });
+  },
   toggleFullEmail: function() {
     if (this.state.showEntireEmail) {
       this.setState({ showEntireEmail: false });
@@ -38,7 +41,15 @@ var EmailContainer = React.createClass({
     var s = this.state;
     return (
       <div ref="email" className="email-container">
-        {s.resend && <ConfirmEmail onConfirm={this.handleSendEmail} email={p.email} emailSent={this.handleEmailSent} resendError={p.resendError}/>}
+        {s.resend && 
+          <ConfirmEmail 
+            onConfirm={this.handleSendEmail} 
+            email={p.email} 
+            emailSent={this.handleEmailSent} 
+            resendError={p.resendError}
+            handleExitModal={this.handleExitModal}
+          />
+        }
         <div className="email-body">
           {!s.showEntireEmail && <div className="email-text" onClick={this.toggleFullEmail}>{p.email.body}</div>}
           {s.showEntireEmail && <div className="email-text" onClick={this.toggleFullEmail}>{p.email.original_body}</div>}
