@@ -30,12 +30,20 @@
         position: relative;
         display: inline-block;
         vertical-align: top;
-        width: 65%;
+        max-width: 65%;
+        word-wrap: break-word;
         white-space: pre;
         font-size: 1.1em;
+        .email-text {
+          @include transition(0.3s);
+          margin-bottom: 1em;
+          &:hover {
+            color: $dark-green;
+            cursor: pointer;
+          }
+        }
         span {
           position: relative;
-          margin: 0;
           font-weight: 600;
           font-size: 0.9em;
         }

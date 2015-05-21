@@ -208,6 +208,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks (~> 2.1.0)
   letter_opener (~> 1.3.0)
+  loofah (~> 2.0.1)
   pg
   pry (~> 0.10.1)
   pry-nav (~> 0.2.4)

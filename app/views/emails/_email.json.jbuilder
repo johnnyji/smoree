@@ -1,6 +1,6 @@
 json.id email.id
 json.body format_preview(email.body)
-json.original_body email.body
+json.original_body format_body(email.body)
 json.created_at format_date(email.created_at)
 json.student_count email.students.count
 json.course_title email.course.title unless email.course.nil?

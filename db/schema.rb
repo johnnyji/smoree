@@ -81,8 +81,6 @@ ActiveRecord::Schema.define(version: 20150520230816) do
   end
 
   add_foreign_key "courses", "users"
-  add_foreign_key "email_students", "emails"
-  add_foreign_key "email_students", "students"
   add_foreign_key "emails", "courses"
   add_foreign_key "emails", "users"
   add_foreign_key "students", "courses"

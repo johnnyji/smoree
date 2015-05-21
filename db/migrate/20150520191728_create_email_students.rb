@@ -6,7 +6,5 @@ class CreateEmailStudents < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :email_students, :emails
-    add_foreign_key :email_students, :students
   end
 end
