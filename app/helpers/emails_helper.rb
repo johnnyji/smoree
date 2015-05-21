@@ -6,7 +6,7 @@ module EmailsHelper
 
   def format_preview(body)
     raw_body = format_body(body)
-    truncate(raw_body, length: 160, separator: " ", omission: " . . .")
+    raw_body[0..160] + ". . ."
   end
 
   def format_body(body)
