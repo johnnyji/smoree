@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520191728) do
+ActiveRecord::Schema.define(version: 20150520230816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,10 @@ ActiveRecord::Schema.define(version: 20150520191728) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "course_id"
   end
 
+  add_index "emails", ["course_id"], name: "index_emails_on_course_id", using: :btree
   add_index "emails", ["user_id"], name: "index_emails_on_user_id", using: :btree
 
   create_table "students", force: :cascade do |t|
@@ -81,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150520191728) do
   add_foreign_key "courses", "users"
   add_foreign_key "email_students", "emails"
   add_foreign_key "email_students", "students"
+  add_foreign_key "emails", "courses"
   add_foreign_key "emails", "users"
   add_foreign_key "students", "courses"
 end

@@ -41,5 +41,20 @@ var UserStore = Reflux.createStore({
       success: success,
       error: error
     });
+  },
+  onSendCourseEmail: function(courseId, studentsArray, email, success, error) {
+    var info = {
+      course_id: courseId,
+      id_array: studentsArray,
+      email: email
+    }
+    $.ajax({
+      url: "/emails",
+      method: "POST",
+      dataType: "json",
+      data: info,
+      success: success,
+      error: error
+    });
   }
 });

@@ -6,7 +6,9 @@ var ManageEmailHistory = React.createClass({
     return {
       ready: false, 
       error: false,
-      emailsByDate: null
+      emailsByDate: null,
+      emailSent: false,
+      resendError: false
     };
   },
   componentWillMount: function() {
@@ -24,6 +26,18 @@ var ManageEmailHistory = React.createClass({
       error: true
     });
   },
+  handleEmailSent: function() {
+    this.setState({ emailSent: true });
+  },
+  handleResendError: function() {
+    this.setState({ resendError: true });
+  },
+  hideFlash: function() {
+    this.setState({
+      emailSent: false,
+      resendError: false
+    });
+  },
   render: function() {
     var s = this.state;
     var p = this.props;
@@ -33,13 +47,16 @@ var ManageEmailHistory = React.createClass({
     if (s.ready && s.error) { return <div>Error! Could not load.</div> }
 
     for (var i = 0; i < s.emailsByDate.length; i++) {
-      dates.push(<DateContainer date={s.emailsByDate[i].created_at} emails={s.emailsByDate[i].emails} />)
+      dates.push(<DateContainer date={s.emailsByDate[i].created_at} emails={s.emailsByDate[i].emails} emailSent={this.handleEmailSent} resendError={this.handleResendError}/>)
     }
 
     return (
       <div>
-        <h1>History of Emails Sent</h1>
-        <div>{dates}</div>
+        {s.emailSent && <ReactFlashMessage flashType={"flash-success"} message={"Email sent"} hideFlash={this.hideFlash} />}
+        {s.resendError && <ReactFlashMessage flashType={"flash-error"} message={"Please select students to send to"} hideFlash={this.hideFlash} />}
+        <div className="email-history-container">
+          <div>{dates}</div>
+        </div>
       </div>
     )
   }

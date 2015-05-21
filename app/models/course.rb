@@ -1,7 +1,8 @@
 class Course < ActiveRecord::Base
   belongs_to :user
   has_many :students, dependent: :destroy
-
+  has_many :emails
+  
   validates :slug,
               uniqueness: { message: "Sorry! This subdomain is taken" },
               presence: { message: "The course subdomain cannot be blank" }

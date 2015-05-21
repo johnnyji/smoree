@@ -1,15 +1,73 @@
+@import "appwide";
+
+.email-history-title {
+  font-size: 1.8em;
+}
+
 .date-container {
+  position: relative;
   min-width: 390px;
   width: 650px;
   padding: 1em;
   margin: 1em auto;
-  background-color: aliceblue;
   .date-header {
+    position: relative;
     text-align: left;
     padding-bottom: 0.5em;
+    margin-bottom: 1.5em;
     border-bottom: 1px solid #DBDBDB;
   }
-  .email-container {
-
+  .date-emails-container {
+    position: relative;
+    margin: 1em 0;
+    .email-container {
+      @include border-shadow;
+      position: relative;
+      margin: 2em 0;
+      padding: 1em;
+      .email-body {
+        text-align: left;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        width: 65%;
+        white-space: pre;
+        font-size: 1.1em;
+        span {
+          position: relative;
+          margin: 0;
+          font-weight: 600;
+          font-size: 0.9em;
+        }
+      }
+      i {
+        margin-right: 1em;
+      }
+      .user-count {
+        font-weight: 400;
+      }
+      .email-info {
+        text-align: right;
+        position: relative;
+        display: inline-block;
+        width: 30%;
+        button {
+          @include button-style($primary-green, $secondary-green);
+          font-size: 1em;
+          margin: 0 0 1.5em 0;
+        }
+      }
+    }
   }
+}
+
+.confirm-email-lightbox {
+  @include position-center(absolute, 50%, 50%);
+  box-shadow: 0 0 8px $gray;
+  background-color: $white;
+  width: 600px;
+  height: 600px;
+  z-index: 11;
+  .resend-student-container { color: $text-gray; }
+  .selected { color: $dark-green; }
 }

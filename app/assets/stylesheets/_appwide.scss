@@ -88,6 +88,9 @@
     box-shadow: 0 8px 0 $color;
     background-color: $hover;
   }
+  i {
+    color: $white;
+  }
 }
 
 @mixin fake-button-style($color, $hover) {

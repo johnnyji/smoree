@@ -58,14 +58,14 @@ var UserEmailBox = React.createClass({
         <div className="email-box-form">
           {s.sent && s.flash && <ReactFlashMessage message={"Emailed to " + s.studentCount + " students"} flashType={"flash-success"} hideFlash={this.handleHideFlash} />}
           {s.error && s.flash && <ReactFlashMessage message={s.error} flashType={"flash-error"} hideFlash={this.handleHideFlash} />}
-
+          <h1>General Email List</h1><br/>
           <ReactQuill 
             theme="snow"
             className="email-box"
             onChange={this.handleEmailChange}
           />
           {!s.sendable && <button className="no-email-box-submit-button" onClick={this.handleEmailSend}>Compose your email</button>}
-          {s.sendable && <button className="email-box-submit-button" onClick={this.handleEmailSend}>Send Email</button>}
+          {s.sendable && <button className="email-box-submit-button" onClick={this.handleEmailSend}><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;Send Email</button>}
         </div>
       </div>
     )

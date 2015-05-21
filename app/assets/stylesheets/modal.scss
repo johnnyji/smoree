@@ -1,5 +1,14 @@
 @import "appwide";
 
+.fullscreen-modal {
+  @include position-center(absolute, 50%, 50%);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  overflow: hidden;
+  text-align: center;  
+}
+
 .popup-modal {
   @include position-center(fixed, 50%, 50%);
   width: 600px;
