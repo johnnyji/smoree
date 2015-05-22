@@ -15,7 +15,7 @@ var ManageAccount = React.createClass({
     };
   },
   componentWillMount: function() {
-    UserActions.loadUser(this.props.userId, this.onLoadUserSuccess, this.onLoadUserError);
+    UserActions.loadEditUser(this.props.userId, this.onLoadUserSuccess, this.onLoadUserError);
   },
   onLoadUserSuccess: function(data) {
     var user = JSON.parse(data.user);
@@ -74,13 +74,9 @@ var ManageAccount = React.createClass({
         {s.profilePictureSave && <ReactFlashMessage flashType="flash-success" message="Profile picture saved" hideFlash={this.handleProfilePictureHideFlash} />}
         <form className="edit-user-container" onSubmit={this.handleSaveProfile}>
           <h1 className="title">Edit Profile</h1>
-          <label>First Name</label><br/>
           <input ref="firstName" placeholder="First name" value={s.firstName}></input><br/>
-          <label>Last Name</label><br/>
           <input ref="lastName" placeholder="Last name" value={s.lastName}></input><br/>
-          <label>Email</label><br/>
           <input ref="email" placeholder="email@domain.com" value={s.email}></input><br/>
-          <label>Description</label><br/>
           <textarea ref="description" placeholder="Describe yourself to your students!" defaultValue={s.description}></textarea><br/>
           <label>Profile Picture</label><br/>
           <ImageUploader handleImageSave={this.handleImageSave} />

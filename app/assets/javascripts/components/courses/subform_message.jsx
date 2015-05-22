@@ -20,7 +20,6 @@ var SubformMessage = React.createClass({
         canBeSaved: true
       });
     }
-    this.props.handleEditingEmail();
   },
   handleEmailChange: function(e) {
     var emailBody = e.target.value;
@@ -50,10 +49,10 @@ var SubformMessage = React.createClass({
           <textarea id="course_description" className="new-course-form-description" id="welcome-email" onChange={this.handleEmailChange} defaultValue={p.course.welcome_email}></textarea>
           {!s.canBeSaved && <button className="cannot-save-info-button">Provide a message</button>}
           {s.canBeSaved && <button className="save-info-button" onClick={this.handleEmailSave}>Save message</button>}
-          <div className="new-course-alert-container">
+          <p className="preview-email" onClick={p.handleEditingEmail}>Preview Email</p>
+          <div className="new-course-alert-container-2">
             {s.emailSaved && <SuccessMessageBox message={"Email has been saved!"} />}
           </div> 
-          <p className="preview-email" onClick={p.handleEditingEmail}>Preview Email</p>
         </div>
     );
   }

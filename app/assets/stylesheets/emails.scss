@@ -24,14 +24,26 @@
     .email-container {
       @include border-shadow;
       position: relative;
+      width: 100%;
       margin: 2em 0;
       padding: 1em;
-      .email-body {
-        text-align: left;
+      .email-info {
         position: relative;
         display: inline-block;
+        text-align: right;
+        width: 30%;
+        button {
+          @include button-style($primary-green, $secondary-green);
+          font-size: 1em;
+          margin: 0 0 1.5em 0;
+        }
+      }
+      .email-body {
+        position: relative;
+        display: inline-block;
+        text-align: left;
         vertical-align: top;
-        max-width: 65%;
+        width: 65%;
         word-wrap: break-word;
         white-space: pre;
         font-size: 1.1em;
@@ -55,17 +67,6 @@
       .user-count {
         font-weight: 400;
       }
-      .email-info {
-        text-align: right;
-        position: relative;
-        display: inline-block;
-        width: 30%;
-        button {
-          @include button-style($primary-green, $secondary-green);
-          font-size: 1em;
-          margin: 0 0 1.5em 0;
-        }
-      }
     }
   }
 }
@@ -78,7 +79,7 @@
   width: 600px;
   height: 600px;
   overflow: scroll;
-  z-index: 11;
+  z-index: 101;
   .send-button {
     @include button-style($primary-green, $secondary-green);
     position: relative;

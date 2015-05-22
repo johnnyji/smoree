@@ -78,9 +78,6 @@
       cursor: pointer;
     }
   }
-  .fake-uploader-cover {
-
-  }
   .fake-uploader {
     position: absolute;
     top: 0px;
@@ -91,8 +88,11 @@
 }
 
 .preview-email {
+  @include transition(0.3s);
+  padding: 1em 0;
   &:hover {
     cursor: pointer;
+    color: $dark-green;
   }
 }
 
