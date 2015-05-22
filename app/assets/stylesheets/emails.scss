@@ -74,25 +74,28 @@
   @include position-center(fixed, 50%, 50%);
   box-shadow: 0 0 8px $gray;
   background-color: $white;
+  padding: 1.5em;
   width: 600px;
   height: 600px;
-  opacity: 1;
+  overflow: scroll;
   z-index: 11;
   .send-button {
     @include button-style($primary-green, $secondary-green);
     position: relative;
-    margin: 1em auto;
+    margin: 0 auto 1em auto;
     font-size: 1.2em;
   }
   .exit-button {
     position: absolute;
-    top: 1em;
-    right: 0.5em;
     font-size: 1.3em;
+    right: 0.5em;
+  }
+  .each-student {
+    margin: 1em auto 1.5em auto;
   }
   .resend-student-container {
+    @include fake-button-style($box-gray, $medium-gray);
     position: relative;
-    @include fake-button-style($gray, $medium-gray);
     width: 60%;
     margin: 0 auto;
     .student-name {
@@ -102,10 +105,18 @@
       margin: 0;
       font-size: 1.1em;
       color: $white;
+      span {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        i {
+          top: -1px;
+        }
+      }
     }
     i {
       @include position-y(absolute, 50%);
-      top: 50%;
+      top: 49%;
       right: 0;
       color: $white;
     }

@@ -17,7 +17,9 @@ var ConfirmEmail = React.createClass({
     for (var i = 0; i < p.email.students.length; i++) {
       selectedStudents.push(p.email.students[i].id)
       students.push(
-        <ConfirmStudent student={p.email.students[i]} removeStudent={this.handleRemoveStudent} selectStudent={this.handleSelectStudent}/>
+        <div className="each-student">
+          <ConfirmStudent student={p.email.students[i]} removeStudent={this.handleRemoveStudent} selectStudent={this.handleSelectStudent}/>
+        </div>
       )
     }
     this.setState({
@@ -57,7 +59,7 @@ var ConfirmEmail = React.createClass({
     var s = this.state;
     
     return (
-      <div className="fullscreen-modal backdrop">
+      <div className="full-backdrop">
         <div className="confirm-email-lightbox">
           <button onClick={this.handleConfirm} className="send-button">
             <i className="fa fa-paper-plane"></i>Send

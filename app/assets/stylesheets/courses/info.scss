@@ -97,7 +97,7 @@
     font-size: 1.2em;
   }
   .student-container {
-    @include fake-button-style($medium-gray, $dark-gray);
+    @include fake-button-style($box-gray, $medium-gray);
     position: relative;
     display: inline-block;
     text-align: left;
