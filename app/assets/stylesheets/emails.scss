@@ -76,6 +76,7 @@
   background-color: $white;
   width: 600px;
   height: 600px;
+  opacity: 1;
   z-index: 11;
   .send-button {
     @include button-style($primary-green, $secondary-green);
@@ -89,6 +90,31 @@
     right: 0.5em;
     font-size: 1.3em;
   }
-  .resend-student-container { color: $text-gray; }
-  .selected { color: $dark-green; }
+  .resend-student-container {
+    position: relative;
+    @include fake-button-style($gray, $medium-gray);
+    width: 60%;
+    margin: 0 auto;
+    .student-name {
+      position: relative;
+      vertical-align: top;
+      display: inline-block;
+      margin: 0;
+      font-size: 1.1em;
+      color: $white;
+    }
+    i {
+      @include position-y(absolute, 50%);
+      top: 50%;
+      right: 0;
+      color: $white;
+    }
+  }
+  .selected {
+    @include fake-button-style($primary-green, $secondary-green);
+    margin: 0 auto;
+    i {
+      color: $white;
+    }
+  }
 }
