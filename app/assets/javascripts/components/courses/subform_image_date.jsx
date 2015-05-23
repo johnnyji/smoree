@@ -32,31 +32,33 @@ var SubformImageDate = React.createClass({
 
   },
   render: function() {
+    var s = this.state;
+    var p = this.props;
     return (
       <div className="new-course-form">
         <h1 className="nav-content-title">Upload Image</h1>
         <div className="new-course-image-uploader">
-          <ImageUploader handleImageSave={this.props.handleImageSave}/>
+          <ImageUploader handleImageSave={p.handleImageSave}/>
         </div>
           <h1 className="nav-content-title no-margin save-date">Save The Date</h1>
           <DatePicker 
             key="start"
-            selected={this.state.startDate}
+            selected={s.startDate}
             onChange={this.handleStartDateChange}
             minDate={moment()}
             placeholderText="Select start date"
           />
           <DatePicker 
             key="end"
-            selected={this.state.endDate}
+            selected={s.endDate}
             onChange={this.handleEndDateChange}
-            minDate={moment()}
+            minDate={s.startDate === null ? moment() : s.startDate}
             placeholderText="Select end date"
           />
         {!this.canBeSaved() && <button className="cannot-save-info-button">Fill out the dates</button>}
         {this.canBeSaved() && <button className="save-info-button" onClick={this.handleDateChangeClick}>Save the date!</button>}
         <div className="new-course-alert-container">
-          {this.state.dateSaved && <SuccessMessageBox message={"Dates have been saved!"} />}
+          {s.dateSaved && <SuccessMessageBox message={"Dates have been saved!"} />}
         </div>
       </div>
     );

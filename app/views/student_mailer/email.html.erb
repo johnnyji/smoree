@@ -1,9 +1,12 @@
 <div class="email-container">
-  <h1 class="email-title">Heyo, <%= @student.first_name %> <%= @student.last_name %></h1>
+  <h1 class="email-title">Hi <%= @student.first_name %>!</h1>
   <p class="welcome-email-body"><%= (@body).html_safe %></p>
+  <br><br>
   <p>Sincerely,</p>
   <div class="instructor-info">
-    <img src=<%= @student.course.user.image_blob %>>
+    <% unless @student.course.user.image_blob.nil? %>
+      <img src=<%= @student.course.user.image_blob %>>
+    <% end %>
     <div class="instructor-title">
       <h3><%= @student.course.user.name %></h3>
       <p><%= mail_to @student.course.user.email, @student.course.user.email %></p>
