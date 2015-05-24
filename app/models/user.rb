@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :emails, dependent: :destroy
-
+  has_many :views, through: :courses, dependent: :destroy
   has_many :courses, dependent: :destroy
   has_many :students, -> { uniq }, through: :courses, dependent: :destroy
 
@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
 
   def name
     "#{self.first_name} #{self.last_name}"
+  end
+
+  def views_per_day(num_of_days)
+    self.views.group("DATE(created_at)").limit(num_of_days).count
+  end
+
+  def conversions_per_day(num_of_days)
+    self.students.group("DATE(created_at)").limit(num_of_days).count
   end
 
   private

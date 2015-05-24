@@ -11,6 +11,10 @@ class Student < ActiveRecord::Base
             presence: { message: "Please enter your email" }
   before_save :titleize_name
 
+  def date_created_string
+    self.created_at.strftime("%b %d %Y")
+  end
+
   def name
     "#{self.first_name} #{self.last_name}"
   end

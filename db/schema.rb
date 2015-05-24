@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520230816) do
+ActiveRecord::Schema.define(version: 20150524021704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,8 +80,17 @@ ActiveRecord::Schema.define(version: 20150520230816) do
     t.string "banner_blob"
   end
 
+  create_table "views", force: :cascade do |t|
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "views", ["course_id"], name: "index_views_on_course_id", using: :btree
+
   add_foreign_key "courses", "users"
   add_foreign_key "emails", "courses"
   add_foreign_key "emails", "users"
   add_foreign_key "students", "courses"
+  add_foreign_key "views", "courses"
 end

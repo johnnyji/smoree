@@ -1,12 +1,13 @@
 class CoursesController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :delete, :destroy]
-  before_action :find_course, only: [:show, :edit, :update, :delete, :destroy, :info]
+  before_action :find_course, only: [:show, :edit, :update, :delete, :destroy, :info, :data]
   respond_to :json, :html
   
   def index
   end
 
   def show
+    @course.views.create
   end
 
   def new
@@ -42,6 +43,12 @@ class CoursesController < ApplicationController
   end
 
   def info
+  end
+
+  def data
+    range_of_days = ConvertToDateObject.call(params[:range_of_days])
+    @views_per_day = RetrieveViewsPerDay.call(@course, range_of_days)
+    @signups_per_day = RetrieveSignupsPerDay.call(@course, range_of_days)
   end
 
   private

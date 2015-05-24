@@ -12,10 +12,14 @@ Rails.application.routes.draw do
   resources :courses do
     member do
       get :info
+      get :data
     end
   end
 
   resources :users do
+    collection do
+      get :data
+    end
     resources :emails, only: [:index]  
   end
 

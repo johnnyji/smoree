@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:edit, :update, :delete, :destroy, :show]
-  before_action :find_user, only: [:show, :edit, :update, :delete, :destroy]
+  before_action :require_login, only: [:edit, :update, :delete, :destroy, :show, :data]
+  before_action :find_user, only: [:show, :edit, :update, :delete, :destroy, :data]
   respond_to :json, :html, :js
 
   def new
@@ -42,12 +42,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete
-  end
-
   def destroy
     @user.destroy
     redirect_to root_path, notice: "We're sorry to see you go!"
+  end
+
+  def data
   end
 
   private
