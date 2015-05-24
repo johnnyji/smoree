@@ -15,14 +15,6 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
-  def views_per_day(num_of_days)
-    self.views.group("DATE(created_at)").limit(num_of_days).count
-  end
-
-  def conversions_per_day(num_of_days)
-    self.students.group("DATE(created_at)").limit(num_of_days).count
-  end
-
   private
 
   def titleize_name

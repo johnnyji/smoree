@@ -4,7 +4,7 @@ var DataContent = React.createClass({
   },
   getInitialState: function() {
     return {
-      rangeOfDay: [],
+      rangeOfDays: [],
       viewsPerDay: [],
       signupsPerDay: [],
       componentReady: false
@@ -16,10 +16,15 @@ var DataContent = React.createClass({
       var day = moment().subtract(i, "days").format("MMMM Do YYYY");
       defaultRangeOfDays.push(day);
     }
+    this.setState({ rangeOfDays: defaultRangeOfDays });
     CourseActions.loadCourseData(this.props.course.id, defaultRangeOfDays, this.onLoadSuccess, this.onLoadError)
   },
   onLoadSuccess: function(data) {
-    debugger;
+    this.setState({
+      viewsPerDay: JSON.parse(data.views),
+      signupsPerDay: JSON.parse(data.signups),
+      componentReady: true
+    });
   },
   onLoadError: function(xhr, requestCode, error) {
     debugger;
@@ -27,8 +32,17 @@ var DataContent = React.createClass({
   render: function() {
     var p = this.props;
     var s = this.state;
+
+    if (!s.componentReady) { return <Spinner /> }
     return (
-      <div>{p.course.title}</div>
+      <div>
+        <h1>{p.course.title}</h1>
+        <BarChart 
+          labels={s.rangeOfDays} 
+          views={s.viewsPerDay} 
+          signups={s.signupsPerDay}
+        />
+      </div>
     );
   }
 });

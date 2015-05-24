@@ -21,7 +21,6 @@ var CourseStore = Reflux.createStore({
     });
   },
   onLoadCourseData: function(courseId, rangeOfDays, success, error) {
-    debugger;
     $.ajax({
       url: "/courses/" + courseId + "/data",
       method: "GET",

@@ -1,2 +1,0 @@
-json.views_per_day @views_per_day
-json.signups_per_day @signups_per_day

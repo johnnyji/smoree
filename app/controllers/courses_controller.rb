@@ -49,6 +49,7 @@ class CoursesController < ApplicationController
     range_of_days = ConvertToDateObject.call(params[:range_of_days])
     @views_per_day = RetrieveViewsPerDay.call(@course, range_of_days)
     @signups_per_day = RetrieveSignupsPerDay.call(@course, range_of_days)
+    render json: { views: @views_per_day.to_json, signups: @signups_per_day.to_json }, status: :ok 
   end
 
   private

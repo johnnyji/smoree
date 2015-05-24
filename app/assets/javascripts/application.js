@@ -18,6 +18,7 @@
 //= require moment
 //= require quill
 //= require zeroclipboard
+//= require chartkick
 //= require react
 //= require react_ujs
 //= require reflux
