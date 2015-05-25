@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require titleize
 //= require filedrop
 //= require moment
 //= require quill
