@@ -72,7 +72,7 @@ var UserEmailBox = React.createClass({
           <h1>General Email List</h1><br/>
           <ReactQuill 
             theme="snow"
-            defaultValue={p.initialEmailValue}
+            value={p.initialEmailValue}
             className="email-box"
             onChange={this.handleEmailChange}
           />
