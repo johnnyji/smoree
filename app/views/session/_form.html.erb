@@ -1,5 +1,5 @@
 <div class="new-session-form-section hidden">
-  <%= fa_icon "remove", class: "exit-modal" %>
+  <i class="fa fa-remove exit-modal"></i>
   <%= form_tag session_index_path, method: :post, html: { class: "new-session-form" } do %>
     <h1 class="session-form-title">Welcome back!</h1>
     <%= email_field_tag :email, nil, placeholder: "email@domain.com", required: true, autocomplete: false %><br>
