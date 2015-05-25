@@ -13,9 +13,9 @@ var DataNav = React.createClass({
     var tabs = [];
     for (var i = 0; i < p.tabs.length; i++) {
       if (i === p.activeTabIndex) {
-        tabs.push(<div className="active" >{p.tabs[i]}</div>)
+        tabs.push(<div className="tab active" >{p.tabs[i]}</div>)
       } else {
-        tabs.push(<div onClick={this.props.handleClick.bind(this, i)}>{p.tabs[i]}</div>)
+        tabs.push(<div className="tab" onClick={this.props.handleClick.bind(this, i)}>{p.tabs[i]}</div>)
       }
     }
     this.setState({ tabs: tabs });
