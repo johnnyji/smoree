@@ -1,13 +1,13 @@
 $(function() {
-  var createCourse = $('.non-user-create-course-link');
-  var signUpForm = $('.user-form');
+  var loginLink = $(".user-login");
+  var newSessionForm = $(".new-session-form");
 
   function exitFormModal() {
     $("body").removeClass("stop-scroll");
     $(".overlay").fadeOut(200, function() {
       $(this).hide().removeClass("backdrop");
     });
-    $(".form-section").fadeOut(200, function() {
+    $(".new-session-form-section").fadeOut(200, function() {
       $(this).hide().removeClass("popup-modal");
     });
   }
@@ -17,23 +17,23 @@ $(function() {
     setTimeout(function() {
       $("body").addClass("stop-scroll");
       $(".overlay").addClass("backdrop").fadeIn(200);
-      $(".form-section").addClass("popup-modal").fadeIn(300);
+      $(".new-session-form-section").addClass("popup-modal").fadeIn(300);
     }, 200);
 
     $(".exit-modal").on("click", exitFormModal);
   }
- 
-  createCourse.on("click", function(e) {
+
+  loginLink.on("click", function(e) {
     e.preventDefault();
     displayFormModal();
   });
 
-  $(".user-sign-up").on("click", function(e) {
-    e.preventDefault();
-    displayFormModal();
-  });
-
-  signUpForm.on("change", "input", function() {
+  newSessionForm.on("change", "input",function() {
     $(this).prev().empty();
   });
+
+  newSessionForm.on("submit", function(e) {
+    e.preventDefault();
+  });
+
 });

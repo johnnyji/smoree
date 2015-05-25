@@ -23,10 +23,6 @@ class UsersController < ApplicationController
 
   def show
     @courses = current_user.courses.all.order("created_at DESC")
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: { user: @user.to_json }, status: :ok } 
-    # end
   end
 
   def edit

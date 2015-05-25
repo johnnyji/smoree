@@ -1,17 +1,21 @@
 class SessionController < ApplicationController
   before_action :require_login, only: [:destroy]
+  respond_to :html, :js
 
   def new
   end
 
   def create
     user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to user_path(user), notice: "Welcome back #{user.name}!"
-    else
-      flash.now.alert = "Email or password invalid!"
-      render :new
+    respond_to do |format|
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        format.html { redirect_to user_path(user), notice: "Welcome back #{user.name}!" }
+      else
+        #this isn't working   
+        format.html { render :new }
+        format.js
+      end
     end
   end
 

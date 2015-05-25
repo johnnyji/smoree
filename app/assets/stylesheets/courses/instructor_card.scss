@@ -1,3 +1,5 @@
+@import "appwide";
+
 .instructor-info {
   position: relative;
   width: 100%;
@@ -26,6 +28,13 @@
   margin: 0;
 }
 
-.instructor-title p {
+.instructor-title a {
   margin: 0;
+  color: $primary-green;
+  &:active, &:focus, &:visited {
+    color: $primary-green;
+  }
+  &:hover {
+    color: $dark-green;
+  }
 }

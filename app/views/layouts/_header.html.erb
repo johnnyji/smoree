@@ -15,7 +15,10 @@
         <%= link_to current_user.name, user_path(current_user) %>&nbsp;&nbsp;-&nbsp;&nbsp;<%= link_to "Signout", session_path("current"), method: :delete %>
       </p>
     <% else %>
-      <p class="header-links"><%= link_to "Sign up", new_user_path, class: "user-sign-up" %> | <%= link_to "Login", new_session_path %></p>
+      <p class="header-links">
+        <%= link_to "Sign up", new_user_path, class: "user-sign-up" %> |
+        <%= link_to "Login", new_session_path, class: "user-login" %>
+      </p>
     <% end %>
   </div>
 
