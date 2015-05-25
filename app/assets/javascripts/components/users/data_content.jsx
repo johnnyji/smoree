@@ -18,13 +18,21 @@ var DataContent = React.createClass({
     // if (this.props.viewsPerDay !== null && this.props.signupsPerDay !== null) {
     //   this.setState({ componentReady: true });
     // }
+    this.loadCourseData();
+  },
+  componentDidUpdate: function(prevProps, prevState) {
+    if (prevProps.activeTabIndex !== this.props.activeTabIndex) {
+      this.loadCourseData();
+    }
+  },
+  loadCourseData: function() {
     CourseActions.loadCourseData(
       this.props.courses[this.props.activeTabIndex].id,
       this.props.rangeOfDays,
       this.handleLoadSuccess,
       this.handleLoadError
     );
-  },
+  },  
   handleLoadSuccess: function(data) {
     this.setState({
       viewsPerDay: JSON.parse(data.views),

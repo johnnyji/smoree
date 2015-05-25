@@ -26,10 +26,6 @@ var DualLineChart = React.createClass({
   render: function() {
     var p = this.props;
     var s = this.state;
-    var chartStyle = {
-      width: "300px",
-      height: "300px",
-    }
 
     return (
       <div>

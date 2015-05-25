@@ -27,7 +27,6 @@
     .active {
       @include button-style($primary-green, $secondary-green);
       color: $white;
-
     }
   }
   .user-dashboard-content {
