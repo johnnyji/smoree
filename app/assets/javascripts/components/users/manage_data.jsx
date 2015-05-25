@@ -15,8 +15,10 @@ var ManageData = React.createClass({
     };
   },
   componentDidMount: function() {
-    this.loadNavbar();
-    this.loadRangeOfDays();
+    if (this.props.courses.length < 1) {
+      this.loadNavbar();
+      this.loadRangeOfDays();
+    }
   },
   loadNavbar: function() {
     var p = this.props;
@@ -46,6 +48,8 @@ var ManageData = React.createClass({
   render: function() {
     var p = this.props;
     var s = this.state;
+
+    if (p.courses.length < 1) { return <h1>No Courses Yet</h1> }
     if (!s.componentReady) { return <Spinner /> }
     return (
       <div className="data-container">
