@@ -1,7 +1,8 @@
 var DateContainer = React.createClass({
   propTypes: {
     date: React.PropTypes.string.isRequired,
-    emails: React.PropTypes.array.isRequired
+    emails: React.PropTypes.array.isRequired,
+    resendEmail: React.PropTypes.func.isRequired
   },
   getInitialState: function() {
     return {
@@ -12,14 +13,7 @@ var DateContainer = React.createClass({
     var p = this.props;
     var emails = [];
     for (var i = 0; i < p.emails.length; i++) {
-      emails.push(
-        <EmailContainer 
-          email={p.emails[i]} 
-          emailSent={p.emailSent} 
-          resendError={p.resendError}
-          resendEmail={p.resendEmail}
-        />
-      )
+      emails.push(<EmailContainer email={p.emails[i]} resendEmail={p.resendEmail} />)
     }
     this.setState({ emails: emails });
   },

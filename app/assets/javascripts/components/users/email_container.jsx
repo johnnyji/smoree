@@ -5,8 +5,6 @@ var EmailContainer = React.createClass({
   getInitialState: function() {
     return {
       hasCourse: false,
-      students: null,
-      resend: false,
       previewEmail: false,
       showEntireEmail: false
     }
@@ -17,19 +15,7 @@ var EmailContainer = React.createClass({
     }  
   },
   handleResendClick: function() {
-    debugger;
     this.props.resendEmail(this.props.email.raw_body);
-    // this.setState({ 
-    //   resend: true,
-    //   students: this.props.email.students
-    // })
-  },
-  handleEmailSent: function() {
-    this.setState({ resend: false });
-    this.props.emailSent();
-  },
-  handleExitModal: function() {
-    this.setState({ resend: false });
   },
   toggleFullEmail: function() {
     if (this.state.showEntireEmail) {
@@ -44,18 +30,11 @@ var EmailContainer = React.createClass({
 
     return (
       <div ref="email" className="email-container">
-        {s.resend && 
-          <ConfirmEmail 
-            onConfirm={this.handleSendEmail} 
-            email={p.email} 
-            emailSent={this.handleEmailSent} 
-            resendError={p.resendError}
-            handleExitModal={this.handleExitModal}
-          />
-        }
         <div className="email-body">
           {!s.showEntireEmail && <div className="email-text" onClick={this.toggleFullEmail}>{p.email.body}</div>}
+
           {s.showEntireEmail && <div className="email-text" onClick={this.toggleFullEmail}>{p.email.original_body}</div>}
+
           {s.hasCourse && <span>{p.email.course_title}</span>}
         </div>
         <div className="email-info">

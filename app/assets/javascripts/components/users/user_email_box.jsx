@@ -12,6 +12,14 @@ var UserEmailBox = React.createClass({
         error: null
       }
   },
+  componentDidMount: function() {
+    if (this.props.initialEmailValue.length > 0) {
+      this.setState({
+        sendable: true,
+        email: this.props.initialEmailValue
+      });
+    }
+  },
   handleEmailChange: function(e) {
     this.setState({ sent: false });
     if (e !== "") {

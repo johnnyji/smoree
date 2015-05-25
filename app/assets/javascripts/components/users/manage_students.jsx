@@ -1,6 +1,6 @@
 var ManageStudents = React.createClass({
   propTypes: {
-    initialEmailValue: React.PropTypes.string.isRequired,
+    initialEmailValue: React.PropTypes.string,
     user: React.PropTypes.object.isRequired
   },
   getInitialState: function () {
