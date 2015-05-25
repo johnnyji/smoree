@@ -22,7 +22,7 @@ var DashboardController = React.createClass({
       activeTabIndex: selectedTab,
       resendEmailBody: null
     });
-  },  
+  },
   render: function() {
     var s = this.state;
     var p = this.props;

@@ -1,4 +1,9 @@
 var DashboardNav = React.createClass({
+  propTypes: {
+    tabs: React.PropTypes.array.isRequired,
+    activeTabIndex: React.PropTypes.number.isRequired,
+    handleClick: React.PropTypes.func.isRequired
+  },
   handleClick: function(tabIndex) {
     this.props.handleClick(tabIndex);
   },  
@@ -10,11 +15,11 @@ var DashboardNav = React.createClass({
       var tab = this.props.tabs[i];
       if (tab === activeTab) {
         tabs.push(
-          <div className="user-dashboard-tab active" onClick={this.handleClick.bind(this, i)}>{tab}</div>
+          <i className={"user-dashboard-tab active fa " + tab} onClick={this.handleClick.bind(this, i)}></i>
         );
       } else {
         tabs.push(
-          <div className="user-dashboard-tab" onClick={this.handleClick.bind(this, i)}>{tab}</div>
+          <i className={"user-dashboard-tab fa " + tab} onClick={this.handleClick.bind(this, i)}></i>
         );
       }
     }  
