@@ -2,7 +2,8 @@ var DataNav = React.createClass({
   propTypes: {
     handleClick: React.PropTypes.func.isRequired,
     activeTabIndex: React.PropTypes.number.isRequired,
-    tabs: React.PropTypes.array.isRequired
+    tabs: React.PropTypes.array.isRequired,
+    navReady: React.PropTypes.bool.isRequired
   },
   render: function() {
     var s = this.state;
@@ -16,6 +17,8 @@ var DataNav = React.createClass({
         tabs.push(<div className="tab" onClick={this.props.handleClick.bind(this, i)}>{p.tabs[i]}</div>)
       }
     }
+
+    if (!this.props.navReady) { return <div/> }
     return (
       <div className="data-navbar">
         {tabs}

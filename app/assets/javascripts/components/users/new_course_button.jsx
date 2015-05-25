@@ -4,7 +4,7 @@ var NewCourseButton = React.createClass({
   },
   render: function() {
     return (
-      <div className="user-dashboard-course-container" onClick={this.handleNewCourseClick} >
+      <div className="user-dashboard-course-container new-course-container" onClick={this.handleNewCourseClick} >
         <i className="fa fa-plus new-course"></i>
       </div>
     );

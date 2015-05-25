@@ -1,4 +1,7 @@
 var UserEmailBox = React.createClass({
+  propTypes: {
+    initalEmailValue: React.PropTypes.string
+  },
   getInitialState: function () {
       return {
         sendable: false,
@@ -61,6 +64,7 @@ var UserEmailBox = React.createClass({
           <h1>General Email List</h1><br/>
           <ReactQuill 
             theme="snow"
+            defaultValue={p.initialEmailValue}
             className="email-box"
             onChange={this.handleEmailChange}
           />

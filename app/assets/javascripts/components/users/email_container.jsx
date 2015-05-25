@@ -16,11 +16,13 @@ var EmailContainer = React.createClass({
       this.setState({ hasCourse: true });
     }  
   },
-  handleResendClick: function(e) {
-    this.setState({ 
-      resend: true,
-      students: this.props.email.students
-    })
+  handleResendClick: function() {
+    debugger;
+    this.props.resendEmail(this.props.email.raw_body);
+    // this.setState({ 
+    //   resend: true,
+    //   students: this.props.email.students
+    // })
   },
   handleEmailSent: function() {
     this.setState({ resend: false });
@@ -39,6 +41,7 @@ var EmailContainer = React.createClass({
   render: function() {
     var p = this.props;
     var s = this.state;
+
     return (
       <div ref="email" className="email-container">
         {s.resend && 

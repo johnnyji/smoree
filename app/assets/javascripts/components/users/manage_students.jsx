@@ -1,5 +1,6 @@
 var ManageStudents = React.createClass({
   propTypes: {
+    initialEmailValue: React.PropTypes.string.isRequired,
     user: React.PropTypes.object.isRequired
   },
   getInitialState: function () {
@@ -49,7 +50,10 @@ var ManageStudents = React.createClass({
     var s = this.state;
     return (
       <div>
-        <UserEmailBox students={s.selectedStudents} />
+        <UserEmailBox 
+          students={s.selectedStudents}
+          initialEmailValue={p.initialEmailValue === null ? "" : p.initialEmailValue}
+        />
         <AllStudentsContainer
           students={p.students}
           selectedAll={s.selectedAll}

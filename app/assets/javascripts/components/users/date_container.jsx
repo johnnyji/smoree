@@ -12,7 +12,14 @@ var DateContainer = React.createClass({
     var p = this.props;
     var emails = [];
     for (var i = 0; i < p.emails.length; i++) {
-      emails.push(<EmailContainer email={p.emails[i]} emailSent={p.emailSent} resendError={p.resendError}/>)
+      emails.push(
+        <EmailContainer 
+          email={p.emails[i]} 
+          emailSent={p.emailSent} 
+          resendError={p.resendError}
+          resendEmail={p.resendEmail}
+        />
+      )
     }
     this.setState({ emails: emails });
   },

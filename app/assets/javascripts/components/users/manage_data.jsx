@@ -10,7 +10,8 @@ var ManageData = React.createClass({
       rangeOfDays: [],
       viewsPerDay: [],
       signupsPerDay: [],
-      componentReady: false
+      componentReady: false,
+      navReady: false
     };
   },
   componentDidMount: function() {
@@ -36,6 +37,9 @@ var ManageData = React.createClass({
       componentReady: true
     });
   },
+  handleChartReady: function() {
+    this.setState({ navReady: true });
+  },  
   handleTabClicked: function(tabIndex) {
     this.setState({ activeTabIndex: tabIndex });
   },
@@ -45,10 +49,11 @@ var ManageData = React.createClass({
     if (!s.componentReady) { return <Spinner /> }
     return (
       <div className="data-container">
-        <DataNav 
+        <DataNav
           tabs={s.courseTitles}
           handleClick={this.handleTabClicked}
           activeTabIndex={s.activeTabIndex}
+          navReady={s.navReady}
         />
         <DataContent
           courses={p.courses}
@@ -56,6 +61,7 @@ var ManageData = React.createClass({
           rangeOfDays={s.rangeOfDays}
           viewsPerDay={s.viewsPerDay}
           signupsPerDay={s.signupsPerDay}
+          chartReady={this.handleChartReady}
         />
       </div>
     );

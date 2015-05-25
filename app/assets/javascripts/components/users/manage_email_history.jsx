@@ -52,9 +52,16 @@ var ManageEmailHistory = React.createClass({
     if (!s.ready) { return <Spinner /> }
     if (s.ready && s.error) { return <div>Error! Could not load.</div> }
 
-
     for (var i = 0; i < s.emailsByDate.length; i++) {
-      dates.push(<DateContainer date={s.emailsByDate[i].created_at} emails={s.emailsByDate[i].emails} emailSent={this.handleEmailSent} resendError={this.handleResendError}/>)
+      dates.push(
+        <DateContainer 
+          date={s.emailsByDate[i].created_at} 
+          emails={s.emailsByDate[i].emails} 
+          emailSent={this.handleEmailSent} 
+          resendError={this.handleResendError}
+          resendEmail={p.resendEmail}
+        />
+      )
     }
 
     return (

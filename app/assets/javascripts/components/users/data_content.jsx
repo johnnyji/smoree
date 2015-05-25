@@ -14,10 +14,6 @@ var DataContent = React.createClass({
     };
   },
   componentDidMount: function() {
-    // debugger;
-    // if (this.props.viewsPerDay !== null && this.props.signupsPerDay !== null) {
-    //   this.setState({ componentReady: true });
-    // }
     this.loadCourseData();
   },
   componentDidUpdate: function(prevProps, prevState) {
@@ -39,6 +35,7 @@ var DataContent = React.createClass({
       signupsPerDay: JSON.parse(data.signups),
       componentReady: true
     });
+    this.props.chartReady();
   },
   handleLoadError: function(data) {
 
