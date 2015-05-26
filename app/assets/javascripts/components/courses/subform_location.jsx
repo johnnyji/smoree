@@ -5,6 +5,7 @@ var SubformLocation = React.createClass({
       state: null,
       city: null,
       address: null,
+      fetchingLocation: false,
       locationSucess: false,
       locationNotFound: false
     }
@@ -31,6 +32,7 @@ var SubformLocation = React.createClass({
   },
   handleLocationSave: function() {
     this.setState({
+      fetchingLocation: true,
       locationNotFound: false,
       locationSuccess: false
     });
@@ -38,9 +40,15 @@ var SubformLocation = React.createClass({
   },
   retrieveCoords: function(coordsArray, fullAddress) {
     if (coordsArray === null) {
-      this.setState({ locationNotFound: true });
+      this.setState({
+        fetchingLocation: false,
+        locationNotFound: true
+      });
     } else {
-      this.setState({ locationSuccess: true });
+      this.setState({
+        fetchingLocation: false,
+        locationSuccess: true
+      });
       this.props.handleLocationChange(coordsArray, fullAddress);
     } 
   },
@@ -49,6 +57,9 @@ var SubformLocation = React.createClass({
     return s.country && s.state && s.city && s.address;
   },
   render: function() {
+    var margin = {
+      marginTop: "3em"
+    }
     return (
       <div className="new-course-form">
         <h1 className="nav-content-title">Location</h1>
@@ -66,6 +77,8 @@ var SubformLocation = React.createClass({
 
           {!this.canBeSaved() && <button className="cannot-save-info-button">Fill out the location</button>}
           {this.canBeSaved() && <button className="save-info-button" onClick={this.handleLocationSave}>Save Location</button>}
+          
+          {this.state.fetchingLocation && <div style={margin}><Spinner /></div>}
           {this.state.locationNotFound &&
             <div className="new-course-alert-container">
               <ErrorMessageBox message="Sorry, we couldn't find that address! Try another" />

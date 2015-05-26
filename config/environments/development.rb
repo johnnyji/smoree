@@ -13,11 +13,26 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # For Devise
+  # For Mailer
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   #For Letter Opener
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
+
+  config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.default_url_options = { host: 'smoree.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "smoree.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["SMOREE_GMAIL_USERNAME"],
+    password: ENV["SMOREE_GMAIL_PASSWORD"]
+  }
 
   # For React
   config.react.variant = :development

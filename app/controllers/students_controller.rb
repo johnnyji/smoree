@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   def create
     student = Student.new(student_params)
     if student.save
-      StudentMailer.welcome_email(student, student.course).deliver
+      StudentMailer.delay.welcome_email(student, student.course)
       render json: { first_name: student.first_name.capitalize }, status: :ok
     else
       # this gets the first error key value pair in an array, the second is the actual error message

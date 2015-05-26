@@ -4,7 +4,6 @@
   <p class="welcome-email-body"><%= @course.welcome_email %></p>
   <p>Sincerely,</p>
   <div class="instructor-info">
-    <img src=<%= @student.course.user.image_blob %>>
     <div class="instructor-title">
       <h3><%= @student.course.user.name %></h3>
       <p><%= mail_to @student.course.user.email, @student.course.user.email %></p>
@@ -17,7 +16,7 @@
 <style type="text/css">
   .email-container {
     position: relative;
-    width: 50%;
+    width: 80%;
     margin: 2em auto;
     padding: 2em;
     box-shadow: 0 0 8px #222;
@@ -35,6 +34,7 @@
 
   .welcome-email-body {
     white-space: pre;
+    font-size: 1.3em;
     margin: 1.5em 0 3em 0;
   }
 
@@ -47,20 +47,10 @@
     border-top: 1px solid #DBDBDB;
   }
 
-  .instructor-info img {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-  }
-
   .instructor-info .instructor-title {
     position: relative;
-    display: inline-block;
     vertical-align: top;
     line-height: 180%;
-    margin-left: 1em;
   }
 
   .instructor-title h3 {

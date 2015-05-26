@@ -24,7 +24,11 @@ var ManageData = React.createClass({
     var p = this.props;
     var courseTitles = [];
     for (var i = 0; i < p.courses.length; i++) {
-      courseTitles.push(p.courses[i].title);
+      var word = p.courses[i].title
+      if (word.length >= 7) {
+        word = word.substring(0, 9) + "..."
+      }
+      courseTitles.push(word);
     }
     this.setState({ courseTitles: courseTitles });
   },

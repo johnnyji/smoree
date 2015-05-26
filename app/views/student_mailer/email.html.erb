@@ -4,9 +4,6 @@
   <br><br>
   <p>Sincerely,</p>
   <div class="instructor-info">
-    <% unless @student.course.user.image_blob.nil? %>
-      <img src=<%= @student.course.user.image_blob %>>
-    <% end %>
     <div class="instructor-title">
       <h3><%= @student.course.user.name %></h3>
       <p><%= mail_to @student.course.user.email, @student.course.user.email %></p>
@@ -18,7 +15,7 @@
 <style type="text/css">
   .email-container {
     position: relative;
-    width: 50%;
+    width: 60%;
     margin: 1em auto;
     padding: 2em;
     box-shadow: 0 0 10px #222;
@@ -51,20 +48,10 @@
     border-top: 1px solid #DBDBDB;
   }
 
-  .instructor-info img {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-  }
-
   .instructor-info .instructor-title {
     position: relative;
-    display: inline-block;
     vertical-align: top;
     line-height: 180%;
-    margin-left: 1em;
   }
 
   .instructor-title h3 {

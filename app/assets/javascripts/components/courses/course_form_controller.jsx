@@ -10,40 +10,43 @@ var CourseFormController = React.createClass({
     this.setState({ activeTabIndex: indexOfTabClicked });
   },
   render: function() {
+    var s = this.state;
+    var p = this.props;
+
     var subforms = [
       <SubformInfo
-        slug={this.props.slug}
-        title={this.props.courseTitle}
-        summary={this.props.courseSummary}
-        description={this.props.courseDescription}
-        handleTitleChange={this.props.handleTitleChange}
-        handleSummaryChange={this.props.handleSummaryChange}
-        handleDescriptionChange={this.props.handleDescriptionChange} 
-        handleSlugChange={this.props.handleSlugChange}
+        slug={p.slug}
+        title={p.courseTitle}
+        summary={p.courseSummary}
+        description={p.courseDescription}
+        handleTitleChange={p.handleTitleChange}
+        handleSummaryChange={p.handleSummaryChange}
+        handleDescriptionChange={p.handleDescriptionChange} 
+        handleSlugChange={p.handleSlugChange}
       />,
       <SubformLocation
-        country={this.props.country}
-        state={this.props.state}
-        city={this.props.city}
-        address={this.props.address}
-        handleLocationChange={this.props.handleLocationChange}
+        country={p.country}
+        state={p.state}
+        city={p.city}
+        address={p.address}
+        handleLocationChange={p.handleLocationChange}
       />,
       <SubformImageDate 
-        course={this.props.course}
-        handleDateChange={this.props.handleDateChange}
-        handleImageSave={this.props.handleImageSave}
+        course={p.course}
+        handleDateChange={p.handleDateChange}
+        handleImageSave={p.handleImageSave}
       />,
       <SubformMessage
-        user={this.props.user}
-        course={this.props.course}
-        welcomeEmail={this.props.welcomeEmail}
-        handleWelcomeEmailChange={this.props.handleWelcomeEmailChange}
-        handleEditingEmail={this.props.handleEditingEmail}
+        user={p.user}
+        course={p.course}
+        welcomeEmail={p.welcomeEmail}
+        handleWelcomeEmailChange={p.handleWelcomeEmailChange}
+        handleEditingEmail={p.handleEditingEmail}
       />
     ]
     return (
       <div className="new-course-nav-bar">
-        <FormTabManager tabs={this.props.tabs} onTabClick={this.handleTabClick} activeTabIndex={this.state.activeTabIndex} />
+        <FormTabManager tabs={p.tabs} onTabClick={this.handleTabClick} activeTabIndex={this.state.activeTabIndex} />
         <div className="course-nav-content">
           {subforms[this.state.activeTabIndex]}
         </div>

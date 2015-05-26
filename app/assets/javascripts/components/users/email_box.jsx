@@ -6,6 +6,7 @@ var EmailBox = React.createClass({
   getInitialState: function () {
       return {
         sendable: false,
+        sending: false,
         sent: false,
         email: "",
         studentCount: null,
@@ -28,19 +29,23 @@ var EmailBox = React.createClass({
     } else if (this.props.students.length === 0){
       this.setError("Please select students to send to");
     } else {
-      this.setState({ error: null });
+      this.setState({
+        sending: true,
+        error: null
+      });
       UserActions.sendCourseEmail(this.props.course.id, this.props.students, this.state.email, this.handleEmailSuccess, this.handleEmailError);
     }
   },
   handleEmailSuccess: function(data) {
     this.setState({
       sent: true,
+      sending: false,
       studentCount: data.student_count,
       flash: true
     });
   },  
   handleEmailError: function(XHR) {
-    this.setError("Error :( Unable to set email");
+    this.setError("Error :( Unable to send email");
   },
   handleHideFlash: function() {
     this.setState({
@@ -70,6 +75,7 @@ var EmailBox = React.createClass({
             onChange={this.handleEmailChange}
           />
           {!s.sendable && <button className="no-email-box-submit-button" onClick={this.handleEmailSend}>Compose your email</button>}
+          {s.sending && !s.sent && <Spinner />}
           {s.sendable && <button className="email-box-submit-button" onClick={this.handleEmailSend}><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;Send Email</button>}
         </div>
       </div>

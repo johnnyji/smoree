@@ -11,24 +11,27 @@
     position: relative;
     display: inline-block;
     margin: 0 1% 0 0;
-    padding: 1em 2em;
+    padding: 1em 2.5em;
     width: 25%;
     min-height: 100%;
     .data-nav-title {
       margin: 0 0 1em 0;
+      font-size: 2em;
     }
     .tab {
       @include transition(0.3s);
       width: 100%;
-      margin: 1em 0;
+      margin: 1em auto;
       font-weight: 600;
-      text-align: right;
+      text-align: center;
       &:hover {
         cursor: pointer;
       }
     }
     .active {
       @include button-style($primary-green, $secondary-green);
+      margin-left: 0;
+      margin-right: 0;
       color: $white;
     }
   }

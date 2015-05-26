@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+  def has_profile_picture?
+    self.image_blob != nil
+  end
+
   private
 
   def titleize_name

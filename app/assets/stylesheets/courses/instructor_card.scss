@@ -8,20 +8,20 @@
   border-top: 1px solid #DBDBDB;
 }
 
+.instructor-info .instructor-title {
+  position: relative;
+  display: inline-block;
+  margin-left: 1em;
+  vertical-align: top;
+  line-height: 180%;
+}
+
 .instructor-info img {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 60px;
   border-radius: 100%;
-}
-
-.instructor-info .instructor-title {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  line-height: 180%;
-  margin-left: 1em;
 }
 
 .instructor-title h3 {
