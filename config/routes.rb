@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/" => "courses#show", constraints: lambda { |r| r.subdomain.present? && r.subdomain !== "www" }
+  get "/" => "courses#show", constraints: lambda { |r| r.subdomain.present? && r.subdomain != "www" }
   root "users#new"
   
   resources :students do
