@@ -24,6 +24,7 @@ var CourseStore = Reflux.createStore({
     $.ajax({
       url: "/courses/" + courseId + "/data",
       method: "GET",
+      headers: { 'Access-Control-Allow-Origin': '*' },
       dataType: "json",
       data: { range_of_days: rangeOfDays },
       success: success,
