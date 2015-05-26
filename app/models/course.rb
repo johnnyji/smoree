@@ -16,7 +16,6 @@ class Course < ActiveRecord::Base
   validates :summary, presence: { message: "The course summary is blank" }
   validates :description, presence: { message: "The course description is blank" }
   validates :latitude, presence: { message: "Select a location for the course" }
-  validates :
 
   def ended
     self.end_date < Date.today
