@@ -21,6 +21,7 @@ var DataNav = React.createClass({
     if (!this.props.navReady) { return <div/> }
     return (
       <div className="data-navbar">
+        <h1 className="data-nav-title">Courses</h1>
         {tabs}
       </div>
     );

@@ -25,8 +25,8 @@ gem 'react-rails', '~> 1.0.0'
 gem 'responders', '~> 2.1.0'
 gem 'roadie-rails', '~> 1.0.6'
 gem 'shareable', '~> 1.1.4'
-gem 'aws-sdk', '~> 2'
 gem 'loofah', '~> 2.0.1'
+gem 'rails_12factor', '~> 0.0.3', group: :production
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 

@@ -15,7 +15,7 @@ var ManageData = React.createClass({
     };
   },
   componentDidMount: function() {
-    if (this.props.courses.length < 1) {
+    if (this.props.courses.length > 0 && this.props.courses !== "undefined") {
       this.loadNavbar();
       this.loadRangeOfDays();
     }
