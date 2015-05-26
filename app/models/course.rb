@@ -7,6 +7,7 @@ class Course < ActiveRecord::Base
   validates :slug,
               uniqueness: { message: "Sorry! This subdomain is taken" },
               presence: { message: "The course subdomain cannot be blank" }
+  validate  :slug_is_not_www
   validates :title,  
               presence: { message: "The course title is blank" }, 
               uniqueness: { message: "This title has already been taken" }
@@ -15,6 +16,7 @@ class Course < ActiveRecord::Base
   validates :summary, presence: { message: "The course summary is blank" }
   validates :description, presence: { message: "The course description is blank" }
   validates :latitude, presence: { message: "Select a location for the course" }
+  validates :
 
   def ended
     self.end_date < Date.today
@@ -22,6 +24,10 @@ class Course < ActiveRecord::Base
 
   def in_progress
     self.start_date > Date.today
+  end
+
+  def slug_is_not_www
+    errors.add(:slug, "www is an invalid subdomain") if self.slug == "www"
   end
 
 end

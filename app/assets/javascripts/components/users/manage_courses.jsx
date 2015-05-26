@@ -1,4 +1,7 @@
 var ManageCourses = React.createClass({
+  propTypes: {
+    course: React.PropTypes.object.isRequired
+  },
   render: function() {
     var p = this.props;
     var courses = [<NewCourseButton />];

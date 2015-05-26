@@ -1,4 +1,7 @@
 var CourseContainer = React.createClass({
+  propTypes: {
+    course: React.PropTypes.object.isRequired
+  },
   getInitialState: function() {
     return {
       loadNavigation: false 
@@ -10,6 +13,8 @@ var CourseContainer = React.createClass({
   handleNavToCourse: function() {
     this.setState({ loadNavigation: true });
     window.location.href = "/courses/" + this.props.course.id;
+    // how do I change the entire URL path to point to:
+    // slug.smoree.com
   },
   handleEditCourse: function() {
     window.location.href = "/courses/" + this.props.course.id + "/edit";
