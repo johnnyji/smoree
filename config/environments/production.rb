@@ -3,7 +3,7 @@ Rails.application.configure do
 
   # Sets the number of periods in top level domain to 2, so the top level domain
   # in 'mydomain.myapp.herokuapp.com' is 'mydomain'
-  config.action_dispatch.tld_length = 2
+  # config.action_dispatch.tld_length = 2
 
   # Code is not reloaded between requests.
   config.cache_classes = true
