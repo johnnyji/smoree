@@ -59,15 +59,15 @@ class CoursesController < ApplicationController
   end
 
   def find_course
-    # if request.subdomain.present?
-    #   begin
-    #     @course = Course.find_by!(slug: request.subdomain)
-    #   rescue ActiveRecord::RecordNotFound
-    #     redirect_to root_url(subdomain: false), notice: "Sorry, that course wasn't found!"
-    #   end
-    # else
+    if request.subdomain.present?
+      begin
+        @course = Course.find_by!(slug: request.subdomain)
+      rescue ActiveRecord::RecordNotFound
+        redirect_to root_url(subdomain: false), notice: "Sorry, that course wasn't found!"
+      end
+    else
       @course = Course.find(params[:id])
-    # end
+    end
   end
 
 end

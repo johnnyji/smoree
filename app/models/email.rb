@@ -8,7 +8,8 @@ class Email < ActiveRecord::Base
     students = Student.where(id: student_ids)
     students.each do |student|
       self.students << student
-      StudentMailer.delay.email(student, student.course, self.body)
+      # StudentMailer.delay.email(student, student.course, self.body)
+      StudentMailer.email(student, student.course, self.body).deliver
     end
     self.save
   end
