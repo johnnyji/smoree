@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/" => "courses#show", constraints: lambda { |r| r.subdomain.present? && r.subdomain != "www" }
+  match "", to: "courses#show", constraints: lambda { |r| r.subdomain.present? && r.subdomain != "www" }
   
   # somehow i need to reroute the CNAME so that the subdomain of the domain points to the subdomain of the herokuapp, and I also need to reconfigure the app to read the subdomain of the herokuapp....
   root "users#new"
