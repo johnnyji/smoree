@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # get "/" => "courses#show", constraints: { subdomain: /.+/ }
+  get "/" => "courses#show", constraints: { subdomain: /.+/ }
   root "users#new"
   
   resources :students do
