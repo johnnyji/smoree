@@ -5,6 +5,11 @@ $(function() {
   var cloneArray = [];
   var ready = false;
 
+  $.getJSON("/users/pictures.json", function(data) {
+    images = data;
+    ready = true;
+  });
+
   function distributeRandomImages(number) {
     if (images.length < 2) {
       images = cloneArray;
@@ -25,20 +30,15 @@ $(function() {
     distributeRandomImages(randomNumber);
   }
 
-  $.getJSON("/users/pictures.json", function(data) {
-    images = data;
-    ready = true;
-  });
-
-  if (ready) {
-    setInterval(function() {
-      // There are two <img> elements. The function sets the their src differently and toggle fades between the two, also changing their z-index for a smooth transition fading from picture to picture 
+  setInterval(function() {
+    // There are two <img> elements. The function sets the their src differently and toggle fades between the two, also changing their z-index for a smooth transition fading from picture to picture
+    if (ready) {
       if (coverImage.is(":visible")) {
         fadeImageTo(coverImage, altCoverImage);
       } else {
         fadeImageTo(altCoverImage, coverImage);
       }
-    }, 9000); 
-  }
+    }
+  }, 8000); 
 
 });
