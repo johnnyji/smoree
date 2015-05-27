@@ -1,5 +1,4 @@
 class CoursesController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :require_login, only: [:new, :create, :edit, :update, :delete, :destroy]
   before_action :find_course, only: [:show, :edit, :update, :delete, :destroy, :info, :data]
   respond_to :json, :html
