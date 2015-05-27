@@ -3,11 +3,9 @@ $(function() {
   var altCoverImage = $(".full-background-image2");
   var images;
   var cloneArray = [];
-  var ready = false;
 
   $.getJSON("/users/pictures.json", function(data) {
     images = data;
-    ready = true;
   });
 
   function distributeRandomImages(number) {
@@ -30,15 +28,15 @@ $(function() {
     distributeRandomImages(randomNumber);
   }
 
-  setInterval(function() {
-    // There are two <img> elements. The function sets the their src differently and toggle fades between the two, also changing their z-index for a smooth transition fading from picture to picture
-    if (ready) {
+  setTimeout(function() {
+    setInterval(function() {
+      // There are two <img> elements. The function sets the their src differently and toggle fades between the two, also changing their z-index for a smooth transition fading from picture to picture
       if (coverImage.is(":visible")) {
         fadeImageTo(coverImage, altCoverImage);
       } else {
         fadeImageTo(altCoverImage, coverImage);
       }
-    }
-  }, 8000); 
+    }, 8000); 
+  }, 2000);
 
 });
