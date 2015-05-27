@@ -23,10 +23,10 @@ module Skillup
     # config.i18n.default_locale = :de
 
     #allow CORS headers
-    config.action_dispatch.default_headers.merge!({
+    config.action_dispatch.default_headers = {
       "Access-Control-Allow-Origin" => "*",
       "Access-Control-Request-Method" => "*"
-    });
+    }
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
@@ -34,7 +34,7 @@ module Skillup
     
     config.active_job.queue_adapter = :delayed_job
 
-    config.middleware.use Rack::Cors do
+    config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
         resource '*', headers: :any, methods: [:get, :post, :options]
