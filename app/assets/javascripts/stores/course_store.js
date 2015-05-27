@@ -26,9 +26,11 @@ var CourseStore = Reflux.createStore({
       method: "GET",
       crossDomain: true,
       xhrFields: { withCredentials: true },
+      dataType: "jsonp",
       data: { range_of_days: rangeOfDays },
       success: success,
-      error: error
+      error: error,
+      beforeSend: setHeader
     });
   },
   onDeleteCourse: function(courseId, success) {
