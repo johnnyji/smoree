@@ -10,7 +10,8 @@ var DataContent = React.createClass({
     return {
       viewsPerDay: null,
       signupsPerDay: null,
-      componentReady: false
+      componentReady: false,
+      loadError: false
     };
   },
   componentDidMount: function() {
@@ -30,7 +31,6 @@ var DataContent = React.createClass({
     );
   },  
   handleLoadSuccess: function(data) {
-    debugger;
     this.setState({
       viewsPerDay: JSON.parse(data.views),
       signupsPerDay: JSON.parse(data.signups),
@@ -39,13 +39,16 @@ var DataContent = React.createClass({
     this.props.chartReady();
   },
   handleLoadError: function(data) {
+    this.setState({ loadError: true });
   },
   render: function() {
     var p = this.props;
     var s = this.state;
     var course = p.courses[p.activeTabIndex];
 
-    if (!s.componentReady) return <Spinner />
+    if (s.loadError) { return <h1>Oops, something went wrong!</h1> }
+    if (!s.componentReady) { return <Spinner /> }
+
     return (
       <div className="data-content">
         <h1>{course.title}</h1>

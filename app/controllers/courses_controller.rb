@@ -15,7 +15,6 @@ class CoursesController < ApplicationController
   end
 
   def create
-    binding.pry
     @course = current_user.courses.build(course_params)
     if @course.save
       render json: { course_id: @course.id }
@@ -28,7 +27,6 @@ class CoursesController < ApplicationController
   end
 
   def update
-    binding.pry
     if @course.update(course_params)
       render json: { course_id: @course.id }
     else

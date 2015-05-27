@@ -25,11 +25,12 @@ var ManageAccount = React.createClass({
       lastName: user.last_name,
       email: user.email,
       description: user.description,
-      ready: true
+      ready: true,
+      loadError: false
     });
   },
   onLoadUserError: function(xhr, responseCode, error) {
-    debugger;
+    this.setState({ loadError: true });
   },
   handleImageSave: function(imageBlob) {
     var data = { image_blob: imageBlob }
@@ -67,7 +68,10 @@ var ManageAccount = React.createClass({
   },
   render: function() {
     var s = this.state;
+
+    if (s.loadError) { return <h1>Oops, something went wrong!</h1> }
     if (!s.ready) { return <Spinner /> }
+
     return (
       <div>
         {s.saved && <ReactFlashMessage flashType="flash-success" message="Profile saved!" hideFlash={this.handleHideFlash} />}

@@ -55,6 +55,7 @@ var ManageData = React.createClass({
 
     if (p.courses.length < 1) { return <h1>No Courses Yet</h1> }
     if (!s.componentReady) { return <Spinner /> }
+      
     return (
       <div className="data-container">
         <DataNav
