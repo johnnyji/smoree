@@ -30,7 +30,6 @@ var DataContent = React.createClass({
     );
   },  
   handleLoadSuccess: function(data) {
-    debugger;
     this.setState({
       viewsPerDay: JSON.parse(data.views),
       signupsPerDay: JSON.parse(data.signups),
@@ -39,7 +38,6 @@ var DataContent = React.createClass({
     this.props.chartReady();
   },
   handleLoadError: function(data) {
-    debugger;
   },
   render: function() {
     var p = this.props;
