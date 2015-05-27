@@ -1,9 +1,10 @@
 <div class="intro-container">
   <!-- background image -->
-  <img src=<%= image_path("cover.jpg") %> class="full-background-image">
+  <img src=<%= image_path("main-cover.jpg") %> class="full-background-image">
+  <img src=<%= image_path("main-cover2.jpg") %> class="full-background-image2">
 
-  <h1 class="intro-title">skillup</h1>
-  <p class="intro-summary">A place where you can create courses, take courses and share your knowledge with the world.</p>
+  <h1 class="intro-title">smoree</h1>
+  <p class="intro-summary">Create courses, manage students, and share your knowledge with the world. It's as simple as that.</p>
 
   <% if logged_in? %>
     <%= link_to "Create Course", new_course_path, class: "create-course-link" %>

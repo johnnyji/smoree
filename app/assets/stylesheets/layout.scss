@@ -129,6 +129,17 @@ footer {
   z-index: -1;
 }
 
+.full-background-image2 {
+  @include position-center(absolute, 50%, 50%);
+  @include brightness(30%, 1px);
+  height: 120vh;
+  width: 130vw;
+  padding: 0;
+  overflow: hidden;
+  margin: 0;
+  z-index: -2;
+}
+
 .banner {
   @include position-y(relative, 50%);
   top: 0;
