@@ -29,8 +29,7 @@ var CourseStore = Reflux.createStore({
       dataType: "jsonp",
       data: { range_of_days: rangeOfDays },
       success: success,
-      error: error,
-      beforeSend: setHeader
+      error: error
     });
   },
   onDeleteCourse: function(courseId, success) {
