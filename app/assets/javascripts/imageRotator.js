@@ -3,22 +3,9 @@ $(function() {
   var altCoverImage = $(".full-background-image2");
   var images;
   var cloneArray = [];
-
-  $.getJSON("/users/pictures.json", function(data) {
-    images = data;
-  });
-
-  setInterval(function() {
-    // There are two <img> elements. The function sets the their src differently and toggle fades between the two, also changing their z-index for a smooth transition fading from picture to picture 
-    if (coverImage.is(":visible")) {
-      fadeImageTo(coverImage, altCoverImage);
-    } else {
-      fadeImageTo(altCoverImage, coverImage);
-    }
-  }, 5000); 
+  var ready = false;
 
   function distributeRandomImages(number) {
-    console.log(images);
     if (images.length < 2) {
       images = cloneArray;
       cloneArray = [];
@@ -36,6 +23,22 @@ $(function() {
     nextImage.show();
     prevImage.fadeOut(1000);
     distributeRandomImages(randomNumber);
+  }
+
+  $.getJSON("/users/pictures.json", function(data) {
+    images = data;
+    ready = true;
+  });
+
+  if (ready) {
+    setInterval(function() {
+      // There are two <img> elements. The function sets the their src differently and toggle fades between the two, also changing their z-index for a smooth transition fading from picture to picture 
+      if (coverImage.is(":visible")) {
+        fadeImageTo(coverImage, altCoverImage);
+      } else {
+        fadeImageTo(altCoverImage, coverImage);
+      }
+    }, 9000); 
   }
 
 });
