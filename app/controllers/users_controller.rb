@@ -46,6 +46,9 @@ class UsersController < ApplicationController
   def data
   end
 
+  def pictures
+  end
+
   private
 
   def user_params
