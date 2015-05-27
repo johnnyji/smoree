@@ -30,6 +30,7 @@ var DataContent = React.createClass({
     );
   },  
   handleLoadSuccess: function(data) {
+    debugger;
     this.setState({
       viewsPerDay: JSON.parse(data.views),
       signupsPerDay: JSON.parse(data.signups),
