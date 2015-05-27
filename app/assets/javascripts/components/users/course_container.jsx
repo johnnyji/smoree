@@ -48,7 +48,7 @@ var CourseContainer = React.createClass({
         <div className="dashboard-options">
           <div className="options-nav-left">
             <div className="icon">
-              <Clipboard text={course.slug + ".skillup.com"} />
+              <Clipboard text={course.slug + ".smoree.com"} />
             </div>
             <div className="icon">
               <i className="fa fa-envelope-o nav-option-icons" onClick={this.handleCourseInfoRedirect}></i>

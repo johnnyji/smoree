@@ -1,6 +1,6 @@
-## skillup
+## Smoree
 
-skillup provides amazing landing pages and email notifications to people hosting workshops. This is my final project for Lighthouse Labs and I will have 2 weeks time to build this MVP out from start to finish on my own!
+Smoree provides amazing landing pages and email notifications to people hosting workshops. This is my final project for Lighthouse Labs and I will have 2 weeks time to build this MVP out from start to finish on my own!
 
 ### The Dev Process
 

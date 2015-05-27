@@ -11,7 +11,7 @@ var PreviewEmail = React.createClass({
           <div className="pop-up-email-preview">
             <i className="fa fa-remove" onClick={this.props.handleExitModal}></i>
             <div className="fake-email-header">
-              <span>From:</span><p>no-reply@skillup.com</p><br/>
+              <span>From:</span><p>noreply@smoree.com</p><br/>
               <span>To:</span><p>john@smith.com</p><br/>
               <span>Date:</span><p>{moment().format()}</p><br/>
               <span>Subject:</span><p>Welcome to my class!</p>
