@@ -59,7 +59,7 @@ class CoursesController < ApplicationController
   end
 
   def find_course
-    if request.subdomain.present?
+    if request.subdomain.present? && request.subdomain != "www"
       begin
         @course = Course.find_by!(slug: request.subdomain)
       rescue ActiveRecord::RecordNotFound
