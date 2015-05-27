@@ -9,11 +9,11 @@ group :development, :test do
   gem 'letter_opener', '~> 1.3.0'
   gem 'pry', '~> 0.10.1'
   gem 'pry-nav', '~> 0.2.4'
-  gem 'pry-rails', '~> 0.3.4'
   gem 'web-console', '~> 2.0'
   gem 'spring', '~> 1.3.6'
 end
 
+gem 'pry-rails', '~> 0.3.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
