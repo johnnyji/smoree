@@ -20,6 +20,7 @@ var NewCourse = React.createClass({
       defaultCourseDescription: "This is where you would give a description about how awesome your course was!",
       editingEmail: false,
       submitError: false,
+      submitting: false,
       errors: null
     }
   },
@@ -78,6 +79,7 @@ var NewCourse = React.createClass({
     }
   },
   handleFormSubmit: function() {
+    this.setState({ submitting: true });
     var self = this;
     var data = {
       title: self.verifyUserInput(self.state.courseTitle, self.state.defaultCourseTitle),
@@ -106,9 +108,11 @@ var NewCourse = React.createClass({
     }
   },
   handleSubmitSuccess: function(data) {
+    this.setState({ submitting: false });
     window.location.href = "/courses/" + data.course_id;
   },
   handleSubmitError: function(xhr, requestCode, errorThrown) {
+    this.setState({ submitting: false });
     var data = $.parseJSON(xhr.responseText);
     this.setState({
       submitError: true,
@@ -167,8 +171,12 @@ var NewCourse = React.createClass({
           endDate={s.endDate}
           address={s.address}
         />
-        {!this.readyToSubmit() && <button className="no-create-course-button">Not finished yet</button>}
-        {this.readyToSubmit() && <SubmitButton handleFormSubmit={this.handleFormSubmit}/>}
+
+        {!this.readyToSubmit() && !s.submitting && <button className="no-create-course-button">Not finished yet</button>}
+
+        {s.submitting && <Spinner idType={"submitting-course"} />}
+
+        {this.readyToSubmit() && !s.submitting && <SubmitButton handleFormSubmit={this.handleFormSubmit}/>}
       </div>
     )
   }

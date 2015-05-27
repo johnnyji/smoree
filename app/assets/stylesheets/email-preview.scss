@@ -19,7 +19,8 @@
   box-shadow: 0 0 10px $gray;
   background-color: $white;
   z-index: 15;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   i {
     float: right;
     margin: 0.5em 1em 0 0;
