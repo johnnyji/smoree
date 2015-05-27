@@ -3,6 +3,7 @@ $(function() {
   var signUpForm = $('.user-form');
 
   function exitFormModal() {
+    $(".header-right").fadeIn(300);
     $("body").removeClass("stop-scroll");
     $(".overlay").fadeOut(200, function() {
       $(this).hide().removeClass("backdrop");
@@ -13,6 +14,7 @@ $(function() {
   }
 
   function displayFormModal() {
+    $(".header-right").fadeOut(300);
     $("html, body").animate({ scrollTop: 0 }, 200);
     setTimeout(function() {
       $("body").addClass("stop-scroll");

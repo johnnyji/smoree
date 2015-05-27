@@ -29,6 +29,7 @@ gem 'loofah', '~> 2.0.1'
 gem 'delayed_job'
 gem 'delayed_job_active_record', '~> 4.0.3'
 gem 'rails_12factor', '~> 0.0.3', group: :production
+gem 'dynopoker', '~> 1.3.2', group: :production
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
