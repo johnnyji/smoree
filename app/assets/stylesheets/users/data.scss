@@ -11,7 +11,7 @@
     position: relative;
     display: inline-block;
     margin: 0 1% 0 0;
-    padding: 1em 2.5em;
+    padding: 1.5em 2.5em 2.5em 2.5em;
     width: 25%;
     min-height: 100%;
     .data-nav-title {
@@ -41,8 +41,9 @@
     width: 70%;
     vertical-align: top;
     h1 {
-      margin: 0;
-      font-size: 2em;
+      margin: 0 auto;
+      font-size: 2.3em;
+      text-align: center;
     }
     .dual-line-chart {
       height: 450px;
