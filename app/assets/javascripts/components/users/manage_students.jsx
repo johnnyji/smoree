@@ -8,8 +8,27 @@ var ManageStudents = React.createClass({
       return {
         selectedAll: false,
         droppedAll: true,
-        selectedStudents: []
+        selectedStudents: [],
+        students: null,
+        componentReady: false
       }
+  },
+  componentDidMount: function() {
+    var distinct = [];
+    var students = this.props.students;
+    // checks if the email is a duplicate before sending to all students
+    for (var i = 0; i < students.length; i++) {
+      var duplicateEmails = distinct.filter(function(s) {
+        return s.email === students[i].email
+      })
+      if (duplicateEmails.length === 0) {
+        distinct.push(students[i]);
+      }
+    }
+    this.setState({ 
+      componentReady: true,
+      students: distinct
+    });
   },
   handleSelectedStudent: function(studentId) {
     var students = this.state.selectedStudents;
@@ -30,8 +49,8 @@ var ManageStudents = React.createClass({
   },
   handleSelectAll: function() {
     var allStudents = [];
-    for (var i = 0; i < this.props.students.length; i++) {
-      allStudents.push(this.props.students[i].id)
+    for (var i = 0; i < this.state.students.length; i++) {
+      allStudents.push(this.state.students[i].id)
     }
     this.setState({
       selectedAll: true,
@@ -49,7 +68,9 @@ var ManageStudents = React.createClass({
   render: function() {
     var p = this.props;
     var s = this.state;
-    debugger;
+    
+    if (!s.componentReady) { return <Spinner /> }
+
     return (
       <div>
         <UserEmailBox 
@@ -57,7 +78,7 @@ var ManageStudents = React.createClass({
           initialEmailValue={p.initialEmailValue === null ? "" : p.initialEmailValue}
         />
         <AllStudentsContainer
-          students={p.students}
+          students={s.students}
           selectedAll={s.selectedAll}
           droppedAll={s.droppedAll}
           handleSelectAll={this.handleSelectAll}

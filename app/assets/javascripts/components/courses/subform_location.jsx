@@ -60,6 +60,7 @@ var SubformLocation = React.createClass({
     var margin = {
       marginTop: "3em"
     }
+
     return (
       <div className="new-course-form">
         <h1 className="nav-content-title">Location</h1>
