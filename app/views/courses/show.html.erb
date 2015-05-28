@@ -4,7 +4,7 @@
 </div>
 <div class="course-info-section">
   <div class="course-info-left">
-    <%= react_component("InstructorCard", user: @course.user )%>
+    <%= react_component("InstructorCard", user: @course.user) %>
     <div class="main-info">
       <h2 class="course-summary-field"><%= @course.summary %></h2>
       <p class="course-description-field"><%= @course.description %></p>
@@ -32,5 +32,4 @@
       course_id: @course.id
     ) %>
   </div>
-  
 </div>

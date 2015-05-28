@@ -1,5 +1,13 @@
 var UserStore = Reflux.createStore({
   listenables: UserActions,
+  onLoadUser: function(userId, success) {
+    $.ajax({
+      url: "/users/" + userId + "/data",
+      method: "GET",
+      dataType: "json",
+      success: success
+    });
+  },
   onLoadEditUser: function(userId, success, error) {
     $.ajax({
       url: "/users/" + userId + "/edit",

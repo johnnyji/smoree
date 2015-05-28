@@ -44,6 +44,8 @@ class UsersController < ApplicationController
   end
 
   def data
+    @students = @user.students
+    @courses = @user.courses
   end
 
   def pictures

@@ -1,7 +1,8 @@
-<%= react_component("Dashboard",
+<%#= react_component("Dashboard",
   user: current_user,
   courses: @courses,
   students: current_user.students,
   tabs: ["fa-list-ul", "fa-envelope", "fa-history", "fa-line-chart", "fa-cog"]
 )%>
 
+<%= react_component("LoadUserPage", userId: current_user.id) %>

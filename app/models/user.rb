@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :emails, dependent: :destroy
   has_many :views, through: :courses, dependent: :destroy
   has_many :courses, dependent: :destroy
-  has_many :students, -> { uniq { |s| s.email } }, through: :courses, dependent: :destroy
+  has_many :students, -> { uniq }, through: :courses, dependent: :destroy
 
   validates :first_name, :last_name, presence: { message: "Your name can't be blank!"} 
   validates :email, 

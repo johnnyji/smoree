@@ -112,6 +112,18 @@
   background-color: #FFF;
 }
 
-// .white {
-//   color: $white;
-// }
+
+#full-page-spinner {
+  @include position-center(absolute, 50%, 50%);
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 100px;
+  .sk-bounce1,
+  .sk-bounce2,
+  .sk-bounce3 {
+    width: 50px;
+    height: 50px;
+    margin: 0 0.3em;
+  }
+}

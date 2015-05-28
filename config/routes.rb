@@ -18,8 +18,10 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
-      get :data
       get :pictures
+    end
+    member do
+      get :data
     end
     resources :emails, only: [:index]  
   end
