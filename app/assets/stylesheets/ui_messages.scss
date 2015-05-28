@@ -17,6 +17,9 @@
   z-index: 100;
   padding: 1em;
   color: $white;
+  h3 {
+    width: 85%;
+  }
   .flash-exit {
     @include position-center(absolute, 50%, 50%);
     top: 50%; 
