@@ -1,8 +1,10 @@
 <div class="email-container">
   <h1 class="email-title">Heyo, <%= @student.first_name %> <%= @student.last_name %>!</h1>
-  <h2>Thanks for taking <%= link_to @course.title, course_url(@course) %></h2>
+  <h2>
+    Thanks for taking <a href="http://<%= @course.slug %>.smoree.com" ><%= @course.title %></a>
+  </h2>
   <p class="welcome-email-body"><%= @course.welcome_email %></p>
-  <p>Sincerely,</p>
+  <p class="sincerely">Sincerely,</p>
   <div class="instructor-info">
     <div class="instructor-title">
       <h3><%= @student.course.user.name %></h3>
@@ -38,13 +40,18 @@
     margin: 1.5em 0 3em 0;
   }
 
+  .sincerely {
+    font-size: 1.2em;
+  }
+
   .instructor-info {
     position: relative;
     width: 100%;
     margin-top: 1em;
-    padding: 2em 1em 1em 1em;
+    padding: 2em 1em 1em 0;
     width: 80%;
     border-top: 1px solid #DBDBDB;
+    font-size: 1.2em;
   }
 
   .instructor-info .instructor-title {
