@@ -12,6 +12,8 @@ This is both a challenging and awesome project for me because I am applying alot
 - SASS
 - Custom design and stylesheets (get that bootstrap outta here)
 
-#### More to come...
+#### It's live!
 
-Currently still working on the project, will be shipping live in 2 weeks!
+While this website was made in only 2 weeks and there are still quite a bit of tweeking that needs to be done. I'm glad to say that Version 1 is live!
+
+Check it out at: [smoree.com](http://www.smoree.com)
