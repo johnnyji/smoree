@@ -1,5 +1,4 @@
 class EmailsController < ApplicationController
-  respond_to :json
   
   def index
     @emails = Email.where(user_id: params[:user_id]).order("created_at DESC")

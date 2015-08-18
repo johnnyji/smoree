@@ -2,11 +2,32 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_filter :deep_snake_case_params!
+  helper_method :current_user
 
-  private
+  def render_error_message(error, status = 422)
+    if error.is_a? String
+      render json: { message: error }, status: status
+    elsif error.nil?
+      render json: nil, status: status
+    else
+      render json: { message: error.record.errors.messages.values.flatten.first }, status: status
+    end
+  end
 
-  def logged_in?
-    current_user != nil
+  def deep_snake_case_params!(val = params)
+    case val
+    when Array
+      val.map {|v| deep_snake_case_params! v }
+    when Hash
+      val.keys.each do |k, v = val[k]|
+        val.delete k
+        val[k.underscore] = deep_snake_case_params!(v)
+      end
+      val
+    else
+      val
+    end
   end
 
   def current_user
@@ -14,11 +35,4 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordNotFound
   end
 
-  def require_login
-    unless current_user
-      redirect_to new_session_path, alert: "You must be logged in first!"
-    end
-  end
-
-  helper_method :current_user, :logged_in?
 end

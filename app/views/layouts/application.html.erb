@@ -12,21 +12,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<section>
-  <%= render partial: "layouts/header" %>
-
-  <% flash.each do |key, value| %>
-    <%= react_component(
-      "UiFlashMessage",
-      flashType: key.to_s, 
-      message: value
-    ) %>
-  <% end %>
   
   <%= yield %>
-</section>
-
 
 </body>
 </html>

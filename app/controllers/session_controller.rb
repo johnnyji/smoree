@@ -1,21 +1,13 @@
 class SessionController < ApplicationController
-  before_action :require_login, only: [:destroy]
-  respond_to :html, :js
-
-  def new
-  end
+  before_action :require_user, only: %i(destroy)
 
   def create
     user = User.find_by(email: params[:email])
-    respond_to do |format|
-      if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
-        format.html { redirect_to user_path(user) }
-      else
-        #this isn't working   
-        format.html { render :new }
-        format.js
-      end
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      render json: nil, status: 201
+    else
+      render json: { message: 'Invalid Username/Password' }, status: 422
     end
   end
 
@@ -23,4 +15,5 @@ class SessionController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path, notice: "Logged out"
   end
+  
 end

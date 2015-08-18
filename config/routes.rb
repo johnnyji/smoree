@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   get "", to: "courses#show",  constraints: lambda { |r| r.subdomain.present? && r.subdomain != "www" }
   root "users#new"
+
+  controller :instructors do
+    post '/instructor' => :create
+    get '/instructor' => :show
+  end
   
   resources :students do
     collection do
@@ -16,14 +21,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users do
+  resources :users, only: %i(create show update destroy) do
     collection do
       get :pictures
     end
     member do
       get :data
     end
-    resources :emails, only: [:index]  
+    resources :emails, only: [:index]
   end
 
   resources :emails, only: [:create]

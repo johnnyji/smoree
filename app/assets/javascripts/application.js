@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
+//= require lodash
 //= require filedrop
 //= require moment
 //= require quill
@@ -20,8 +20,8 @@
 //= require chartkick
 //= require react
 //= require react_ujs
-//= require reflux
 //= require react_datepicker
 //= require react_quill
+//= require reflux
 //= require components
 //= require_tree .

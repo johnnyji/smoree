@@ -1,61 +1,46 @@
 class CoursesController < ApplicationController
-  before_action :require_login, only: [:new, :create, :edit, :update, :delete, :destroy]
-  before_action :find_course, only: [:show, :edit, :update, :delete, :destroy, :info, :data]
-  respond_to :json, :html
+  before_action :require_user, only: %i(create update destroy)
+  before_action :find_course, only: %i(show update destroy)
   
   def index
   end
 
   def show
-    @course.views.create
-  end
-
-  def new
-    @course = Course.new
   end
 
   def create
-    @course = current_user.courses.build(course_params)
-    if @course.save
-      render json: { course_id: @course.id }
-    else
-      render json: { errors: @course.errors }, status: :unprocessable_entity
-    end
-  end
-
-  def edit
+    @course = current_user.courses.create!(course_params)
+    render json: { course: { id: @course.id } }, status: 201
+  rescue ActiveRecord::RecordInvalid => e
+    render_error_message(e)
   end
 
   def update
-    if @course.update(course_params)
-      render json: { course_id: @course.id }
-    else
-      render json: { errors: @course.errors }, status: :unprocessable_entity
-    end
-  end
-
-  def delete
+    @course.update!(course_params)
+    render json: { course: { id: @course.id } }, status: 201
+  rescue ActiveRecord::RecordInvalid => e
+    render_error_message(e)
   end
 
   def destroy
     @course.destroy
-    render json: nil, status: :ok
+    render json: nil, status: 204
   end
 
   def info
   end
 
-  def data
-    range_of_days = ConvertToDateObject.call(params[:range_of_days])
-    @views_per_day = RetrieveViewsPerDay.call(@course, range_of_days)
-    @signups_per_day = RetrieveSignupsPerDay.call(@course, range_of_days)
-    render json: { views: @views_per_day.to_json, signups: @signups_per_day.to_json }, status: :ok 
-  end
+  # def data
+  #   range_of_days = ConvertToDateObject.call(params[:range_of_days])
+  #   @views_per_day = RetrieveViewsPerDay.call(@course, range_of_days)
+  #   @signups_per_day = RetrieveSignupsPerDay.call(@course, range_of_days)
+  #   render json: { views: @views_per_day.to_json, signups: @signups_per_day.to_json }, status: :ok 
+  # end
 
   private
 
   def course_params
-    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :image_url, :latitude, :longitude, :welcome_email, :slug)
+    params.require(:course).permit(:title, :location, :start_date, :end_date, :summary, :description, :image_url, :latitude, :longitude, :welcome_email_id, :slug)
   end
 
   def find_course
