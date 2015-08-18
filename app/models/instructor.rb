@@ -11,4 +11,11 @@ class Instructor < ActiveRecord::Base
     end
   end
 
+  def update_with_account!(user_params, account_params)
+    ActiveRecord::Base.transaction do
+      self.update!(user_params)
+      self.account.update!(account_params)
+    end
+  end
+
 end

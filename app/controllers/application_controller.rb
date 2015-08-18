@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_user
+    redirect_to root_path, notice: 'Please login to view this content' if current_user.nil?
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   rescue ActiveRecord::RecordNotFound

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
   get "", to: "courses#show",  constraints: lambda { |r| r.subdomain.present? && r.subdomain != "www" }
-  root "users#new"
+
+  root "home#index"
 
   controller :instructors do
     post '/instructor' => :create
     get '/instructor' => :show
+    put '/instructor' => :update
   end
   
   resources :students do

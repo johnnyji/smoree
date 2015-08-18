@@ -16,7 +16,12 @@ class InstructorsController < ApplicationController
     render_error_message(e)
   end
 
-  def update
+  def update #params: id, instructor, account
+    instructor = Instructor.find(params[:id])
+    instructor.update_with_account!(instructor_params, account_params)
+    render json: nil, status: 201
+  rescue ActiveRecord::RecordInvalid => e
+    render_error_message(e)
   end
 
   def destroy
