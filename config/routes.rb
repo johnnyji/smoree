@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post '/instructor' => :create
     get '/instructor' => :show
     put '/instructor' => :update
+    delete '/instructor' => :destroy
   end
   
   resources :students do

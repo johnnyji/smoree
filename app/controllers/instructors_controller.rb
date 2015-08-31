@@ -16,15 +16,17 @@ class InstructorsController < ApplicationController
     render_error_message(e)
   end
 
-  def update #params: id, instructor, account
-    instructor = Instructor.find(params[:id])
-    instructor.update_with_account!(instructor_params, account_params)
+  def update #params: instructor, account
+    current_user.update_with_account!(instructor_params, account_params)
     render json: nil, status: 201
   rescue ActiveRecord::RecordInvalid => e
     render_error_message(e)
   end
 
-  def destroy
+  def destroy #params: id
+    current_user.destroy
+    session[:user_id] = nil
+    render json: nil, status: 204
   end
 
   private

@@ -10,7 +10,6 @@ describe 'PUT /instructor' do
     context 'the correct params are passed' do
       before(:each) do
         put '/instructor',
-          id: instructor.id,
           instructor: instructor.as_json,
           account: instructor.account.as_json.merge!({ password: '1234567', password_confirmation: '1234567' })
       end
