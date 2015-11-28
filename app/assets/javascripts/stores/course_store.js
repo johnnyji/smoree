@@ -42,13 +42,13 @@ var CourseStore = Reflux.createStore({
   onGeocodeLocation: function(country, state, city, address, retrieveCoords) {
     var fullAddress = address + ", " + city + ", " + state + ", " + country;
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: fullAddress}, function(results, status) {
+    geocoder.geocode({address: fullAddress}, function(results, status) {
       if (results[0] === undefined) {
         retrieveCoords(null);
       } else {
-        var latitude = results[0].geometry.location.A
-        var longitude = results[0].geometry.location.F
-        retrieveCoords([latitude, longitude], fullAddress);
+        var latitude = results[0].geometry.location.lat();
+        var longitude = results[0].geometry.location.lng();
+        retrieveCoords([latitude, longitude], results[0].formatted_address);
       }
     });
   },

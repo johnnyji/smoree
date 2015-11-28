@@ -66,7 +66,7 @@ var NewCourse = React.createClass({
     });
   },
   handleImageSave: function(image) {
-    this.setState({ imageUrl: image });
+    this.setState({imageUrl: image});
   },
   handleWelcomeEmailChange: function(email) {
     this.setState({ welcomeEmail: email });
@@ -163,7 +163,7 @@ var NewCourse = React.createClass({
         />
         <CourseInfo
           user={p.user} 
-          summary={s.courseSummary} 
+          summary={s.courseSummary}
           description={s.courseDescription} 
           latitude={s.latitude}
           longitude={s.longitude}
